@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    "Avenir Next LT Pro", "Mazius Review 20.09", "Neutral Face" sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Avenir Next LT Pro";
+  font-weight: normal;
+  src: local("Avenir Next LT Pro"),
+    url(./assets/fonts/AvenirNextLTPro/AvenirNextLTProRegular.otf)
+      format("opentype");
+}
+
+@font-face {
+  font-family: "Avenir Next LT Pro";
+  font-weight: bold;
+  src: local("Avenir Next LT Pro"),
+    url(./assets/fonts/AvenirNextLTPro/AvenirNextLTProDemi.otf)
+      format("opentype");
+}
+
+@font-face {
+  font-family: "Avenir Next LT Pro";
+  font-weight: bolder;
+  src: local("Avenir Next LT Pro"),
+    url(./assets/fonts/AvenirNextLTPro/AvenirNextLTProBold.otf)
+      format("opentype");
+}
+
+@font-face {
+  font-family: "Mazius Review 20.09";
+  font-weight: normal;
+  src: local("Mazius Review 20.09"),
+    url(./assets/fonts/MaziusReview2009/MAZIUSREVIEW20.09Regular400.otf)
+      format("opentype");
+}
+
+@font-face {
+  font-family: "Mazius Review 20.09";
+  font-weight: italic;
+  src: local("Mazius Review 20.09"),
+    url(./assets/fonts/MaziusReview2009/MAZIUSREVIEW20.09Italic400.otf)
+      format("opentype");
+}
+
+@font-face {
+  font-family: "Neutral Face";
+  font-weight: normal;
+  src: local("Neutral Face"),
+    url(./assets/fonts/NeutralFace/NeutralFace.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Neutral Face";
+  font-weight: bold;
+  src: local("Neutral Face"),
+    url(./assets/fonts/NeutralFace/NeutralFace-Bold.otf) format("opentype");
+}
