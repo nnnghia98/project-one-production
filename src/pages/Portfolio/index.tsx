@@ -1,5 +1,5 @@
 import React from "react";
 
-const Portfolio = () => <div></div>;
+const Portfolio = () => <div>Portfolio</div>;
 
 export default Portfolio;
