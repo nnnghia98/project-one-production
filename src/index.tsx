@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
 import { router } from "router";
+import { Header, Footer } from "components";
 
 import "./index.scss";
 
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <Header />
     <RouterProvider router={router} />
+    <Footer />
   </React.StrictMode>
 );
 

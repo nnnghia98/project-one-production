@@ -1,3 +1,5 @@
+@import "assets/styles/colors";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,15 +7,11 @@ body {
     "Avenir Next LT Pro", "Mazius Review 20.09", "Neutral Face" sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $oldLace;
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 * {
