@@ -1,4 +1,5 @@
 @import "../../assets/styles/colors";
+@import "../../assets/styles/breakpoint";
 
 .footer {
   position: fixed;
@@ -6,5 +7,21 @@
   bottom: 0;
   width: 100%;
   height: 90px;
+  display: flex;
+  justify-content: center;
   background-color: $roseEbony;
+  color: $oldLace;
+
+  .content {
+    @include desktop;
+    @include tablet;
+    @include mobile;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Avenir Next LT Pro";
+    font-size: 20px;
+    line-height: 24px;
+  }
 }

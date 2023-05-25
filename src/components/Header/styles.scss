@@ -1,7 +1,36 @@
 @import "../../assets/styles/colors";
+@import "../../assets/styles/breakpoint";
 
 .header {
-  width: 100%;
+  width: $fullWidth;
   height: 90px;
+  display: flex;
+  justify-content: center;
   background-color: $roseEbony;
+  color: $oldLace;
+
+  .content {
+    @include desktop;
+    @include tablet;
+    @include mobile;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: "Mazius Review 20.09";
+    font-weight: normal;
+    font-size: 45px;
+    line-height: 54px;
+    margin-top: 13px;
+  }
+
+  .navbar-tabs {
+    font-family: "Neutral Face";
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+  }
 }
