@@ -1,3 +1,18 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/breakpoint";
+
 .portfolio {
-  font-family: "Avenir Next LT Pro";
+  margin: 0 auto;
+
+  @include desktop {
+    padding: 96px 0 186px;
+  }
+
+  @include tablet {
+    padding: 64px 054px;
+  }
+
+  @include mobile {
+    padding: 36px 0 126px;
+  }
 }

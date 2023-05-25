@@ -1,0 +1,66 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+
+.welcomeBanner {
+  background-color: $white;
+  border: 1px solid $bazzar;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 41px;
+  color: $roseEbony;
+  margin: 0 auto;
+
+  @include desktop {
+    max-width: 1050px;
+    padding: 95px;
+  }
+
+  @include tablet {
+    max-width: 616px;
+    padding: 70px;
+  }
+
+  @include mobile {
+    max-width: 300px;
+    padding: 32px;
+  }
+
+  .title {
+    font-family: "MAZIUS REVIEW 20.09";
+    font-weight: 400;
+
+    @include desktop {
+      font-size: 36px;
+      line-height: 43.2px;
+    }
+  }
+
+  .description {
+    font-family: "Avenir Next LT Pro";
+    font-weight: 400;
+
+    @include desktop {
+      margin-top: 18px;
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+  .icon-wrapper {
+    display: flex;
+
+    .svg-wrapper {
+      width: 45px;
+      height: 45px;
+      display: flex;
+
+      img {
+        cursor: pointer;
+        margin: auto;
+      }
+    }
+
+    @include desktop {
+      margin-top: 18px;
+      gap: 20px;
+    }
+  }
+}
