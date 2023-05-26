@@ -1,0 +1,137 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.experiences {
+  margin: 0 auto;
+  color: $roseEbony;
+
+  @include desktop {
+    max-width: 1050px;
+    margin-top: 96px;
+  }
+
+  @include tablet {
+    max-width: 616px;
+    margin-top: 64px;
+  }
+
+  @include mobile {
+    max-width: 300px;
+    margin-top: 36px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-family: "MAZIUS REVIEW 20.09";
+      font-weight: 400;
+      text-align: center;
+
+      @include desktop-child {
+        font-size: 36px;
+        line-height: 43.2px;
+      }
+
+      @include tablet-child {
+        font-size: 32px;
+        line-height: 38.4px;
+      }
+
+      @include mobile-child {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+
+    .description {
+      text-align: center;
+      font-family: "Avenir Next LT Pro";
+      font-style: normal;
+      font-weight: 400;
+
+      @include desktop-child {
+        font-size: 20px;
+        line-height: 24px;
+        margin-top: 16px;
+      }
+
+      @include tablet-child {
+        font-size: 16px;
+        line-height: 19px;
+        margin-top: 12px;
+      }
+
+      @include mobile-child {
+        font-size: 14px;
+        line-height: 17px;
+        margin-top: 18px;
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+
+      @include desktop-child {
+        margin-top: 40px;
+        gap: 24px;
+      }
+
+      @include tablet-child {
+        margin-top: 21px;
+        gap: 20px;
+      }
+
+      @include mobile-child {
+        margin-top: 16px;
+        gap: 4px;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+
+        @include desktop-child {
+          gap: 21px;
+        }
+
+        @include tablet-child {
+          gap: 21px;
+        }
+
+        @include mobile-child {
+          gap: 4px;
+        }
+
+        .item {
+          flex: 1;
+          background-color: $deepTaupe;
+          box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 25px;
+          color: $white;
+          text-align: center;
+          cursor: pointer;
+
+          @include heading-6;
+
+          @include desktop-child {
+            padding: 14.79% 0;
+          }
+
+          @include tablet-child {
+            padding: 14.28% 0;
+          }
+
+          @include mobile-child {
+            padding: 14.28% 0;
+            font-size: 14px;
+            line-height: 28px;
+          }
+        }
+      }
+    }
+  }
+}
