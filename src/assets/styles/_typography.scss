@@ -1,0 +1,169 @@
+@import "./breakpoint";
+
+@mixin para-1 {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+
+  @content;
+}
+
+@mixin para-1-med {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+
+  @content;
+}
+
+@mixin para-2 {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  @content;
+}
+
+@mixin para-2-med {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  @content;
+}
+
+@mixin para-3 {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+
+  @content;
+}
+
+@mixin para-3-med {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 20px;
+
+  @content;
+}
+
+@mixin heading-1 {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 700;
+
+  @include desktop-child {
+    font-size: 64px;
+    line-height: 72px;
+  }
+
+  @include mobile-child {
+    font-size: 64px;
+    line-height: 72px;
+  }
+
+  @content;
+}
+
+@mixin heading-2 {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 600;
+
+  @include desktop-child {
+    font-size: 56px;
+    line-height: 64px;
+  }
+
+  @include mobile-child {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  @content;
+}
+
+@mixin heading-3 {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 600;
+
+  @include desktop-child {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  @include mobile-child {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  @content;
+}
+
+@mixin heading-4 {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 600;
+
+  @include desktop-child {
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  @include mobile-child {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  @content;
+}
+
+@mixin heading-5 {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 600;
+
+  @include desktop-child {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  @include mobile-child {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  @content;
+}
+
+@mixin heading-6 {
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 600;
+
+  @include desktop-child {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  @include mobile-child {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  @content;
+}
