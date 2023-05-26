@@ -38,13 +38,13 @@ $mobileMaxWidth: 360px;
 }
 
 @mixin tablet-child {
-  @media (min-width: #{$tablet-breakpoint + 1px}) {
+  @media ((min-width: #{$mobile-breakpoint + 1px}) and (max-width: #{$tablet-breakpoint})) {
     @content;
   }
 }
 
 @mixin mobile-child {
-  @media (min-width: #{$tablet-breakpoint + 1px}) {
+  @media ((max-width: #{$mobile-breakpoint})) {
     @content;
   }
 }

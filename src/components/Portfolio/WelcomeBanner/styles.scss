@@ -1,5 +1,6 @@
 @import "../../../assets/styles/colors";
 @import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
 
 .welcomeBanner {
   background-color: $white;
@@ -8,42 +9,61 @@
   border-radius: 41px;
   color: $roseEbony;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
   @include desktop {
     max-width: 1050px;
     padding: 95px;
+    gap: 18px;
   }
 
   @include tablet {
     max-width: 616px;
     padding: 70px;
+    gap: 12px;
   }
 
   @include mobile {
     max-width: 300px;
     padding: 32px;
+    gap: 16px;
   }
 
   .title {
     font-family: "MAZIUS REVIEW 20.09";
     font-weight: 400;
 
-    @include desktop {
+    @include desktop-child {
       font-size: 36px;
       line-height: 43.2px;
+    }
+
+    @include tablet-child {
+      font-size: 36px;
+      line-height: 43.2px;
+    }
+
+    @include mobile-child {
+      font-size: 28px;
+      line-height: 33.6px;
     }
   }
 
   .description {
-    font-family: "Avenir Next LT Pro";
-    font-weight: 400;
+    @include desktop-child {
+      @include para-1;
+    }
 
-    @include desktop {
-      margin-top: 18px;
-      font-size: 20px;
-      line-height: 28px;
+    @include tablet-child {
+      @include para-1;
+    }
+
+    @include mobile-child {
+      @include para-3;
     }
   }
+
   .icon-wrapper {
     display: flex;
 
@@ -58,9 +78,16 @@
       }
     }
 
-    @include desktop {
-      margin-top: 18px;
+    @include desktop-child {
       gap: 20px;
+    }
+
+    @include tablet-child {
+      gap: 20px;
+    }
+
+    @include mobile-child {
+      gap: 16px;
     }
   }
 }

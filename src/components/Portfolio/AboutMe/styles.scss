@@ -1,0 +1,130 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.aboutMe {
+  margin: 0 auto;
+  color: $roseEbony;
+
+  @include desktop {
+    max-width: 1050px;
+    margin-top: 96px;
+  }
+
+  @include tablet {
+    max-width: 616px;
+    margin-top: 64px;
+  }
+
+  @include mobile {
+    max-width: 300px;
+    margin-top: 36px;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+
+    @include desktop-child {
+      gap: 20px;
+    }
+
+    @include tablet-child {
+      gap: 12px;
+    }
+
+    @include mobile-child {
+      gap: 8px;
+    }
+
+    .left-side {
+      .title {
+        font-family: "MAZIUS REVIEW 20.09";
+        font-weight: 400;
+        text-align: center;
+
+        @include desktop-child {
+          font-size: 36px;
+          line-height: 43.2px;
+        }
+
+        @include tablet-child {
+          font-size: 32px;
+          line-height: 38.4px;
+        }
+
+        @include mobile-child {
+          font-size: 20px;
+          line-height: 24px;
+        }
+      }
+
+      .img-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 21px;
+
+        @include desktop-child {
+          width: 250px;
+          height: 250px;
+          margin-top: 20px;
+        }
+
+        @include tablet-child {
+          width: 150px;
+          height: 150px;
+          margin-top: 12px;
+        }
+
+        @include mobile-child {
+          width: 100px;
+          height: 100px;
+          margin-top: 8px;
+        }
+
+        img {
+          position: absolute;
+
+          @include desktop-child {
+            width: 567px;
+            height: auto;
+            top: -235px;
+            left: -135px;
+          }
+
+          @include tablet-child {
+            width: 367px;
+            height: auto;
+            top: -160px;
+            left: -95px;
+          }
+
+          @include mobile-child {
+            width: 267px;
+            height: auto;
+            top: -120px;
+            left: -75px;
+          }
+        }
+      }
+    }
+
+    .right-side {
+      font-family: "Avenir Next LT Pro";
+
+      @include desktop-child {
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      @include tablet-child {
+        @include para-3;
+      }
+
+      @include mobile-child {
+        font-size: 8px;
+        line-height: 9.6px;
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
 import React from "react";
 
-import { WelcomeBanner } from "components/index";
+import { WelcomeBanner, AboutMe } from "components/index";
 
 import "./styles.scss";
 
 const Portfolio = () => (
   <div className="portfolio">
     <WelcomeBanner />
+    <AboutMe />
   </div>
 );
 
