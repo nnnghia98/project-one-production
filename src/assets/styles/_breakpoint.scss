@@ -30,3 +30,21 @@ $mobileMaxWidth: 360px;
     @content;
   }
 }
+
+@mixin desktop-child {
+  @media (min-width: #{$tablet-breakpoint + 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-child {
+  @media (min-width: #{$tablet-breakpoint + 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile-child {
+  @media (min-width: #{$tablet-breakpoint + 1px}) {
+    @content;
+  }
+}
