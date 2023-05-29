@@ -1,4 +1,9 @@
-import { WelcomeBanner, AboutMe, Experiences } from "components/index";
+import {
+  WelcomeBanner,
+  AboutMe,
+  Experiences,
+  Projects,
+} from "components/index";
 
 import "./styles.scss";
 
@@ -7,6 +12,7 @@ const Portfolio = () => (
     <WelcomeBanner />
     <AboutMe />
     <Experiences />
+    <Projects />
   </div>
 );
 

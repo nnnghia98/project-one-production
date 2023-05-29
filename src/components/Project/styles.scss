@@ -1,0 +1,106 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/breakpoint";
+@import "../../assets/styles/typography";
+
+.project {
+  width: 100%;
+
+  @include desktop-child {
+    gap: 20px;
+  }
+
+  @include tablet-child {
+    gap: 20px;
+  }
+
+  @include mobile-child {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .img-wrapper,
+  .detail {
+    flex: 1 1 45%;
+  }
+
+  .img-wrapper {
+    align-items: center;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .detail {
+    justify-content: space-between;
+
+    .content {
+      @include desktop-child {
+        gap: 20px;
+      }
+
+      @include tablet-child {
+        gap: 8px;
+      }
+
+      @include mobile-child {
+        gap: 8px;
+      }
+
+      .name {
+        font-family: "MAZIUS REVIEW 20.09";
+        font-weight: 400;
+
+        @include desktop-child {
+          font-size: 36px;
+          line-height: 43px;
+        }
+
+        @include tablet-child {
+          font-size: 28px;
+          line-height: 34px;
+        }
+
+        @include mobile-child {
+          font-size: 28px;
+          line-height: 34px;
+        }
+      }
+
+      .short-des {
+        font-family: "Avenir Next LT Pro";
+        font-style: normal;
+        font-weight: 400;
+
+        @include desktop-child {
+          font-size: 20px;
+          line-height: 28px;
+        }
+
+        @include tablet-child {
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        @include mobile-child {
+          font-size: 13px;
+          line-height: 20px;
+        }
+      }
+    }
+
+    .button-wrapper {
+      @include desktop-child {
+        gap: 20px;
+      }
+
+      @include tablet-child {
+        gap: 20px;
+      }
+
+      @include mobile-child {
+        gap: 12px;
+      }
+    }
+  }
+}

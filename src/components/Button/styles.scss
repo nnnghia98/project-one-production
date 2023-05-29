@@ -1,0 +1,17 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/breakpoint";
+@import "../../assets/styles/typography";
+
+.button {
+  max-width: 100%;
+  background-color: $bazzar;
+  border-radius: 12px;
+  font-family: "Avenir Next LT Pro";
+  font-style: normal;
+  font-weight: 400;
+  color: $white;
+  padding: 15px 0;
+  justify-content: center;
+  flex: 1;
+  cursor: pointer;
+}

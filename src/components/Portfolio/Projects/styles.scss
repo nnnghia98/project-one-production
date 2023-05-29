@@ -2,7 +2,7 @@
 @import "../../../assets/styles/breakpoint";
 @import "../../../assets/styles/typography";
 
-.experiences {
+.projects {
   margin: 0 auto;
   color: $roseEbony;
 
@@ -90,10 +90,7 @@
         gap: 4px;
       }
 
-      .row {
-        display: flex;
-        flex-direction: row;
-
+      .item {
         @include desktop-child {
           gap: 21px;
         }
