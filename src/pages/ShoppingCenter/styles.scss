@@ -1,0 +1,20 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/breakpoint";
+
+.shoppingCenter {
+  margin: 0 auto;
+
+  .content {
+    @include desktop {
+      padding: 96px 0;
+    }
+
+    @include tablet {
+      padding: 64px 0;
+    }
+
+    @include mobile {
+      padding: 36px 0;
+    }
+  }
+}

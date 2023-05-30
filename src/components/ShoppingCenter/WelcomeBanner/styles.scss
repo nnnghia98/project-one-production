@@ -1,0 +1,22 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.shoppingCenterWelcomeBanner {
+  position: relative;
+
+  img {
+    width: $fullWidth;
+    opacity: 0.8;
+  }
+
+  .title {
+    @include heading-1;
+
+    color: $bazzar;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}

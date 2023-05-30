@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Portfolio } from "pages";
+import { Portfolio, ShoppingCenter } from "pages";
 
 export const router = createBrowserRouter([
   {
@@ -8,5 +8,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "/shopping-center",
+    element: <ShoppingCenter />,
   },
 ]);

@@ -3,9 +3,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    "Avenir Next LT Pro", "Mazius Review 20.09", "Neutral Face" sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next LT Pro",
+    "Mazius Review 20.09", "Neutral Face", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $oldLace;
@@ -21,40 +20,40 @@ html {
 
 @font-face {
   font-family: "Avenir Next LT Pro";
-  src: local("Avenir Next LT Pro"),
-    url(./assets/fonts/AvenirNextLTPro/AvenirNextLTProRegular.otf)
-      format("opentype");
+  src: url(./assets/fonts/AvenirNextLTPro/AvenirNextLTProRegular.otf)
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Avenir Next LT Pro";
-  src: local("Avenir Next LT Pro"),
-    url(./assets/fonts/AvenirNextLTPro/AvenirNextLTProDemi.otf)
-      format("opentype");
+  src: url(./assets/fonts/AvenirNextLTPro/AvenirNextLTProDemi.otf)
+    format("opentype");
+  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Avenir Next LT Pro";
-  src: local("Avenir Next LT Pro"),
-    url(./assets/fonts/AvenirNextLTPro/AvenirNextLTProBold.otf)
-      format("opentype");
+  src: url(./assets/fonts/AvenirNextLTPro/AvenirNextLTProBold.otf)
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Mazius Review 20.09";
-  src: local("Mazius Review 20.09"),
-    url(./assets/fonts/MaziusReview2009/MAZIUSREVIEW20.09Regular400.otf)
-      format("opentype");
+  src: url(./assets/fonts/MaziusReview2009/MAZIUSREVIEW20.09Regular400.otf)
+    format("opentype");
 }
 
 @font-face {
   font-family: "Neutral Face";
-  src: local("Neutral Face"),
-    url(./assets/fonts/NeutralFace/NeutralFace.otf) format("opentype");
+  src: url(./assets/fonts/NeutralFace/NeutralFace.otf) format("opentype");
 }
 
 @font-face {
   font-family: "Neutral Face";
-  src: local("Neutral Face"),
-    url(./assets/fonts/NeutralFace/NeutralFace-Bold.otf) format("opentype");
+  src: url(./assets/fonts/NeutralFace/NeutralFace-Bold.otf) format("opentype");
 }

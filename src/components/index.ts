@@ -4,19 +4,23 @@ import Footer from "./Footer";
 import Button from "./Button";
 
 // Portfolio
-import WelcomeBanner from "./Portfolio/WelcomeBanner";
+import PortfolioWelcomeBanner from "./Portfolio/WelcomeBanner";
 import AboutMe from "./Portfolio/AboutMe";
 import Experiences from "./Portfolio/Experiences";
 import Projects from "./Portfolio/Projects";
 import Hobbies from "./Portfolio/Hobbies";
 
+// Shopping Center
+import ShoppingCenterWelcomeBanner from "./ShoppingCenter/WelcomeBanner";
+
 export {
   Header,
   Footer,
-  WelcomeBanner,
+  Button,
+  PortfolioWelcomeBanner,
   AboutMe,
   Experiences,
   Projects,
-  Button,
   Hobbies,
+  ShoppingCenterWelcomeBanner,
 };

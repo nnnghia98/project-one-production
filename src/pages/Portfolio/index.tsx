@@ -1,5 +1,5 @@
 import {
-  WelcomeBanner,
+  PortfolioWelcomeBanner,
   AboutMe,
   Experiences,
   Projects,
@@ -10,7 +10,7 @@ import "./styles.scss";
 
 const Portfolio = () => (
   <div className="portfolio">
-    <WelcomeBanner />
+    <PortfolioWelcomeBanner />
     <AboutMe />
     <Experiences />
     <Projects />
