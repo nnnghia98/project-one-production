@@ -3,7 +3,7 @@
 @import "../../assets/styles/typography";
 
 .project {
-  width: 100%;
+  width: $fullWidth;
 
   @include desktop-child {
     gap: 20px;

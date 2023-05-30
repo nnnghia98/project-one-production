@@ -4,13 +4,12 @@
 
 .flipCard {
   flex: 1;
-  // position: relative;
   cursor: pointer;
 
   @include heading-6;
 
   div {
-    width: 100%;
+    width: $fullWidth;
     height: 100%;
     // position: absolute;
     transition: all 0.8s;

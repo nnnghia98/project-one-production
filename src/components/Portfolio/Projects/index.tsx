@@ -9,7 +9,7 @@ import "./styles.scss";
 const Projects = () => {
   return (
     <div>
-      <div className="projects">
+      <div className="projects" id="projects">
         <div className="flex column">
           <div className="title">Projects</div>
           <div className="description">

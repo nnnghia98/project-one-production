@@ -9,7 +9,7 @@ import "./styles.scss";
 
 const Hobbies = () => {
   return (
-    <div className="hobbies">
+    <div className="hobbies" id="hobbies">
       <div className="title">Hobbies</div>
       <div className="content flex">
         <img src={controllerSvg} alt="controllerSvg" />

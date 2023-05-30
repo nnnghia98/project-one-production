@@ -1,36 +1,102 @@
 @import "../../assets/styles/colors";
 @import "../../assets/styles/breakpoint";
+@import "../../assets/styles/typography";
 
 .header {
   width: $fullWidth;
   height: 90px;
-  display: flex;
   justify-content: center;
   background-color: $roseEbony;
   color: $oldLace;
+
+  @include mobile-child {
+    height: 57px;
+    position: relative;
+  }
 
   .content {
     @include desktop;
     @include tablet;
     @include mobile;
 
-    display: flex;
     justify-content: space-between;
-  }
 
-  .logo {
-    font-family: "Mazius Review 20.09";
-    font-weight: normal;
-    font-size: 45px;
-    line-height: 54px;
-    margin-top: 13px;
-  }
+    a {
+      text-decoration: none;
+      color: $oldLace;
+    }
 
-  .navbar-tabs {
-    font-family: "Neutral Face";
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 20px;
+    .logo {
+      font-family: "Mazius Review 20.09";
+      font-weight: normal;
+      font-size: 45px;
+      line-height: 54px;
+      margin-top: 13px;
+      cursor: pointer;
+
+      @include mobile-child {
+        font-size: 30px;
+        line-height: 36px;
+        margin-top: 8px;
+      }
+    }
+
+    #nav-check {
+      display: none;
+    }
+
+    .hamburger-btn {
+      display: none;
+      padding: 11px 0;
+
+      @include mobile-child {
+        display: inline-block;
+      }
+    }
+
+    .navbar-tabs {
+      font-family: "Neutral Face";
+      align-items: center;
+      gap: 20px;
+
+      @include mobile-child {
+        position: absolute;
+        flex-direction: column;
+        width: 100%;
+        height: 0px;
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 57px;
+        left: 0px;
+        background-color: $white;
+        z-index: 999;
+        padding: 8px 0;
+        gap: 0;
+        border: 1px solid $bazzar;
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12),
+          0px 20px 20px rgba(0, 0, 0, 0.08);
+
+        a {
+          @include para-2-med;
+          color: $roseEbony;
+          width: $fullWidth;
+          padding: 8px 16px;
+        }
+      }
+    }
+
+    @include mobile-child {
+      #nav-check:not(:checked) ~ .navbar-tabs {
+        height: 0px;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+      }
+
+      #nav-check:checked ~ .navbar-tabs {
+        height: 176px;
+        overflow-y: auto;
+      }
+    }
   }
 }

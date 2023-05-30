@@ -43,6 +43,8 @@
   }
 
   .content {
+    justify-content: center;
+
     @include desktop-child {
       margin-top: 16px;
       gap: 64px;

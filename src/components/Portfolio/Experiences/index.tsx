@@ -6,7 +6,7 @@ import "./styles.scss";
 
 const Experiences = () => {
   return (
-    <div className="experiences">
+    <div className="experiences" id="experiences">
       <div className="content">
         <div className="title">Experiences</div>
         <div className="description">Click on a card to see detail</div>
