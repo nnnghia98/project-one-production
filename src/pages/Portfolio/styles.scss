@@ -5,14 +5,14 @@
   margin: 0 auto;
 
   @include desktop {
-    padding: 96px 0 186px;
+    padding: 96px 0;
   }
 
   @include tablet {
-    padding: 64px 054px;
+    padding: 64px 0;
   }
 
   @include mobile {
-    padding: 36px 0 126px;
+    padding: 36px 0;
   }
 }

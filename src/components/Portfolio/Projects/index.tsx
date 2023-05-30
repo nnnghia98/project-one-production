@@ -10,7 +10,7 @@ const Projects = () => {
   return (
     <div>
       <div className="projects">
-        <div className="content">
+        <div className="flex column">
           <div className="title">Projects</div>
           <div className="description">
             Some things I’ve worked (or am working) on
@@ -25,9 +25,24 @@ Main work: Build frontend for an e-commerce site on Next.js.
 "
               />
             </div>
-            {/* <div className="item">
-              <Project />
-            </div> */}
+            <div className="item flex row">
+              <Project
+                bannerSrc={haloLighting}
+                name="HALO Lighting"
+                shortDes="Main technologies: Next.js, Vue.js, PHP, JavaScript.
+Main work: Build frontend for an e-commerce site on Next.js.
+"
+              />
+            </div>
+            <div className="item flex row">
+              <Project
+                bannerSrc={haloLighting}
+                name="HALO Lighting"
+                shortDes="Main technologies: Next.js, Vue.js, PHP, JavaScript.
+Main work: Build frontend for an e-commerce site on Next.js.
+"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import {
   AboutMe,
   Experiences,
   Projects,
+  Hobbies,
 } from "components/index";
 
 import "./styles.scss";
@@ -13,6 +14,7 @@ const Portfolio = () => (
     <AboutMe />
     <Experiences />
     <Projects />
+    <Hobbies />
   </div>
 );
 

@@ -17,8 +17,16 @@ const Project = ({ bannerSrc, name, shortDes }: IProjectProps) => {
           <div className="short-des">{shortDes}</div>
         </div>
         <div className="button-wrapper flex">
-          <Button name="View Project" onClick={() => console.log("hihi")} />
-          <Button name="View Website" onClick={() => console.log("hihi")} />
+          <Button
+            name="View Project"
+            url="https://github.com/phongtran231/halo-client"
+            onClick={() => console.log("hihi")}
+          />
+          <Button
+            name="View Website"
+            url="https://thietkedentrangtri.com/"
+            onClick={() => console.log("hihi")}
+          />
         </div>
       </div>
     </div>
