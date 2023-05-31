@@ -1,0 +1,15 @@
+@import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/breakpoint";
+@import "../../../../assets/styles/typography";
+
+.benefit-item {
+  align-items: center;
+  gap: 8px;
+
+  .svg-wrapper {
+    img {
+      cursor: pointer;
+      margin: auto;
+    }
+  }
+}

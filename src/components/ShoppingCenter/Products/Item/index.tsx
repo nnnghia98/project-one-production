@@ -1,10 +1,10 @@
 import React from "react";
 
-import { IProductItem } from "interfaces/ShoppingCenter";
+import { IProductItemProps } from "interfaces/ShoppingCenter";
 
 import "./styles.scss";
 
-const Item = ({ thumbnail, name, cost }: IProductItem) => {
+const Item = ({ thumbnail, name, cost }: IProductItemProps) => {
   return (
     <div className="product-item">
       <div className="img-wrapper">
