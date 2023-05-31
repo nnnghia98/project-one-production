@@ -1,0 +1,36 @@
+@import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/breakpoint";
+@import "../../../../assets/styles/typography";
+
+.product-item {
+  width: $fullWidth;
+  filter: drop-shadow(0px 4px 24px rgba(123, 123, 123, 0.15));
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
+  border-radius: 1px;
+  cursor: pointer;
+
+  .img-wrapper {
+    background-color: #c4c4c4;
+    bor img {
+      max-width: $fullWidth;
+    }
+  }
+
+  .detail {
+    padding: 10px 26px 16px;
+
+    .name {
+      @include para-2;
+
+      color: $black;
+    }
+
+    .cost {
+      @include para-1;
+
+      display: flex;
+      justify-content: flex-end;
+      color: $bazzar;
+    }
+  }
+}

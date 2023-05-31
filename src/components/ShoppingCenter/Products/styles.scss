@@ -1,0 +1,106 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.products {
+  background-color: $white;
+  max-width: $fullWidth;
+  color: $roseEbony;
+
+  @include desktop-child {
+    padding: 96px 0 76px;
+  }
+
+  @include tablet-child {
+    padding: 96px 0 76px;
+  }
+
+  @include mobile-child {
+    padding: 64px 0 44px;
+  }
+
+  .content {
+    margin: 0 auto;
+
+    @include desktop {
+      max-width: 1050px;
+    }
+
+    @include tablet {
+      max-width: 616px;
+    }
+
+    @include mobile {
+      max-width: 300px;
+    }
+
+    .title,
+    .short-des {
+      text-align: center;
+    }
+
+    .title {
+      @include desktop-child {
+        @include heading-3;
+      }
+
+      @include tablet-child {
+        @include heading-3;
+      }
+
+      @include mobile-child {
+        @include heading-4;
+      }
+    }
+
+    .short-des {
+      @include desktop-child {
+        @include para-1;
+
+        margin-top: 12px;
+      }
+
+      @include tablet-child {
+        @include para-1;
+
+        margin-top: 12px;
+      }
+
+      @include mobile-child {
+        @include para-2;
+
+        margin-top: 8px;
+      }
+    }
+
+    .list {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      row-gap: 16px;
+      margin-top: 40px;
+
+      .item {
+        flex: 1 0 21%;
+        max-width: 255px;
+      }
+    }
+
+    .button-wrapper {
+      margin-top: 36px;
+      justify-content: center;
+
+      .outer-button {
+        @include desktop-child {
+          padding: 15px 0;
+          max-width: 134px;
+        }
+
+        @include mobile-child {
+          padding: 7px 0;
+          max-width: 157px;
+        }
+      }
+    }
+  }
+}

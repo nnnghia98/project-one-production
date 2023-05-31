@@ -1,5 +1,6 @@
 export interface IButtonProps {
   name: string;
-  url: string;
+  outerClassName?: string;
+  url?: string;
   onClick: () => void;
 }

@@ -12,6 +12,7 @@ import Hobbies from "./Portfolio/Hobbies";
 
 // Shopping Center
 import ShoppingCenterWelcomeBanner from "./ShoppingCenter/WelcomeBanner";
+import Products from "./ShoppingCenter/Products";
 
 export {
   Header,
@@ -23,4 +24,5 @@ export {
   Projects,
   Hobbies,
   ShoppingCenterWelcomeBanner,
+  Products,
 };

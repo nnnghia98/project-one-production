@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ShoppingCenterWelcomeBanner } from "components/index";
+import { ShoppingCenterWelcomeBanner, Products } from "components/index";
 
 import "./styles.scss";
 
@@ -9,7 +9,9 @@ const ShoppingCenter = () => {
     <div className="shoppingCenter">
       <ShoppingCenterWelcomeBanner />
 
-      <div className="content flex column"></div>
+      <div className="content flex column">
+        <Products />
+      </div>
     </div>
   );
 };

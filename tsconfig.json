@@ -6,7 +6,7 @@
       "components/*": ["./components/*"],
       "interfaces/*": ["./interfaces/*"],
       "pages/*": ["./pages/*"],
-      "router/*": ["./router/*"],
+      "routes/*": ["./routes/*"],
       "utils/*": ["./utils/*"]
     },
     "target": "es5",

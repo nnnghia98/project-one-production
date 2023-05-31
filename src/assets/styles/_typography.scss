@@ -65,8 +65,8 @@
   }
 
   @include mobile-child {
-    font-size: 64px;
-    line-height: 72px;
+    font-size: 40px;
+    line-height: 48px;
   }
 
   @content;

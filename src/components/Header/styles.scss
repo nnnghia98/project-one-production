@@ -56,6 +56,9 @@
 
     .navbar-tabs {
       font-family: "Neutral Face";
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 19px;
       align-items: center;
       gap: 20px;
 
@@ -78,6 +81,7 @@
 
         a {
           @include para-2-med;
+
           color: $roseEbony;
           width: $fullWidth;
           padding: 8px 16px;

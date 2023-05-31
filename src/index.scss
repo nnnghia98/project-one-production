@@ -51,9 +51,13 @@ html {
 @font-face {
   font-family: "Neutral Face";
   src: url(./assets/fonts/NeutralFace/NeutralFace.otf) format("opentype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Neutral Face";
   src: url(./assets/fonts/NeutralFace/NeutralFace-Bold.otf) format("opentype");
+  font-weight: 600;
+  font-style: normal;
 }
