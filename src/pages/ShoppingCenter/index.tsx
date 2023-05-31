@@ -4,6 +4,7 @@ import {
   ShoppingCenterWelcomeBanner,
   Products,
   ProductHighlight,
+  Popular,
 } from "components/index";
 
 import "./styles.scss";
@@ -13,9 +14,10 @@ const ShoppingCenter = () => {
     <div className="shopping-center">
       <ShoppingCenterWelcomeBanner />
 
-      <div className="content flex column">
+      <div className="flex column">
         <Products />
         <ProductHighlight />
+        <Popular />
       </div>
     </div>
   );

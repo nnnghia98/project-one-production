@@ -14,6 +14,7 @@ import Hobbies from "./Portfolio/Hobbies";
 import ShoppingCenterWelcomeBanner from "./ShoppingCenter/WelcomeBanner";
 import Products from "./ShoppingCenter/Products";
 import ProductHighlight from "./ShoppingCenter/ProductHighlight";
+import Popular from "./ShoppingCenter/Popular";
 
 export {
   Header,
@@ -27,4 +28,5 @@ export {
   ShoppingCenterWelcomeBanner,
   Products,
   ProductHighlight,
+  Popular,
 };

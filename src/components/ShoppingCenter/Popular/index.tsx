@@ -1,18 +1,16 @@
 import React from "react";
 
-import { Button } from "components";
-
 import Item from "../ProductItem";
 
 import productThumbnail from "assets/img/product-thumbnail.png";
 
 import "./styles.scss";
 
-const Products = () => {
+const Popular = () => {
   return (
-    <div className="products">
+    <div className="popular">
       <div className="content">
-        <div className="title">Products</div>
+        <div className="title">Popular</div>
         <div className="short-des">
           Order it for you or for your beloved ones
         </div>
@@ -45,45 +43,10 @@ const Products = () => {
               cost={9.99}
             />
           </div>
-          <div className="item">
-            <Item
-              thumbnail={productThumbnail}
-              name={"Product Name"}
-              cost={9.99}
-            />
-          </div>
-          <div className="item">
-            <Item
-              thumbnail={productThumbnail}
-              name={"Product Name"}
-              cost={9.99}
-            />
-          </div>
-          <div className="item">
-            <Item
-              thumbnail={productThumbnail}
-              name={"Product Name"}
-              cost={9.99}
-            />
-          </div>
-          <div className="item">
-            <Item
-              thumbnail={productThumbnail}
-              name={"Product Name"}
-              cost={9.99}
-            />
-          </div>
-        </div>
-        <div className="button-wrapper flex">
-          <Button
-            name="See more"
-            onClick={() => {}}
-            outerClassName="outer-button"
-          />
         </div>
       </div>
     </div>
   );
 };
 
-export default Products;
+export default Popular;

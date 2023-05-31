@@ -39,7 +39,17 @@
     }
 
     .left {
-      gap: 36px;
+      @include desktop-child {
+        gap: 36px;
+      }
+
+      @include tablet-child {
+        gap: 36px;
+      }
+
+      @include tablet-child {
+        align-items: center;
+      }
 
       .title {
         @include heading-4;
@@ -50,23 +60,45 @@
         @include para-2;
       }
 
+      .quote {
+        @include mobile-child {
+          margin-top: 8px;
+        }
+      }
+
       .benefit {
         gap: 10px;
         color: $deepTaupe;
+
+        @include mobile-child {
+          margin-top: 40px;
+          gap: 18px;
+        }
       }
 
       .button-wrapper {
         width: 161px;
+
+        @include mobile-child {
+          margin-top: 40px;
+        }
       }
     }
 
-    .right {
+    .right,
+    .img-wrapper {
       align-items: center;
       background-color: $white;
       box-shadow: 0px 4px 94px rgba(123, 123, 123, 0.35);
 
       img {
         width: $fullWidth;
+      }
+    }
+
+    .img-wrapper {
+      @include mobile-child {
+        margin-top: 24px;
       }
     }
   }
