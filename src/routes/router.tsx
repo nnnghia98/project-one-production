@@ -1,14 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Portfolio, ShoppingCenter, ErrorPage } from "pages";
+import { Portfolio, ShoppingCenter, Layout, ErrorPage } from "pages";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Portfolio />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/shopping-center",
-    element: <ShoppingCenter />,
+    children: [
+      {
+        path: "/portfolio",
+        element: <Portfolio />,
+      },
+      {
+        path: "/shopping-center",
+        element: <ShoppingCenter />,
+      },
+    ],
   },
 ]);
