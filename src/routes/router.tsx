@@ -1,5 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Portfolio, ShoppingCenter, Layout, ErrorPage } from "pages";
+import {
+  Portfolio,
+  ShoppingCenter,
+  Layout,
+  ErrorPage,
+  AllProducts,
+} from "pages";
 
 export const router = createBrowserRouter([
   {
@@ -8,12 +14,18 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/portfolio",
+        path: "portfolio",
         element: <Portfolio />,
       },
       {
-        path: "/shopping-center",
+        path: "shopping-center",
         element: <ShoppingCenter />,
+        children: [
+          {
+            path: "all-products",
+            element: <AllProducts />,
+          },
+        ],
       },
     ],
   },

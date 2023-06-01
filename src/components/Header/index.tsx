@@ -1,6 +1,6 @@
 import React from "react";
 import isEqual from "lodash/isEqual";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 import hamburgerSvg from "assets/svg/hamburger.svg";
 
@@ -41,9 +41,9 @@ const Header = () => {
             </>
           ) : (
             <>
-              <a href="/shopping-center">All Products</a>
-              <a href="/shopping-center">Cart</a>
-              <a href="/shopping-center">Sign in</a>
+              <Link to="all-products">All Products</Link>
+              <Link to="/shopping-center">Cart</Link>
+              <Link to="/shopping-center">Sign in</Link>
             </>
           )}
         </div>
