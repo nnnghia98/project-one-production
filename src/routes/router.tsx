@@ -4,7 +4,7 @@ import {
   ShoppingCenter,
   Layout,
   ErrorPage,
-  AllProducts,
+  ProductDetail,
 } from "pages";
 
 export const router = createBrowserRouter([
@@ -20,12 +20,18 @@ export const router = createBrowserRouter([
       {
         path: "shopping-center",
         element: <ShoppingCenter />,
-        children: [
-          {
-            path: "all-products",
-            element: <AllProducts />,
-          },
-        ],
+      },
+      {
+        path: "shopping-center/all-products",
+        element: <ProductDetail />,
+      },
+      {
+        path: "shopping-center/cart",
+        element: <ProductDetail />,
+      },
+      {
+        path: "shopping-center/sign-in",
+        element: <ProductDetail />,
       },
     ],
   },

@@ -1,0 +1,182 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.all-products {
+  max-width: $fullWidth;
+  color: $roseEbony;
+
+  @include desktop-child {
+    padding: 64px 0 64px;
+  }
+
+  @include tablet-child {
+    padding: 64px 0 64px;
+  }
+
+  @include mobile-child {
+    padding: 36px 0 64px;
+  }
+
+  .content {
+    margin: 0 auto;
+
+    @include desktop-child {
+      max-width: 1260px;
+    }
+
+    @include tablet-child {
+      max-width: 1260px;
+    }
+
+    @include mobile-child {
+      max-width: 346px;
+    }
+
+    .name {
+      @include desktop-child {
+        @include heading-4;
+      }
+
+      @include tablet-child {
+        @include heading-4;
+      }
+
+      @include mobile-child {
+        @include heading-5;
+      }
+    }
+
+    .img-wrapper {
+      background-color: $white;
+
+      @include mobile-child {
+        margin-top: 4px;
+      }
+
+      img {
+        width: $fullWidth;
+      }
+    }
+
+    .cost {
+      @include heading-6;
+
+      @include desktop-child {
+        margin-top: 16px;
+      }
+
+      @include tablet-child {
+        margin-top: 16px;
+      }
+    }
+
+    .button-group {
+      margin-top: 36px;
+      justify-content: space-between;
+
+      @include mobile-child {
+        margin-top: 22px;
+        align-items: center;
+      }
+
+      .stock,
+      .add-to-cart {
+        padding: 16px 50px;
+        max-width: 212px;
+      }
+
+      .stock {
+        @include mobile-child {
+          max-width: 125px;
+        }
+      }
+    }
+
+    .in-stock {
+      @include para-1-med;
+
+      margin-top: 8px;
+    }
+
+    .add-to-cart {
+      @include mobile-child {
+        padding: 10px 0;
+        margin-top: 16px;
+      }
+    }
+
+    .properties {
+      width: $fullWidth;
+
+      @include para-2;
+
+      @include desktop-child {
+        margin-top: 44px;
+        gap: 8px;
+      }
+
+      @include tablet-child {
+        margin-top: 44px;
+        gap: 8px;
+      }
+
+      @include mobile-child {
+        margin-top: 20px;
+        gap: 2px;
+      }
+
+      white-space: pre;
+      padding: 22px 24px;
+      border: 1px solid #adb5bd;
+      border-radius: 7px;
+      color: $bazzar;
+
+      .bold {
+        color: $black;
+      }
+
+      .last {
+        @include desktop-child {
+          gap: 26px;
+        }
+
+        @include tablet-child {
+          gap: 26px;
+        }
+
+        @include mobile-child {
+          flex-direction: column;
+          gap: 2px;
+        }
+      }
+    }
+
+    .quote {
+      @include para-1;
+
+      text-align: center;
+
+      @include mobile-child {
+        margin-top: 20px;
+      }
+    }
+
+    .wide {
+      gap: 20px;
+
+      .left,
+      .right {
+        flex: 1;
+      }
+
+      .left {
+        gap: 24px;
+      }
+
+      .right {
+        width: $fullWidth;
+      }
+    }
+  }
+}

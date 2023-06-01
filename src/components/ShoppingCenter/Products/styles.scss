@@ -22,15 +22,15 @@
   .content {
     margin: 0 auto;
 
-    @include desktop {
+    @include desktop-child {
       max-width: 1050px;
     }
 
-    @include tablet {
+    @include tablet-child {
       max-width: 616px;
     }
 
-    @include mobile {
+    @include mobile-child {
       max-width: 346px;
     }
 

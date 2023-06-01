@@ -41,9 +41,9 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="all-products">All Products</Link>
-              <Link to="/shopping-center">Cart</Link>
-              <Link to="/shopping-center">Sign in</Link>
+              <Link to="/shopping-center/all-products">All Products</Link>
+              <Link to="/shopping-center/cart">Cart</Link>
+              <Link to="/shopping-center/sign-in">Sign in</Link>
             </>
           )}
         </div>
