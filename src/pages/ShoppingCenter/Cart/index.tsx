@@ -33,39 +33,43 @@ const Cart = () => {
       <div className="content">
         <div className="title">Your cart item</div>
         <table className="table">
-          <tr className="table-header">
-            <th className="header-product">Product</th>
-            {!isMobile && (
-              <>
-                <th className="header-price">Price</th>
-                <th className="header-quantity">Quantity</th>
-              </>
-            )}
-            <th className="header-total">Total</th>
-          </tr>
-          {DUMMY_DATA.map((item: ICartItemProps) => (
-            <tr className="table-item" key={item.id}>
-              <td className="product flex">
-                <div className="img-wrapper">
-                  <img src={item.imgSrc} alt="productThumbnail" />
-                </div>
-                <div className="detail flex column">
-                  <div className="name">New Candle</div>
-                  <div className="remove-item">Remove item</div>
-                </div>
-              </td>
+          <thead>
+            <tr className="table-header">
+              <th className="header-product">Product</th>
               {!isMobile && (
                 <>
-                  <td className="price">${item.price}</td>
-                  <td className="quantity">{item.quantity}</td>
+                  <th className="header-price">Price</th>
+                  <th className="header-quantity">Quantity</th>
                 </>
               )}
-              <td className="total">
-                ${item.price * item.quantity}
-                {isMobile && <td className="quantity">{item.quantity}</td>}
-              </td>
+              <th className="header-total">Total</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {DUMMY_DATA.map((item: ICartItemProps) => (
+              <tr className="table-item" key={item.id}>
+                <td className="product flex">
+                  <div className="img-wrapper">
+                    <img src={item.imgSrc} alt="productThumbnail" />
+                  </div>
+                  <div className="detail flex column">
+                    <div className="name">New Candle</div>
+                    <div className="remove-item">Remove item</div>
+                  </div>
+                </td>
+                {!isMobile && (
+                  <>
+                    <td className="price">${item.price}</td>
+                    <td className="quantity">{item.quantity}</td>
+                  </>
+                )}
+                <td className="total">
+                  ${item.price * item.quantity}
+                  {isMobile && <td className="quantity">{item.quantity}</td>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
         <div className="checkout-panel flex">
           <div className="text-wrapper flex column">

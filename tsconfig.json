@@ -4,6 +4,7 @@
     "paths": {
       "assets/*": ["./assets/*"],
       "components/*": ["./components/*"],
+      "constants/*": ["./constants/*"],
       "interfaces/*": ["./interfaces/*"],
       "pages/*": ["./pages/*"],
       "routes/*": ["./routes/*"],

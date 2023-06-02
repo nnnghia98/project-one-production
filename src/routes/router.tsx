@@ -7,6 +7,7 @@ import {
   ProductDetail,
   AllProducts,
   Cart,
+  SignIn,
 } from "pages";
 
 export const router = createBrowserRouter([
@@ -33,7 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "shopping-center/sign-in",
-        element: <ProductDetail />,
+        element: <SignIn />,
       },
       {
         path: "shopping-center/product/detail",

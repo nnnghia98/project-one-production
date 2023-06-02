@@ -1,0 +1,40 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.sign-in {
+  max-width: $fullWidth;
+  color: $roseEbony;
+  height: 100vh;
+  align-items: center;
+
+  .content {
+    gap: 24px;
+    width: $fullWidth;
+    margin: 0 auto;
+
+    @include desktop-child {
+      max-width: 409px;
+    }
+
+    @include tablet-child {
+      max-width: 409px;
+    }
+
+    @include mobile-child {
+      max-width: 346px;
+    }
+
+    .title {
+      @include heading-3;
+    }
+
+    .input-group {
+      gap: 10px;
+    }
+
+    .button-wrapper {
+      max-width: 155px;
+    }
+  }
+}
