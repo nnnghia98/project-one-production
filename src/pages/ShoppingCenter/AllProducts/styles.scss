@@ -1,0 +1,88 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.all-products {
+  max-width: $fullWidth;
+  color: $roseEbony;
+
+  @include desktop-child {
+    padding: 64px 0 96px;
+  }
+
+  @include tablet-child {
+    padding: 64px 0 96px;
+  }
+
+  @include mobile-child {
+    padding: 36px 0 64px;
+  }
+
+  .content {
+    margin: 0 auto;
+
+    @include desktop-child {
+      max-width: 1046px;
+    }
+
+    @include tablet-child {
+      max-width: 1046px;
+    }
+
+    @include mobile-child {
+      max-width: 346px;
+    }
+
+    .title,
+    .short-des {
+      text-align: center;
+    }
+
+    .title {
+      @include desktop-child {
+        @include heading-3;
+      }
+
+      @include tablet-child {
+        @include heading-3;
+      }
+
+      @include mobile-child {
+        @include heading-5;
+      }
+    }
+
+    .short-des {
+      @include para-2;
+
+      @include desktop-child {
+        margin-top: 12px;
+      }
+
+      @include tablet-child {
+        margin-top: 12px;
+      }
+
+      @include mobile-child {
+        margin-top: 8px;
+      }
+    }
+
+    .list {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      row-gap: 16px;
+      margin-top: 64px;
+
+      @include mobile-child {
+        margin-top: 36px;
+      }
+
+      .item {
+        flex: 1 0 21%;
+        max-width: 255px;
+      }
+    }
+  }
+}

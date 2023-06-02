@@ -110,7 +110,7 @@ const ProductDetail = () => {
   const { isMobile } = useWindowDimensions();
 
   return (
-    <div className="all-products">
+    <div className="product-detail">
       <div className="content">
         {isMobile ? renderMobileView() : renderWideView()}
       </div>

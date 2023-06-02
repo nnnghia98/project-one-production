@@ -31,22 +31,22 @@ const Header = () => {
             <img src={hamburgerSvg} alt="hamburgerSvg" />
           </label>
         </div>
-        <div className="navbar-tabs flex row">
+        <>
           {isEqual(location.pathname, "/portfolio") ? (
-            <>
+            <div className="navbar-tabs items-4 flex row">
               <a href="#aboutMe">About</a>
               <a href="#experiences">Experiences</a>
               <a href="#projects">Projects</a>
               <a href="#hobbies">Hobbies</a>
-            </>
+            </div>
           ) : (
-            <>
+            <div className="navbar-tabs items-3 flex row">
               <Link to="/shopping-center/all-products">All Products</Link>
               <Link to="/shopping-center/cart">Cart</Link>
-              <Link to="/shopping-center/sign-in">Sign in</Link>
-            </>
+              <Link to="/shopping-center/sign-in">Sign In</Link>
+            </div>
           )}
-        </div>
+        </>
       </div>
     </div>
   );

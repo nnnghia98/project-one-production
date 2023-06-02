@@ -1,14 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "components";
 
-import Item from "../ProductItem";
+import Item from "../../ProductItem";
 
 import productThumbnail from "assets/img/product-thumbnail.png";
 
 import "./styles.scss";
 
 const Products = () => {
+  const navigate = useNavigate();
+
+  const navigateToProductDetail = () =>
+    navigate("/shopping-center/product/detail");
+
+  const navigateToProducts = () => navigate("/shopping-center/all-products");
+
   return (
     <div className="products">
       <div className="content">
@@ -22,6 +30,7 @@ const Products = () => {
               thumbnail={productThumbnail}
               name={"Product Name"}
               cost={9.99}
+              onClick={navigateToProductDetail}
             />
           </div>
           <div className="item">
@@ -29,6 +38,7 @@ const Products = () => {
               thumbnail={productThumbnail}
               name={"Product Name"}
               cost={9.99}
+              onClick={navigateToProductDetail}
             />
           </div>
           <div className="item">
@@ -36,6 +46,7 @@ const Products = () => {
               thumbnail={productThumbnail}
               name={"Product Name"}
               cost={9.99}
+              onClick={navigateToProductDetail}
             />
           </div>
           <div className="item">
@@ -43,6 +54,7 @@ const Products = () => {
               thumbnail={productThumbnail}
               name={"Product Name"}
               cost={9.99}
+              onClick={navigateToProductDetail}
             />
           </div>
           <div className="item">
@@ -50,6 +62,7 @@ const Products = () => {
               thumbnail={productThumbnail}
               name={"Product Name"}
               cost={9.99}
+              onClick={navigateToProductDetail}
             />
           </div>
           <div className="item">
@@ -57,6 +70,7 @@ const Products = () => {
               thumbnail={productThumbnail}
               name={"Product Name"}
               cost={9.99}
+              onClick={navigateToProductDetail}
             />
           </div>
           <div className="item">
@@ -64,6 +78,7 @@ const Products = () => {
               thumbnail={productThumbnail}
               name={"Product Name"}
               cost={9.99}
+              onClick={navigateToProductDetail}
             />
           </div>
           <div className="item">
@@ -71,13 +86,14 @@ const Products = () => {
               thumbnail={productThumbnail}
               name={"Product Name"}
               cost={9.99}
+              onClick={navigateToProductDetail}
             />
           </div>
         </div>
         <div className="button-wrapper flex">
           <Button
             name="See more"
-            onClick={() => {}}
+            onClick={navigateToProducts}
             outerClassName="outer-button"
           />
         </div>

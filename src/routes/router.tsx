@@ -5,6 +5,8 @@ import {
   Layout,
   ErrorPage,
   ProductDetail,
+  AllProducts,
+  Cart,
 } from "pages";
 
 export const router = createBrowserRouter([
@@ -23,14 +25,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "shopping-center/all-products",
-        element: <ProductDetail />,
+        element: <AllProducts />,
       },
       {
         path: "shopping-center/cart",
-        element: <ProductDetail />,
+        element: <Cart />,
       },
       {
         path: "shopping-center/sign-in",
+        element: <ProductDetail />,
+      },
+      {
+        path: "shopping-center/product/detail",
         element: <ProductDetail />,
       },
     ],

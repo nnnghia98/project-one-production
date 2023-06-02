@@ -1,0 +1,168 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.cart {
+  max-width: $fullWidth;
+  color: $roseEbony;
+
+  @include desktop-child {
+    padding: 64px 0 64px;
+  }
+
+  @include tablet-child {
+    padding: 64px 0 64px;
+  }
+
+  @include mobile-child {
+    padding: 36px 0 64px;
+  }
+
+  .content {
+    margin: 0 auto;
+
+    @include desktop-child {
+      max-width: 1260px;
+    }
+
+    @include tablet-child {
+      max-width: 1260px;
+    }
+
+    @include mobile-child {
+      max-width: 346px;
+    }
+
+    .title {
+      text-align: center;
+
+      @include desktop-child {
+        @include heading-3;
+      }
+
+      @include tablet-child {
+        @include heading-3;
+      }
+
+      @include mobile-child {
+        @include heading-5;
+      }
+    }
+
+    .table {
+      width: $fullWidth;
+      border-collapse: collapse;
+      margin-top: 64px;
+
+      .table-header {
+        border-bottom: 1px solid $gray;
+
+        th {
+          @include para-1-med;
+
+          background-color: $oldLace;
+          color: $roseEbony;
+          text-align: left;
+          margin-bottom: 24px;
+        }
+
+        .header-product,
+        .header-price,
+        .header-quantity,
+        .header-total {
+          margin-left: 190px;
+        }
+
+        .header-total {
+          text-align: right;
+        }
+      }
+
+      .table-item {
+        border-bottom: 1px solid $gray;
+
+        .product {
+          gap: 24px;
+          margin: 45px 0 25px;
+
+          .img-wrapper {
+            background-color: #f7f8fa;
+
+            @include mobile-child {
+              max-width: 99px;
+            }
+
+            img {
+              width: $fullWidth;
+            }
+          }
+
+          .detail {
+            justify-content: space-between;
+
+            .name {
+              @include heading-4;
+
+              @include mobile-child {
+                @include para-1;
+              }
+            }
+
+            .remove-item {
+              cursor: pointer;
+              width: fit-content;
+              color: $darkGrayish;
+              text-decoration: underline;
+
+              @include para-1-med;
+
+              @include mobile-child {
+                @include para-2;
+              }
+            }
+          }
+        }
+
+        .price,
+        .total {
+          @include heading-6;
+        }
+
+        .total {
+          text-align: right;
+          margin: 45px 0 25px;
+        }
+      }
+    }
+
+    .checkout-panel {
+      justify-content: flex-end;
+      margin-top: 58px;
+      gap: 36px;
+
+      .text-wrapper {
+        justify-content: space-between;
+        width: 307px;
+
+        .subtotal,
+        .shipping-fee {
+          justify-content: space-between;
+        }
+
+        .subtotal {
+          @include heading-6;
+        }
+
+        .shipping-fee {
+          @include para-1-med;
+        }
+      }
+
+      .button-wrapper {
+        .checkout {
+          padding: 15px 69.5px;
+        }
+      }
+    }
+  }
+}

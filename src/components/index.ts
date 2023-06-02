@@ -2,6 +2,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import Button from "./Button";
+import ProductItem from "./ProductItem";
 
 // Portfolio
 import PortfolioWelcomeBanner from "./Portfolio/WelcomeBanner";
@@ -20,6 +21,7 @@ export {
   Header,
   Footer,
   Button,
+  ProductItem,
   PortfolioWelcomeBanner,
   AboutMe,
   Experiences,

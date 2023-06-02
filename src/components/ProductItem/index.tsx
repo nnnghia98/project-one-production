@@ -4,9 +4,9 @@ import { IProductItemProps } from "interfaces/ShoppingCenter";
 
 import "./styles.scss";
 
-const Item = ({ thumbnail, name, cost }: IProductItemProps) => {
+const Item = ({ thumbnail, name, cost, onClick }: IProductItemProps) => {
   return (
-    <div className="product-item">
+    <div className="product-item" onClick={onClick}>
       <div className="img-wrapper">
         <img src={thumbnail} alt="thumbnail" />
       </div>

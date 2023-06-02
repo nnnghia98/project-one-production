@@ -1,6 +1,6 @@
 import React from "react";
 
-import Item from "../ProductItem";
+import Item from "../../ProductItem";
 
 import productThumbnail from "assets/img/product-thumbnail.png";
 

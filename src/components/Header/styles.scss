@@ -98,8 +98,15 @@
       }
 
       #nav-check:checked ~ .navbar-tabs {
-        height: 176px;
         overflow-y: auto;
+      }
+
+      #nav-check:checked ~ .items-4 {
+        height: 176px;
+      }
+
+      #nav-check:checked ~ .items-3 {
+        height: 132px;
       }
     }
   }
