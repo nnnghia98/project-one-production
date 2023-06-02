@@ -44,7 +44,7 @@ const Cart = () => {
             <th className="header-total">Total</th>
           </tr>
           {DUMMY_DATA.map((item: ICartItemProps) => (
-            <tr className="table-item">
+            <tr className="table-item" key={item.id}>
               <td className="product flex">
                 <div className="img-wrapper">
                   <img src={item.imgSrc} alt="productThumbnail" />

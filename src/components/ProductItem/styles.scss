@@ -18,6 +18,7 @@
 
   .detail {
     padding: 10px 26px 16px;
+    background-color: $white;
 
     .name {
       @include para-2;
