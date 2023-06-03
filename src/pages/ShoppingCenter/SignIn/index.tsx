@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import isEqual from "lodash/isEqual";
 
 import { Button } from "components";
@@ -8,6 +9,8 @@ import { setStorageItem } from "utils";
 import "./styles.scss";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -22,8 +25,10 @@ const SignIn = () => {
 
     setStorageItem("email", emailInputRef.current?.value);
     setStorageItem("password", passwordInputRef.current?.value);
+    setStorageItem("isSignedIn", true);
 
     alert("Signed in!");
+    navigate("/shopping-center");
   };
 
   return (

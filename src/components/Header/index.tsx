@@ -1,12 +1,18 @@
-import React from "react";
+import { useState } from "react";
 import isEqual from "lodash/isEqual";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+
+import { getStorageItem, removeStorageItem } from "utils";
 
 import hamburgerSvg from "assets/svg/hamburger.svg";
 
 import "./styles.scss";
 
 const Header = () => {
+  const [isSignedIn, setIsSignedIn] = useState(
+    () => getStorageItem("isSignedIn") || false
+  );
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -16,6 +22,13 @@ const Header = () => {
         ? "/shopping-center"
         : "/portfolio"
     );
+
+  const handleSignOut = () => {
+    removeStorageItem("email");
+    removeStorageItem("password");
+    removeStorageItem("isSignedIn");
+    setIsSignedIn(false);
+  };
 
   return (
     <div className="header flex">
@@ -43,7 +56,13 @@ const Header = () => {
             <div className="navbar-tabs items-3 flex row">
               <Link to="/shopping-center/all-products">All Products</Link>
               <Link to="/shopping-center/cart">Cart</Link>
-              <Link to="/shopping-center/sign-in">Sign In</Link>
+              {isSignedIn ? (
+                <div className="sign-out" onClick={handleSignOut}>
+                  nnnghia98 / Sign Out
+                </div>
+              ) : (
+                <Link to="/shopping-center/sign-in">Sign In</Link>
+              )}
             </div>
           )}
         </>
