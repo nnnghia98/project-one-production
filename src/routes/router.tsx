@@ -8,6 +8,7 @@ import {
   AllProducts,
   Cart,
   SignIn,
+  PaymentDetail,
 } from "pages";
 
 export const router = createBrowserRouter([
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "shopping-center/sign-in",
         element: <SignIn />,
+      },
+      {
+        path: "shopping-center/checkout",
+        element: <PaymentDetail />,
       },
       {
         path: "shopping-center/product/detail",

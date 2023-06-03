@@ -1,5 +1,5 @@
 export * from "./Router";
-export * from "./Button";
+export * from "./components";
 
 export * from "./Portfolio";
 export * from "./ShoppingCenter";

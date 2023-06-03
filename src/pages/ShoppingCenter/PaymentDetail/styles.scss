@@ -1,0 +1,69 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.payment-detail {
+  max-width: $fullWidth;
+  color: $roseEbony;
+  height: 100vh;
+  align-items: center;
+
+  .content {
+    gap: 80px;
+    width: $fullWidth;
+    margin: 0 auto;
+
+    @include desktop-child {
+      max-width: 745px;
+    }
+
+    @include tablet-child {
+      max-width: 745px;
+    }
+
+    @include mobile-child {
+      flex-direction: column;
+      max-width: 346px;
+      gap: 64px;
+    }
+
+    .title {
+      @include heading-5;
+    }
+
+    .input-group,
+    .row-2 {
+      gap: 12px;
+    }
+
+    .input-group,
+    .checkbox-wrapper {
+      margin-top: 16px;
+    }
+
+    .row-2 {
+      width: 100%;
+
+      input {
+        flex: 1;
+      }
+
+      @include mobile-child {
+        flex-direction: column;
+      }
+    }
+
+    .payment-method,
+    .radio-wrapper {
+      gap: 14px;
+    }
+
+    .button-wrapper {
+      max-width: 155px;
+    }
+
+    .total {
+      @include para-1-med;
+    }
+  }
+}

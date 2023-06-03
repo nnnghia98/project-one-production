@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "components";
 import { ICartItemProps } from "interfaces/ShoppingCenter";
@@ -27,6 +28,9 @@ const DUMMY_DATA = [
 
 const Cart = () => {
   const { isMobile } = useWindowDimensions();
+  const navigate = useNavigate();
+
+  const handleNavigate = () => navigate("/shopping-center/checkout");
 
   return (
     <div className="cart">
@@ -85,7 +89,7 @@ const Cart = () => {
           <div className="button-wrapper">
             <Button
               name="Checkout"
-              onClick={() => {}}
+              onClick={handleNavigate}
               outerClassName="checkout"
             />
           </div>

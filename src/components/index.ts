@@ -3,6 +3,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Button from "./Button";
 import ProductItem from "./ProductItem";
+import Checkbox from "./Checkbox";
+import RadioButton from "./RadioButton";
 
 // Portfolio
 import PortfolioWelcomeBanner from "./Portfolio/WelcomeBanner";
@@ -22,6 +24,8 @@ export {
   Footer,
   Button,
   ProductItem,
+  Checkbox,
+  RadioButton,
   PortfolioWelcomeBanner,
   AboutMe,
   Experiences,

@@ -1,0 +1,41 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/breakpoint";
+@import "../../assets/styles/typography";
+
+.radio-button {
+  align-items: center;
+
+  input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid $bazzar;
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin: 0;
+    margin-right: 7px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $roseEbony;
+    }
+
+    &:checked {
+      border: 6px solid $deepTaupe;
+    }
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+
+  label {
+    @include para-2;
+    color: $bazzar;
+
+    cursor: pointer;
+  }
+}

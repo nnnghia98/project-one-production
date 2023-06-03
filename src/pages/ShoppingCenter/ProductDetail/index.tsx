@@ -1,27 +1,29 @@
-import React from "react";
+import { useRef } from "react";
 
 import { Button } from "components";
-
 import { useWindowDimensions } from "utils/window";
 
 import productBanner from "assets/img/product-banner.png";
 
 import "./styles.scss";
 
-const renderMobileView = () => (
+const renderMobileView = (
+  ref: React.MutableRefObject<HTMLInputElement | null>,
+  handleAddToCart: () => void
+) => (
   <div className="mobile">
     <div className="name">New Candle</div>
     <div className="img-wrapper">
       <img src={productBanner} alt="productBanner" />
     </div>
     <div className="button-group flex">
-      <Button name="Quantity" onClick={() => {}} outerClassName="stock" />
+      <input ref={ref} type="number" placeholder="Quantity" min={0} />
       <div className="cost">$9.99</div>
     </div>
     <div className="in-stock">In stock: 20</div>
     <Button
       name="Add to cart"
-      onClick={() => {}}
+      onClick={handleAddToCart}
       outerClassName="add-to-cart"
     />
     <div className="properties flex column">
@@ -55,7 +57,10 @@ const renderMobileView = () => (
   </div>
 );
 
-const renderWideView = () => (
+const renderWideView = (
+  ref: React.MutableRefObject<HTMLInputElement | null>,
+  handleAddToCart: () => void
+) => (
   <div className="wide flex">
     <div className="left flex column">
       <div className="img-wrapper">
@@ -94,10 +99,10 @@ const renderWideView = () => (
         </div>
       </div>
       <div className="button-group flex">
-        <Button name="Quantity" onClick={() => {}} outerClassName="stock" />
+        <input ref={ref} type="number" placeholder="Quantity" min={0} />
         <Button
           name="Add to cart"
-          onClick={() => {}}
+          onClick={handleAddToCart}
           outerClassName="add-to-cart"
         />
       </div>
@@ -108,11 +113,24 @@ const renderWideView = () => (
 
 const ProductDetail = () => {
   const { isMobile } = useWindowDimensions();
+  const quantityInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleAddToCart = () => {
+    if (!Number(quantityInputRef.current?.value)) {
+      return alert(
+        "Please input valid quantity (must be a non-float positive number)!"
+      );
+    }
+
+    alert("Item has been added to cart!");
+  };
 
   return (
     <div className="product-detail">
       <div className="content">
-        {isMobile ? renderMobileView() : renderWideView()}
+        {isMobile
+          ? renderMobileView(quantityInputRef, handleAddToCart)
+          : renderWideView(quantityInputRef, handleAddToCart)}
       </div>
     </div>
   );
