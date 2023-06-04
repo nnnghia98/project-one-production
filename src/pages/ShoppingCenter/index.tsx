@@ -7,7 +7,7 @@ import {
   Popular,
   Loading,
 } from "components";
-import { setStorageItem } from "utils";
+import { getStorageItem, setStorageItem } from "utils";
 import { fetchProducts } from "api";
 import { IProductItemProps } from "interfaces";
 
@@ -16,6 +16,8 @@ import "./styles.scss";
 const ShoppingCenter = () => {
   const [products, setProducts] = useState<Array<IProductItemProps>>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  getStorageItem("cart") ?? setStorageItem("cart", []);
 
   const getAllProducts = () => {
     fetchProducts()

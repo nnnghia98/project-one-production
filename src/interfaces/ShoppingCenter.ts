@@ -1,5 +1,5 @@
 export interface IProductItemProps {
-  id?: string;
+  id: string;
   thumbnail?: string;
   name: string;
   cost: string;

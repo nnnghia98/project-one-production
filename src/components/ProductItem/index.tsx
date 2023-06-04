@@ -4,7 +4,7 @@ import { IProductItemProps } from "interfaces/ShoppingCenter";
 
 import "./styles.scss";
 
-const Item = ({ id, thumbnail, name, cost, quantity }: IProductItemProps) => {
+const Item = ({ id, thumbnail, name, cost }: IProductItemProps) => {
   const navigate = useNavigate();
 
   const navigateProductDetail = () =>
