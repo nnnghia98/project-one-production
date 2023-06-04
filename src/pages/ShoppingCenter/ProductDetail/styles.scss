@@ -124,6 +124,7 @@
       @include mobile-child {
         margin-top: 20px;
         gap: 2px;
+        white-space: break-spaces;
       }
 
       white-space: pre;

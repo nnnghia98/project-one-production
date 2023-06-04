@@ -1,4 +1,5 @@
 export interface IFlipCardProps {
+  title: string;
   cover: string;
   detail: string;
 }

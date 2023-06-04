@@ -1,14 +1,28 @@
-import React from "react";
+import { useState } from "react";
 
 import { IFlipCardProps } from "interfaces";
 
 import "./styles.scss";
 
-const FlipCard = ({ cover, detail }: IFlipCardProps) => {
+const FlipCard = ({ cover, title, detail }: IFlipCardProps) => {
+  const [flip, setFlip] = useState(false);
+
+  const flipCard = () => {
+    setFlip(!flip);
+  };
+
   return (
-    <div className="flipCard">
-      <div className="front">{cover}</div>
-      {/* <div className="back">ascasckmnalscjbas</div> */}
+    <div
+      className={`flip-card ${flip !== true ? "front-flip" : "back-flip"}`}
+      onClick={flipCard}
+    >
+      <div className="flip-card-inner">
+        <div className="flip-card-front">{cover}</div>
+        <div className="flip-card-back">
+          <div className="title">{title}</div>
+          <div className="detail">{detail}</div>
+        </div>
+      </div>
     </div>
   );
 };
