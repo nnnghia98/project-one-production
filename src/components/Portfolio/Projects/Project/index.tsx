@@ -5,7 +5,13 @@ import { IProjectProps } from "interfaces/Portfolio";
 
 import "./styles.scss";
 
-const Project = ({ bannerSrc, name, shortDes }: IProjectProps) => {
+const Project = ({
+  bannerSrc,
+  name,
+  shortDes,
+  repoUrl,
+  websiteUrl,
+}: IProjectProps) => {
   return (
     <div className="project flex">
       <div className="img-wrapper flex">
@@ -17,16 +23,8 @@ const Project = ({ bannerSrc, name, shortDes }: IProjectProps) => {
           <div className="short-des">{shortDes}</div>
         </div>
         <div className="button-wrapper flex">
-          <Button
-            name="View Project"
-            url="https://github.com/phongtran231/halo-client"
-            onClick={() => console.log("hihi")}
-          />
-          <Button
-            name="View Website"
-            url="https://thietkedentrangtri.com/"
-            onClick={() => console.log("hihi")}
-          />
+          <Button name="View Project" url={repoUrl} />
+          <Button name="View Website" url={websiteUrl} />
         </div>
       </div>
     </div>

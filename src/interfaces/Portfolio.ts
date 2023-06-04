@@ -4,7 +4,9 @@ export interface IFlipCardProps {
 }
 
 export interface IProjectProps {
-  bannerSrc: string;
+  bannerSrc?: string;
   name: string;
   shortDes: string;
+  repoUrl?: string;
+  websiteUrl?: string;
 }

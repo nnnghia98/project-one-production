@@ -2,6 +2,7 @@ import React from "react";
 
 import Project from "./Project";
 
+import awsLandingPage from "assets/img/aws-landing-page-screenshot.png";
 import haloLighting from "assets/img/halo-lighting.png";
 
 import "./styles.scss";
@@ -23,24 +24,19 @@ const Projects = () => {
                 shortDes="Main technologies: Next.js, Vue.js, PHP, JavaScript.
 Main work: Build frontend for an e-commerce site on Next.js.
 "
+                repoUrl="https://github.com/phongtran231/halo-client"
+                websiteUrl="https://thietkedentrangtri.com/"
               />
             </div>
             <div className="item flex row">
               <Project
-                bannerSrc={haloLighting}
-                name="HALO Lighting"
-                shortDes="Main technologies: Next.js, Vue.js, PHP, JavaScript.
-Main work: Build frontend for an e-commerce site on Next.js.
+                bannerSrc={awsLandingPage}
+                name="Personal Landing Page"
+                shortDes="Main technologies: React.js.
+                Main work: Build frontend on React.js based on an example Figma.
 "
-              />
-            </div>
-            <div className="item flex row">
-              <Project
-                bannerSrc={haloLighting}
-                name="HALO Lighting"
-                shortDes="Main technologies: Next.js, Vue.js, PHP, JavaScript.
-Main work: Build frontend for an e-commerce site on Next.js.
-"
+                repoUrl="https://github.com/nnnghia98/aws-courses-adv-landing-page"
+                websiteUrl=""
               />
             </div>
           </div>

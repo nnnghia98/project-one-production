@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import isEqual from "lodash/isEqual";
 
 import { Button } from "components";
-import { EMAIL_REGEXP } from "../../../constants";
+import { EMAIL_REGEXP } from "constant";
 import { setStorageItem } from "utils";
 
 import "./styles.scss";

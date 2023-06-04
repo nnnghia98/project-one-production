@@ -84,5 +84,13 @@
         max-width: 255px;
       }
     }
+
+    .pagination-bar {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
+      margin-bottom: 0;
+    }
   }
 }
