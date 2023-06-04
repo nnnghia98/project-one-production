@@ -19,6 +19,6 @@ export interface ICartItemProps {
   id: number;
   imgSrc: string;
   name: string;
-  price: number;
+  cost: number;
   quantity: number;
 }

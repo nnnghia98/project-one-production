@@ -1,32 +1,19 @@
-import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "components";
-import { ICartItemProps } from "interfaces/ShoppingCenter";
-import { getStorageItem, useWindowDimensions } from "utils";
+import { ICartItemProps, IProductItemProps } from "interfaces";
+import { getStorageItem, setStorageItem, useWindowDimensions } from "utils";
 
 import productThumbnail from "assets/img/product-thumbnail.png";
 
 import "./styles.scss";
 
-const DUMMY_DATA = [
-  {
-    id: 1,
-    imgSrc: productThumbnail,
-    name: "New Candle",
-    price: 9.99,
-    quantity: 1,
-  },
-  {
-    id: 2,
-    imgSrc: productThumbnail,
-    name: "New Candle",
-    price: 9.99,
-    quantity: 2,
-  },
-];
+const getSubTotal = (cart: Array<ICartItemProps>) =>
+  cart.reduce((total, item) => Number(item.cost) * item.quantity + total, 0);
 
 const Cart = () => {
+  const [cart, setCart] = useState(getStorageItem("cart") || []);
   const { isMobile } = useWindowDimensions();
   const navigate = useNavigate();
 
@@ -36,6 +23,13 @@ const Cart = () => {
     }
 
     return navigate("/shopping-center/sign-in");
+  };
+
+  const handleRemoveItem = (id: string) => {
+    const newCart = cart.filter((itm: IProductItemProps) => itm.id !== id);
+
+    setStorageItem("cart", newCart);
+    setCart(newCart);
   };
 
   return (
@@ -56,25 +50,30 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            {DUMMY_DATA.map((item: ICartItemProps) => (
+            {cart.map((item: ICartItemProps) => (
               <tr className="table-item" key={item.id}>
                 <td className="product flex">
                   <div className="img-wrapper">
-                    <img src={item.imgSrc} alt="productThumbnail" />
+                    <img src={productThumbnail} alt="productThumbnail" />
                   </div>
                   <div className="detail flex column">
-                    <div className="name">New Candle</div>
-                    <div className="remove-item">Remove item</div>
+                    <div className="name">{item.name}</div>
+                    <div
+                      className="remove-item"
+                      onClick={() => handleRemoveItem(String(item.id))}
+                    >
+                      Remove item
+                    </div>
                   </div>
                 </td>
                 {!isMobile && (
                   <>
-                    <td className="price">${item.price}</td>
+                    <td className="price">${Number(item.cost)}</td>
                     <td className="quantity">{item.quantity}</td>
                   </>
                 )}
                 <td className="total">
-                  ${item.price * item.quantity}
+                  ${Number(item.cost) * item.quantity}
                   {isMobile && <td className="quantity">{item.quantity}</td>}
                 </td>
               </tr>
@@ -85,11 +84,11 @@ const Cart = () => {
           <div className="text-wrapper flex column">
             <div className="subtotal flex">
               <div>Sub-total</div>
-              <div>$29.96</div>
+              <div>${getSubTotal(cart)}</div>
             </div>
             <div className="shipping-fee flex">
               <div>Shipping fee</div>
-              <div>$0.99</div>
+              <div>${getSubTotal(cart) === 0 ? `0` : `2.99`}</div>
             </div>
           </div>
           <div className="button-wrapper">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import isEqual from "lodash/isEqual";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 
@@ -33,18 +33,18 @@ const Header = () => {
   };
 
   const renderNumberInCart = () => {
-    if (inCart.length) {
+    if (!inCart) {
       return;
     }
 
-    if (inCart.length >= 99) {
+    if (inCart >= 99) {
       return ` (99+)`;
     }
 
     return ` (${inCart})`;
   };
 
-  useEffect(() => setInCart(getStorageItem("cart").length), []);
+  useLayoutEffect(() => setInCart(getStorageItem("cart").length), []);
 
   return (
     <div className="header flex">
