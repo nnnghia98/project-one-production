@@ -45,7 +45,13 @@ const CardDetail = () => {
                 placeholder="Expiration (MM/YY)"
                 required
               />
-              <input type="text" name="ccv" placeholder="CCV" required />
+              <input
+                type="text"
+                pattern="[0-9]*"
+                name="ccv"
+                placeholder="CCV"
+                required
+              />
             </div>
           </div>
         </form>

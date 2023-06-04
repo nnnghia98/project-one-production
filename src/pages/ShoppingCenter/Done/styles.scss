@@ -3,4 +3,71 @@
 @import "../../../assets/styles/typography";
 
 .done {
+  max-width: $fullWidth;
+  color: $roseEbony;
+  // height: 100vh;
+  align-items: center;
+
+  padding: 96px 0;
+
+  .content {
+    width: $fullWidth;
+    margin: 0 auto;
+    align-items: center;
+
+    @include desktop-child {
+      max-width: 745px;
+    }
+
+    @include tablet-child {
+      max-width: 745px;
+    }
+
+    @include mobile-child {
+      max-width: 346px;
+    }
+
+    .svg-wrapper {
+      width: 80px;
+      height: 80px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .title,
+    .order-number {
+      text-align: center;
+    }
+
+    .title {
+      @include heading-4;
+
+      margin-top: 36px;
+    }
+
+    .order-number {
+      @include para-2;
+
+      margin-top: 4px;
+    }
+
+    .thankyou-letter {
+      @include para-2;
+
+      max-width: 540px;
+      margin-top: 24px;
+    }
+
+    .button-wrapper {
+      margin-top: 36px;
+
+      .outer {
+        @include para-3;
+
+        padding: 7px 12px 9px;
+      }
+    }
+  }
 }
