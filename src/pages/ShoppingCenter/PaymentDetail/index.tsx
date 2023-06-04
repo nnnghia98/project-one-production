@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Checkbox, Button, RadioButton } from "components";
 
@@ -8,8 +9,15 @@ const PaymentDetail = () => {
   const [paymentMethod, setPaymentMethod] = useState("cod");
   const [isSaveShippingDetail, setIsSaveShippingDetail] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
+
+    if (paymentMethod === "atm") {
+      return navigate("/shopping-center/card-detail");
+    }
+
     alert(`Submit!`);
   };
 
@@ -100,7 +108,10 @@ const PaymentDetail = () => {
           </div>
           <div className="total">Total: $30.95</div>
           <div className="button-wrapper">
-            <Button name="Done" onClick={() => alert("Done")} />
+            <Button
+              name={paymentMethod === "cod" ? "Done" : "Next"}
+              onClick={handleSubmit}
+            />
           </div>
         </div>
       </form>

@@ -2,7 +2,7 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement> {
   name: string;
   outerClassName?: string;
   url?: string;
-  onClick: () => void;
+  onClick: (event: React.SyntheticEvent) => void;
 }
 
 export interface ICheckboxProps {
