@@ -29,3 +29,9 @@ export interface IDbFormFieldProps
   type: string;
   errorMessage?: string;
 }
+
+export interface ICustomInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  outerClassName?: string;
+  errorMessage?: string;
+}

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useParams } from "react-router-dom";
 
-import { Button } from "components";
+import { Button, CustomInput } from "components";
 import { useWindowDimensions, getStorageItem, setStorageItem } from "utils";
 import { IProductItemProps } from "interfaces/ShoppingCenter";
 
@@ -103,7 +103,7 @@ const renderWideView = (
         </div>
       </div>
       <div className="button-group flex">
-        <input ref={ref} type="number" placeholder="Quantity" min={0} />
+        <CustomInput ref={ref} type="number" placeholder="Quantity" min={0} />
         <db-form-field label="name" type="text" />
 
         <Button

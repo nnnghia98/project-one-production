@@ -7,6 +7,7 @@ import Checkbox from "./Checkbox";
 import RadioButton from "./RadioButton";
 import Loading from "./Loading";
 import Pagination from "./Pagination";
+import CustomInput from "./CustomInput";
 
 // Portfolio
 import PortfolioWelcomeBanner from "./Portfolio/WelcomeBanner";
@@ -30,6 +31,7 @@ export {
   RadioButton,
   Loading,
   Pagination,
+  CustomInput,
   PortfolioWelcomeBanner,
   AboutMe,
   Experiences,

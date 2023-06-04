@@ -1,7 +1,6 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "components";
+import { Button, CustomInput } from "components";
 
 import creditCardSvg from "assets/svg/creditCard.svg";
 
@@ -32,26 +31,26 @@ const CardDetail = () => {
             Credit Card
           </div>
           <div className="input-group flex column">
-            <input
+            <CustomInput
               type="number"
               name="cardNumber"
               placeholder="Card number"
               required
             />
-            <input
+            <CustomInput
               type="text"
               name="holderName"
               placeholder="Holder name"
               required
             />
             <div className="row-2 flex">
-              <input
+              <CustomInput
                 type="text"
                 name="expirationDate"
                 placeholder="Expiration (MM/YY)"
                 required
               />
-              <input
+              <CustomInput
                 type="text"
                 pattern="[0-9]*"
                 name="ccv"

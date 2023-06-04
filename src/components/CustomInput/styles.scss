@@ -1,0 +1,41 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/breakpoint";
+@import "../../assets/styles/typography";
+
+.custom-input {
+  input {
+    width: 100%;
+    height: 100%;
+
+    @include para-2-med;
+
+    color: $roseEbony;
+    background: $white;
+    border: 1px solid $bazzar;
+    border-radius: 8px;
+    text-indent: 16px;
+
+    &::placeholder {
+      @include para-2;
+    }
+
+    &:active {
+      border-color: $roseEbony;
+    }
+
+    &:hover {
+      border-color: $deepTaupe;
+    }
+  }
+
+  input.error {
+    border-color: $softRed;
+    color: $softRed;
+  }
+
+  .error-message {
+    @include para-3;
+
+    color: $softRed;
+  }
+}

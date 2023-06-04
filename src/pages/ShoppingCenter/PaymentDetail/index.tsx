@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Checkbox, Button, RadioButton } from "components";
+import { Checkbox, Button, RadioButton, CustomInput } from "components";
 
 import "./styles.scss";
 
@@ -38,34 +38,39 @@ const PaymentDetail = () => {
           <div className="title">Shipping address</div>
           <div className="input-group flex column">
             <div className="row-2 flex">
-              <input
+              <CustomInput
                 type="text"
                 name="firstName"
                 placeholder="First name"
                 required
               />
-              <input
+              <CustomInput
                 type="text"
                 name="lastName"
                 placeholder="Last name"
                 required
               />
             </div>
-            <input
+            <CustomInput
               type="text"
               name="address"
               placeholder="Address and number"
               required
             />
-            <input
+            <CustomInput
               type="text"
               name="phoneNumber"
               placeholder="Phone number"
               required
             />
             <div className="row-2 flex">
-              <input type="text" name="city" placeholder="City" required />
-              <input
+              <CustomInput
+                type="text"
+                name="city"
+                placeholder="City"
+                required
+              />
+              <CustomInput
                 type="text"
                 name="postalCode"
                 placeholder="Postal code"
@@ -73,7 +78,7 @@ const PaymentDetail = () => {
               />
             </div>
             <div>Country</div>
-            <input
+            <CustomInput
               type="text"
               name="shippingNote"
               placeholder="Shipping note (optional)"

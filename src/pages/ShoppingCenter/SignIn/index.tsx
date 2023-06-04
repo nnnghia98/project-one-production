@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import isEqual from "lodash/isEqual";
 
-import { Button } from "components";
+import { Button, CustomInput } from "components";
 import { EMAIL_REGEXP } from "constant";
 import { setStorageItem } from "utils";
 
@@ -37,13 +37,13 @@ const SignIn = () => {
         <div className="title">Sign in</div>
         <div>
           <div className="input-group flex column">
-            <input
+            <CustomInput
               name="email"
               type="text"
               ref={emailInputRef}
               placeholder="Email"
             />
-            <input
+            <CustomInput
               name="password"
               type="password"
               ref={passwordInputRef}
