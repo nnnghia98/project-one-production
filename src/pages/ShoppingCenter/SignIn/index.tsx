@@ -28,7 +28,7 @@ const SignIn = () => {
     setStorageItem("isSignedIn", true);
 
     alert("Signed in!");
-    navigate("/shopping-center");
+    navigate(-1);
   };
 
   return (

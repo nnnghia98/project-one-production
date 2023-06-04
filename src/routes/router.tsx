@@ -9,6 +9,8 @@ import {
   Cart,
   SignIn,
   PaymentDetail,
+  CardDetail,
+  Done,
 } from "pages";
 
 export const router = createBrowserRouter([
@@ -40,6 +42,14 @@ export const router = createBrowserRouter([
       {
         path: "shopping-center/checkout",
         element: <PaymentDetail />,
+      },
+      {
+        path: "shopping-center/checkout/card-detail",
+        element: <CardDetail />,
+      },
+      {
+        path: "shopping-center/checkout/done",
+        element: <Done />,
       },
       {
         path: "shopping-center/product/detail",

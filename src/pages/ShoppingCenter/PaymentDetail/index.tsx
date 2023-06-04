@@ -15,7 +15,7 @@ const PaymentDetail = () => {
     event.preventDefault();
 
     if (paymentMethod === "atm") {
-      return navigate("/shopping-center/card-detail");
+      return navigate("card-detail");
     }
 
     alert(`Submit!`);
@@ -109,7 +109,7 @@ const PaymentDetail = () => {
           <div className="total">Total: $30.95</div>
           <div className="button-wrapper">
             <Button
-              name={paymentMethod === "cod" ? "Done" : "Next"}
+              name={paymentMethod === "cod" ? "Place order" : "Next"}
               onClick={handleSubmit}
             />
           </div>

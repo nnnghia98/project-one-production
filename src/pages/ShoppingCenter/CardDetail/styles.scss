@@ -1,0 +1,104 @@
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoint";
+@import "../../../assets/styles/typography";
+
+.card-detail {
+  max-width: $fullWidth;
+  color: $roseEbony;
+  height: 100vh;
+  align-items: center;
+
+  .content {
+    width: $fullWidth;
+    margin: 0 auto;
+
+    @include desktop-child {
+      max-width: 745px;
+    }
+
+    @include tablet-child {
+      max-width: 745px;
+    }
+
+    @include mobile-child {
+      max-width: 346px;
+    }
+
+    .title {
+      @include heading-5;
+    }
+
+    .card-detail-form {
+      margin-top: 16px;
+
+      .card-header {
+        @include para-2;
+
+        align-items: center;
+        color: $white;
+        background-color: $bazzar;
+        padding: 18px 21px 18px 21px;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        gap: 23px;
+
+        .svg-wrapper {
+          width: 31px;
+          height: 31px;
+          display: flex;
+          cursor: pointer;
+
+          img {
+            margin: auto;
+          }
+        }
+      }
+
+      .input-group,
+      .row-2 {
+        gap: 6px;
+      }
+
+      .input-group {
+        border: 1px solid $darkGrayish;
+        border-top: 0;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        padding: 22px 20px 29px 20px;
+      }
+
+      .row-2 {
+        width: 100%;
+
+        input {
+          flex: 1;
+        }
+
+        @include mobile-child {
+          flex-direction: column;
+        }
+      }
+    }
+
+    .done {
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 36px;
+
+      .go-back {
+        font-family: "Avenir Next LT Pro";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: $darkGrayish;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      .button-wrapper {
+        width: 155px;
+      }
+    }
+  }
+}

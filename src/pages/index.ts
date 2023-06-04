@@ -7,6 +7,8 @@ import AllProducts from "./ShoppingCenter/AllProducts";
 import Cart from "./ShoppingCenter/Cart";
 import SignIn from "./ShoppingCenter/SignIn";
 import PaymentDetail from "./ShoppingCenter/PaymentDetail";
+import CardDetail from "./ShoppingCenter/CardDetail";
+import Done from "./ShoppingCenter/Done";
 
 import Layout from "./Layout";
 import ErrorPage from "./Error";
@@ -21,4 +23,6 @@ export {
   Cart,
   SignIn,
   PaymentDetail,
+  CardDetail,
+  Done,
 };

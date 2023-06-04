@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "components";
 import { ICartItemProps } from "interfaces/ShoppingCenter";
-import { useWindowDimensions } from "utils/window";
+import { getStorageItem, useWindowDimensions } from "utils";
 
 import productThumbnail from "assets/img/product-thumbnail.png";
 
@@ -30,7 +30,13 @@ const Cart = () => {
   const { isMobile } = useWindowDimensions();
   const navigate = useNavigate();
 
-  const handleNavigate = () => navigate("/shopping-center/checkout");
+  const handleNavigate = () => {
+    if (getStorageItem("isSignedIn")) {
+      return navigate("/shopping-center/checkout");
+    }
+
+    return navigate("/shopping-center/sign-in");
+  };
 
   return (
     <div className="cart">
