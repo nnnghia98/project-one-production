@@ -5,6 +5,7 @@ import Button from "./Button";
 import ProductItem from "./ProductItem";
 import Checkbox from "./Checkbox";
 import RadioButton from "./RadioButton";
+import Loading from "./Loading";
 
 // Portfolio
 import PortfolioWelcomeBanner from "./Portfolio/WelcomeBanner";
@@ -26,6 +27,7 @@ export {
   ProductItem,
   Checkbox,
   RadioButton,
+  Loading,
   PortfolioWelcomeBanner,
   AboutMe,
   Experiences,

@@ -1,1 +1,1 @@
-export const routes = [{ path: "/portfolio" }, { path: "shopping-center" }];
+export const ROUTES = [{ path: "/portfolio" }, { path: "shopping-center" }];

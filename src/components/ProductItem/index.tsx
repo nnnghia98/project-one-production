@@ -4,7 +4,14 @@ import { IProductItemProps } from "interfaces/ShoppingCenter";
 
 import "./styles.scss";
 
-const Item = ({ thumbnail, name, cost, onClick }: IProductItemProps) => {
+const Item = ({
+  id,
+  thumbnail,
+  name,
+  cost,
+  onClick,
+  quantity,
+}: IProductItemProps) => {
   return (
     <div className="product-item" onClick={onClick}>
       <div className="img-wrapper">

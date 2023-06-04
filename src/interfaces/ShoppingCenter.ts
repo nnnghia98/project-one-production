@@ -1,8 +1,15 @@
 export interface IProductItemProps {
-  thumbnail: string;
+  id?: string;
+  thumbnail?: string;
   name: string;
-  cost: number;
+  cost: string;
+  quantity?: number;
+  isPopular?: boolean;
   onClick?: () => void;
+}
+
+export interface IProductsProps {
+  products: IProductItemProps[];
 }
 
 export interface IBenefitItemProps {
