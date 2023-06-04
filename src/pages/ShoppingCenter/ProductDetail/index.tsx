@@ -152,7 +152,7 @@ const ProductDetail = () => {
     const cart = getStorageItem("cart") || [];
 
     if (isExistentInCart(cart, item.id)) {
-      cart.map((itm: IProductItemProps) => {
+      const newCart = cart.map((itm: IProductItemProps) => {
         if (itm.id === id) {
           return {
             ...itm,
@@ -163,15 +163,17 @@ const ProductDetail = () => {
         return itm;
       });
 
+      setStorageItem("cart", newCart);
+    } else {
+      cart.push({
+        ...item,
+        quantity: quantityInputValue,
+      });
+
       setStorageItem("cart", cart);
     }
 
-    cart.push({
-      ...item,
-      quantity: quantityInputValue,
-    });
-
-    products.map((product: IProductItemProps) => {
+    const newProducts = products.map((product: IProductItemProps) => {
       if (product.id === id) {
         return {
           ...product,
@@ -184,8 +186,7 @@ const ProductDetail = () => {
       return product;
     });
 
-    setStorageItem("products", products);
-    setStorageItem("cart", cart);
+    setStorageItem("products", newProducts);
 
     return alert("Item has been added to cart!");
   };

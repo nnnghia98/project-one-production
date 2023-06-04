@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import isEqual from "lodash/isEqual";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 
@@ -12,6 +12,8 @@ const Header = () => {
   const [isSignedIn, setIsSignedIn] = useState(
     () => getStorageItem("isSignedIn") || false
   );
+
+  const [inCart, setInCart] = useState(getStorageItem("cart").length || 0);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -29,6 +31,20 @@ const Header = () => {
     removeStorageItem("isSignedIn");
     setIsSignedIn(false);
   };
+
+  const renderNumberInCart = () => {
+    if (inCart.length) {
+      return;
+    }
+
+    if (inCart.length >= 99) {
+      return ` (99+)`;
+    }
+
+    return ` (${inCart})`;
+  };
+
+  useEffect(() => setInCart(getStorageItem("cart").length), []);
 
   return (
     <div className="header flex">
@@ -55,7 +71,9 @@ const Header = () => {
           ) : (
             <div className="navbar-tabs items-3 flex row">
               <Link to="/shopping-center/all-products">All Products</Link>
-              <Link to="/shopping-center/cart">Cart</Link>
+              <Link to="/shopping-center/cart">
+                Cart {renderNumberInCart()}
+              </Link>
               {isSignedIn ? (
                 <div className="sign-out" onClick={handleSignOut}>
                   nnnghia98 / Sign Out
