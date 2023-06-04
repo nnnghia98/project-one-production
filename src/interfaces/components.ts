@@ -19,3 +19,13 @@ export interface IRadioProps extends React.HTMLProps<HTMLButtonElement> {
   label: string;
   value: string;
 }
+
+export interface IDbFormFieldProps
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLElement>,
+    HTMLElement
+  > {
+  label: string;
+  type: string;
+  errorMessage?: string;
+}
