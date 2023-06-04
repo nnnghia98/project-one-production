@@ -1,5 +1,6 @@
 @import "../../assets/styles/colors";
 @import "../../assets/styles/breakpoint";
+@import "../../assets/styles/typography";
 
 .footer {
   width: $fullWidth;
@@ -10,15 +11,20 @@
   color: $oldLace;
 
   .content {
-    @include desktop;
-    @include tablet;
-    @include mobile;
+    @include desktop {
+      @include para-1;
+    }
+
+    @include tablet {
+      @include para-2;
+    }
+
+    @include mobile {
+      @include para-2;
+    }
 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Avenir Next LT Pro";
-    font-size: 20px;
-    line-height: 24px;
   }
 }

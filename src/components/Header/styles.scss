@@ -111,6 +111,14 @@
     }
 
     .sign-out {
+      @include mobile-child {
+        @include para-2-med;
+
+        color: $roseEbony;
+        width: $fullWidth;
+        padding: 8px 16px;
+      }
+
       cursor: pointer;
     }
   }

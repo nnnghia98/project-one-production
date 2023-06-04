@@ -54,9 +54,22 @@
       }
     }
 
+    .shipping-address,
+    .payment-method {
+      @include mobile-child {
+        width: $fullWidth;
+      }
+    }
+
     .payment-method,
     .radio-wrapper {
       gap: 14px;
+    }
+
+    .payment-method {
+      @include mobile-child {
+        gap: 16px;
+      }
     }
 
     .button-wrapper {

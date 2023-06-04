@@ -1,7 +1,5 @@
 import { ICheckboxProps } from "interfaces/components";
 
-import Tick from "assets/svg/Tick";
-
 import "./styles.scss";
 
 const Checkbox = ({
