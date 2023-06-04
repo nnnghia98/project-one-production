@@ -18,7 +18,7 @@ const PaymentDetail = () => {
       return navigate("card-detail");
     }
 
-    alert(`Submit!`);
+    return navigate("/shopping-center/checkout/done");
   };
 
   const radioChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {

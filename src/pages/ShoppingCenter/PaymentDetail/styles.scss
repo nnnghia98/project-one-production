@@ -5,13 +5,14 @@
 .payment-detail {
   max-width: $fullWidth;
   color: $roseEbony;
-  height: 100vh;
-  align-items: center;
 
   .content {
     gap: 80px;
     width: $fullWidth;
     margin: 0 auto;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
 
     @include desktop-child {
       max-width: 745px;

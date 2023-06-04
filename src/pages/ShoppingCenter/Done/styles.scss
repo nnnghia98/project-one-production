@@ -5,15 +5,14 @@
 .done {
   max-width: $fullWidth;
   color: $roseEbony;
-  // height: 100vh;
-  align-items: center;
-
-  padding: 96px 0;
 
   .content {
     width: $fullWidth;
     margin: 0 auto;
     align-items: center;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
 
     @include desktop-child {
       max-width: 745px;
@@ -39,6 +38,10 @@
     .title,
     .order-number {
       text-align: center;
+    }
+
+    .error {
+      color: $softRed;
     }
 
     .title {

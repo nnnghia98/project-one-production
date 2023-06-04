@@ -10,7 +10,13 @@ import "./styles.scss";
 const CardDetail = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = () => {};
+  const handleSubmit = () =>
+    navigate("/shopping-center/checkout/done", {
+      state: {
+        method: "atm",
+        isSucceeded: Math.random() < 0.5,
+      },
+    });
 
   const navigateBack = () => navigate(-1);
 
@@ -60,7 +66,7 @@ const CardDetail = () => {
             Back to shipping
           </div>
           <div className="button-wrapper">
-            <Button name="Done" onClick={() => {}} />
+            <Button name="Done" onClick={handleSubmit} />
           </div>
         </div>
       </div>
