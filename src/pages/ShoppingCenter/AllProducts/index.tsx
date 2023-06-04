@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import { ProductItem } from "components";
 import { getStorageItem } from "utils";
 import { IProductItemProps } from "interfaces";
@@ -10,10 +8,6 @@ import "./styles.scss";
 
 const AllProducts = () => {
   const products = getStorageItem("products");
-
-  const navigate = useNavigate();
-
-  const handleProductClick = () => navigate("/shopping-center/product/detail");
 
   return (
     <div className="all-products">
@@ -30,7 +24,6 @@ const AllProducts = () => {
                   name={product.name}
                   cost={product.cost}
                   isPopular={product.isPopular}
-                  onClick={handleProductClick}
                 />
               </div>
             ))}

@@ -5,7 +5,6 @@ export interface IProductItemProps {
   cost: string;
   quantity?: number;
   isPopular?: boolean;
-  onClick?: () => void;
 }
 
 export interface IProductsProps {

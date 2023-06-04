@@ -1,4 +1,4 @@
-import Item from "../../ProductItem";
+import { ProductItem } from "components";
 import { IProductsProps, IProductItemProps } from "interfaces";
 
 import productThumbnail from "assets/img/product-thumbnail.png";
@@ -21,13 +21,12 @@ const Popular = ({ products }: IProductsProps) => {
           {Boolean(popularProducts.length) &&
             popularProducts.slice(0, 4).map((product: IProductItemProps) => (
               <div key={product.id} className="item">
-                <Item
+                <ProductItem
                   id={product.id}
                   thumbnail={productThumbnail}
                   name={product.name}
                   cost={product.cost}
                   isPopular={product.isPopular}
-                  onClick={() => {}}
                 />
               </div>
             ))}
