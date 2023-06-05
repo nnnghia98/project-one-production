@@ -2,8 +2,14 @@
 @import "../../assets/styles/breakpoint";
 @import "../../assets/styles/typography";
 
-.button {
-  max-width: 100%;
+.my-button {
+  //ignore default style of button
+  background: none;
+  border: none;
+  font: inherit;
+  outline: inherit;
+
+  max-width: $fullWidth;
   background-color: $bazzar;
   border-radius: 12px;
   font-family: "Avenir Next LT Pro";

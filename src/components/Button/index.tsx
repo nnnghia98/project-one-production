@@ -15,12 +15,12 @@ const Button = ({
   };
 
   return (
-    <div
-      className={`button flex ${outerClassName}`}
+    <button
+      className={`my-button flex ${outerClassName}`}
       onClick={url ? openInNewTab : onClick}
     >
       {name}
-    </div>
+    </button>
   );
 };
 

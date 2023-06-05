@@ -10,7 +10,7 @@ const Project = ({
   name,
   shortDes,
   repoUrl,
-  websiteUrl,
+  websiteUrl = "",
 }: IProjectProps) => {
   return (
     <div className="project flex">

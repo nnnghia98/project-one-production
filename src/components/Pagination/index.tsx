@@ -1,5 +1,3 @@
-import classnames from "classnames";
-
 import { DOTS } from "constant";
 import { usePagination } from "utils";
 
@@ -37,13 +35,11 @@ const Pagination = (props: any) => {
 
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
-    <ul
-      className={classnames("pagination-container", { [className]: className })}
-    >
+    <ul className={`pagination-container ${className ? className : undefined}`}>
       <li
-        className={classnames("pagination-item", {
-          disabled: currentPage === 1,
-        })}
+        className={`pagination-item ${
+          currentPage === 1 ? "disabled" : undefined
+        }`}
         onClick={onPrevious}
       >
         <div className="arrow left" />
@@ -59,9 +55,9 @@ const Pagination = (props: any) => {
 
         return (
           <li
-            className={classnames("pagination-item", {
-              selected: pageNumber === currentPage,
-            })}
+            className={`pagination-item ${
+              pageNumber === currentPage ? "selected" : undefined
+            }`}
             onClick={() => onPageChange(pageNumber)}
           >
             {pageNumber}
@@ -69,9 +65,9 @@ const Pagination = (props: any) => {
         );
       })}
       <li
-        className={classnames("pagination-item", {
-          disabled: currentPage === lastPage,
-        })}
+        className={`pagination-item ${
+          currentPage === lastPage ? "disabled" : undefined
+        }`}
         onClick={onNext}
       >
         <div className="arrow right" />

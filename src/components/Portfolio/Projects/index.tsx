@@ -36,7 +36,6 @@ Main work: Build frontend for an e-commerce site on Next.js.
                 Main work: Build frontend on React.js based on an example Figma.
 "
                 repoUrl="https://github.com/nnnghia98/aws-courses-adv-landing-page"
-                websiteUrl=""
               />
             </div>
           </div>
