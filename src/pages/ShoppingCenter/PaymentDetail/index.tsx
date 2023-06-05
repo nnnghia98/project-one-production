@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Checkbox, Button, RadioButton, CustomInput } from "components";
+import {
+  Checkbox,
+  Button,
+  RadioButton,
+  CustomInput,
+  Dropdown,
+} from "components";
+import { setStorageItem, getStorageItem } from "utils";
 
 import "./styles.scss";
 
@@ -77,7 +84,7 @@ const PaymentDetail = () => {
                 required
               />
             </div>
-            <div>Country</div>
+            <Dropdown name="Country" />
             <CustomInput
               type="text"
               name="shippingNote"

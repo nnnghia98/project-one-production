@@ -35,3 +35,10 @@ export interface ICustomInputProps
   outerClassName?: string;
   errorMessage?: string;
 }
+
+export interface IDropdownProps {
+  name: string;
+  data?: Array<any>;
+  defaultValue?: string | number;
+  errorMessage?: string;
+}

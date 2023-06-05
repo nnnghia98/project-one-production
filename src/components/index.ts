@@ -8,6 +8,7 @@ import RadioButton from "./RadioButton";
 import Loading from "./Loading";
 import Pagination from "./Pagination";
 import CustomInput from "./CustomInput";
+import Dropdown from "./Dropdown";
 
 // Portfolio
 import PortfolioWelcomeBanner from "./Portfolio/WelcomeBanner";
@@ -32,6 +33,7 @@ export {
   Loading,
   Pagination,
   CustomInput,
+  Dropdown,
   PortfolioWelcomeBanner,
   AboutMe,
   Experiences,

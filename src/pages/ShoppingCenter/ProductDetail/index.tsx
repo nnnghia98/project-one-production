@@ -66,8 +66,6 @@ const renderWideView = (
   handleAddToCart: () => void
 ) => (
   <div className="wide flex">
-    <x-input label="name" type="text"></x-input>
-
     <div className="left flex column">
       <div className="img-wrapper">
         <img src={productBanner} alt="productBanner" />
