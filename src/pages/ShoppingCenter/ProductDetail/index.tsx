@@ -66,6 +66,8 @@ const renderWideView = (
   handleAddToCart: () => void
 ) => (
   <div className="wide flex">
+    <x-input label="name" type="text"></x-input>
+
     <div className="left flex column">
       <div className="img-wrapper">
         <img src={productBanner} alt="productBanner" />
@@ -104,7 +106,6 @@ const renderWideView = (
       </div>
       <div className="button-group flex">
         <CustomInput ref={ref} type="number" placeholder="Quantity" min={0} />
-        <db-form-field label="name" type="text" />
 
         <Button
           name="Add to cart"

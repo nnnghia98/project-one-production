@@ -1,51 +1,53 @@
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
-    :host {
-        margin-bottom: 10px;
-        display: block;
-    }
-    .invalid-field {
-        border: 1px solid red;
-    }
-    .invalid-field:focus {
-        outline-color: red;
-    }
-    .form-field {
-        display: table;
-    }
-    label,
-    input {
-        display: table-cell;
-    }
-    label {
-        padding-right: 10px;
-    }
-    .error {
-        display: block;
-    }
-    .hidden {
-        display: none;
-    }
-    ::slotted(span) {
-        color: grey;
-        font-style: italic;
-        padding-left: 10px;
-    }
+  :host {
+    margin-bottom: 10px;
+    display: block;
+  }
+  .invalid-field {
+    border: 1px solid red;
+  }
+  .invalid-field:focus {
+    outline-color: red;
+  }
+  .form-field {
+    display: table;
+  }
+  label,
+  input {
+    display: table-cell;
+  }
+  label {
+    padding-right: 10px;
+  }
+  .error {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+  ::slotted(span) {
+    color: grey;
+    font-style: italic;
+    padding-left: 10px;
+  }
 </style>
 
 <div class="form-field">
-        <label></label>
-        <input />
-        <slot></slot>
-        <span class="error hidden"></span>
+  <label>AAAAA</label>
+  <input />
+  <slot></slot>
+  <span class="error hidden"></span>
 </div>`;
 
-class FormField extends HTMLElement {
+export class FormField extends HTMLElement {
   constructor() {
     super();
+
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
+
     this.$label = this.shadowRoot.querySelector("label");
     this.$input = this.shadowRoot.querySelector("input");
     this.$error = this.shadowRoot.querySelector(".error");
@@ -119,6 +121,6 @@ class FormField extends HTMLElement {
   }
 }
 
-export default FormField;
+// export default FormField;
 
-window.customElements.define("db-form-field", FormField);
+window.customElements.define("x-input", FormField);

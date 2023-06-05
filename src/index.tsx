@@ -7,12 +7,14 @@ import { IDbFormFieldProps } from "./interfaces";
 import reportWebVitals from "./reportWebVitals";
 import { router } from "routes";
 
+import "components/Input/index";
+
 import "./index.scss";
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "db-form-field": IDbFormFieldProps;
+      "x-input": IDbFormFieldProps;
     }
   }
 }
