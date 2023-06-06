@@ -1,41 +1,54 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import { IDropdownProps, ICountry } from "interfaces";
-import { getStorageItem } from "utils";
+import { setStorageItem, getStorageItem } from "utils";
 
 import chevronDownSvg from "assets/svg/chevronDown.svg";
 import "./styles.scss";
 
-const Dropdown = ({ name, data }: IDropdownProps) => {
+const Dropdown = ({
+  name,
+  data,
+  errorMessage,
+  selectedItem,
+  setSelectedItem,
+}: IDropdownProps) => {
   const [isOpen, setOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<string>("");
-  const dropdownData: Array<ICountry> = data ?? getStorageItem("countries");
 
-  const selectOptionRef = useRef<HTMLDivElement | null>(null);
+  const dropdownData: Array<ICountry> = data ?? getStorageItem("countries");
 
   const toggleDropdown = () => setOpen(!isOpen);
 
   const handleItemClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>
   ) => {
     const { id } = event.target as HTMLInputElement;
 
-    if (selectedItem === id) {
+    if (selectedItem?.iso3 === id) {
       return;
     }
 
-    setSelectedItem(id);
+    setSelectedItem(getSelectedCountry(id) || selectedItem);
+    setStorageItem("cities", getSelectedCountry(id)?.cities);
+
     setOpen(false);
   };
 
-  const getSelectedCountry = () =>
-    dropdownData?.find((d) => d.iso3 === selectedItem);
+  const getSelectedCountry = (id: string) =>
+    dropdownData?.find((d) => d.iso3 === id);
 
   return (
     <div className="dropdown">
-      <div className="dropdown-header flex" onClick={toggleDropdown}>
+      <div
+        className={`dropdown-header ${
+          errorMessage ? `error` : undefined
+        }  flex`}
+        onClick={toggleDropdown}
+      >
         {selectedItem ? (
-          <div className="selected">{getSelectedCountry()?.country}</div>
+          <div className="selected">
+            {getSelectedCountry(selectedItem.iso3)?.country}
+          </div>
         ) : (
           name
         )}
@@ -43,19 +56,19 @@ const Dropdown = ({ name, data }: IDropdownProps) => {
           <img src={chevronDownSvg} alt="chevronDownSvg" />
         </div>
       </div>
-      <div className={`dropdown-body ${isOpen && "open"}`}>
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+      <ul className={`dropdown-body ${isOpen && "open"}`}>
         {dropdownData.map((item: ICountry) => (
-          <div
+          <li
             key={item.iso3}
             className="dropdown-item"
-            ref={selectOptionRef}
             onClick={handleItemClick}
             id={item.iso3}
           >
             {item.country}
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

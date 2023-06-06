@@ -3,12 +3,12 @@ import { IRadioProps } from "interfaces/components";
 import "./styles.scss";
 
 const RadioButton = (props: IRadioProps) => {
-  const { changed, id, isSelected, label, value } = props;
+  const { changed, id, isSelected, label, value, ...rest } = props;
 
   return (
     <div className="radio-button flex">
       <input
-        {...props}
+        {...rest}
         id={id}
         onChange={changed}
         value={value}

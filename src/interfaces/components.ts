@@ -1,3 +1,5 @@
+import { ICountry } from "./api";
+
 export interface IButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -49,4 +51,6 @@ export interface IDropdownProps {
   data?: Array<any>;
   defaultValue?: string | number;
   errorMessage?: string;
+  selectedItem?: ICountry;
+  setSelectedItem: React.Dispatch<React.SetStateAction<ICountry | undefined>>;
 }

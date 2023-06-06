@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import isEmpty from "lodash/isEmpty";
 
 import {
   Checkbox,
@@ -9,32 +10,67 @@ import {
   Dropdown,
   Loading,
 } from "components";
-import { setStorageItem } from "utils";
-import { ICountriesResponse } from "interfaces";
+import { setStorageItem, validateValues } from "utils";
+import {
+  ICountriesResponse,
+  ICountry,
+  IPaymentDetailFormValues,
+  IPaymentDetailFormError,
+} from "interfaces";
 import { fetchCountries } from "api";
 
 import "./styles.scss";
 
 const PaymentDetail = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  // const [formValues, setFormValues] = useState<IPaymentDetailFormValues>();
+  const navigate = useNavigate();
+  const [errorMessages, setErrorMessage] = useState<IPaymentDetailFormError>();
+
+  // Form inputs
+  const [selectedCountry, setSelectedCountry] = useState<ICountry>();
+  const firstNameInputRef = useRef<HTMLInputElement | null>(null);
+  const lastNameInputRef = useRef<HTMLInputElement | null>(null);
+  const addressInputRef = useRef<HTMLInputElement | null>(null);
+  const phoneNumberInputRef = useRef<HTMLInputElement | null>(null);
+  const cityInputRef = useRef<HTMLInputElement | null>(null);
+  const postalCodeInputRef = useRef<HTMLInputElement | null>(null);
+  const shippingNoteInputRef = useRef<HTMLInputElement | null>(null);
   const [paymentMethod, setPaymentMethod] = useState("cod");
   const [isSaveShippingDetail, setIsSaveShippingDetail] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    if (paymentMethod === "atm") {
-      return navigate("card-detail");
+    const formValues: IPaymentDetailFormValues = {
+      firstName: firstNameInputRef.current?.value,
+      lastName: lastNameInputRef.current?.value,
+      address: addressInputRef.current?.value,
+      phoneNumber: phoneNumberInputRef.current?.value,
+      country: selectedCountry,
+      city: cityInputRef.current?.value,
+      postalCode: postalCodeInputRef.current?.value,
+      shippingNote: shippingNoteInputRef.current?.value,
+      isSaveShippingDetail: isSaveShippingDetail,
+    };
+
+    setErrorMessage(validateValues(formValues));
+    console.log(!isEmpty(errorMessages));
+
+    if (!isEmpty(errorMessages)) {
+      return;
     }
 
-    return navigate("/shopping-center/checkout/done", {
-      state: {
-        method: "cod",
-        isSucceeded: true,
-      },
-    });
+    // if (paymentMethod === "atm") {
+    //   return navigate("card-detail");
+    // }
+
+    // return navigate("/shopping-center/checkout/done", {
+    //   state: {
+    //     method: "cod",
+    //     isSucceeded: true,
+    //   },
+    // });
   };
 
   const radioChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,12 +111,16 @@ const PaymentDetail = () => {
                   type="text"
                   name="firstName"
                   placeholder="First name"
+                  ref={firstNameInputRef}
+                  errorMessage={errorMessages?.firstName}
                   required
                 />
                 <CustomInput
                   type="text"
                   name="lastName"
                   placeholder="Last name"
+                  errorMessage={errorMessages?.lastName}
+                  ref={lastNameInputRef}
                   required
                 />
               </div>
@@ -88,26 +128,39 @@ const PaymentDetail = () => {
                 type="text"
                 name="address"
                 placeholder="Address and number"
+                errorMessage={errorMessages?.address}
+                ref={addressInputRef}
                 required
               />
               <CustomInput
                 type="text"
                 name="phoneNumber"
                 placeholder="Phone number"
+                errorMessage={errorMessages?.phoneNumber}
+                ref={phoneNumberInputRef}
                 required
               />
-              <Dropdown name="Country" />
+              <Dropdown
+                name="Country"
+                selectedItem={selectedCountry}
+                setSelectedItem={setSelectedCountry}
+                errorMessage={errorMessages?.country}
+              />
               <div className="row-2 flex">
                 <CustomInput
                   type="text"
                   name="city"
                   placeholder="City"
+                  errorMessage={errorMessages?.city}
+                  ref={cityInputRef}
                   required
                 />
                 <CustomInput
                   type="text"
                   name="postalCode"
                   placeholder="Postal code"
+                  errorMessage={errorMessages?.postalCode}
+                  ref={postalCodeInputRef}
                   required
                 />
               </div>
@@ -115,6 +168,7 @@ const PaymentDetail = () => {
                 type="text"
                 name="shippingNote"
                 placeholder="Shipping note (optional)"
+                ref={shippingNoteInputRef}
               />
               <div className="checkbox-wrapper">
                 <Checkbox

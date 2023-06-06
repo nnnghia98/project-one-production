@@ -8,16 +8,16 @@ const CustomInput = (
   props: ICustomInputProps,
   ref: React.ForwardedRef<HTMLInputElement>
 ) => {
+  const { errorMessage, ...rest } = props;
+
   return (
     <div className="custom-input">
       <input
-        {...props}
-        className={props.errorMessage ? `error` : undefined}
+        {...rest}
+        className={errorMessage ? `error` : undefined}
         ref={ref}
       />
-      {props.errorMessage && (
-        <div className="error-message">{props.errorMessage}</div>
-      )}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
     </div>
   );
 };

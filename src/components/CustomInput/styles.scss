@@ -33,11 +33,18 @@
   input.error {
     border-color: $softRed;
     color: $softRed;
+
+    &::placeholder {
+      @include para-2;
+
+      color: $softRed;
+    }
   }
 
   .error-message {
     @include para-3;
 
+    margin: 2px 0 0 16px;
     color: $softRed;
   }
 }

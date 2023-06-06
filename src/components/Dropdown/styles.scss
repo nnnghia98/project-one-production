@@ -3,12 +3,13 @@
 @import "../../assets/styles/typography";
 
 .dropdown {
-  border: 1px solid $bazzar;
-  border-radius: 8px;
-  background-color: $white;
   position: relative;
 
   .dropdown-header {
+    border: 1px solid $bazzar;
+    border-radius: 8px;
+    background-color: $white;
+
     @include para-2;
 
     .selected {
@@ -36,6 +37,9 @@
       0px 20px 20px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
     display: none;
+    list-style: none;
+    max-height: 300px;
+    overflow-y: scroll;
   }
 
   .dropdown-body.open {
@@ -59,5 +63,23 @@
 
   .svg-wrapper.open {
     transform: rotate(180deg);
+  }
+
+  .error {
+    border-color: $softRed;
+    color: $softRed;
+
+    &::placeholder {
+      @include para-2;
+
+      color: $softRed;
+    }
+  }
+
+  .error-message {
+    @include para-3;
+
+    margin: 2px 0 0 16px;
+    color: $softRed;
   }
 }
