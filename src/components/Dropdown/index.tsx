@@ -1,19 +1,15 @@
 import { useState, useRef } from "react";
 
-import { IDropdownProps } from "interfaces";
+import { IDropdownProps, ICountry } from "interfaces";
+import { getStorageItem } from "utils";
 
 import chevronDownSvg from "assets/svg/chevronDown.svg";
 import "./styles.scss";
 
-const DUMMY_DATA = [
-  { id: 0, label: "Istanbul, TR (AHL)" },
-  { id: 1, label: "Paris, FR (CDG)" },
-];
-
-const Dropdown = ({ name, data = DUMMY_DATA }: IDropdownProps) => {
+const Dropdown = ({ name, data }: IDropdownProps) => {
   const [isOpen, setOpen] = useState(false);
-  // const [items, setItem] = useState(data);
-  const [selectedItem, setSelectedItem] = useState<number | null>(null);
+  const [selectedItem, setSelectedItem] = useState<string>("");
+  const dropdownData: Array<ICountry> = data ?? getStorageItem("countries");
 
   const selectOptionRef = useRef<HTMLDivElement | null>(null);
 
@@ -24,21 +20,22 @@ const Dropdown = ({ name, data = DUMMY_DATA }: IDropdownProps) => {
   ) => {
     const { id } = event.target as HTMLInputElement;
 
-    if (selectedItem === Number(id)) {
+    if (selectedItem === id) {
       return;
     }
 
-    setSelectedItem(Number(id));
+    setSelectedItem(id);
     setOpen(false);
   };
 
-  const getSelectedCountry = () => data.find((d) => d.id === selectedItem);
+  const getSelectedCountry = () =>
+    dropdownData?.find((d) => d.iso3 === selectedItem);
 
   return (
     <div className="dropdown">
       <div className="dropdown-header flex" onClick={toggleDropdown}>
         {selectedItem ? (
-          <div className="selected">{getSelectedCountry().label}</div>
+          <div className="selected">{getSelectedCountry()?.country}</div>
         ) : (
           name
         )}
@@ -47,15 +44,15 @@ const Dropdown = ({ name, data = DUMMY_DATA }: IDropdownProps) => {
         </div>
       </div>
       <div className={`dropdown-body ${isOpen && "open"}`}>
-        {data.map((item) => (
+        {dropdownData.map((item: ICountry) => (
           <div
-            key={item.id}
+            key={item.iso3}
             className="dropdown-item"
             ref={selectOptionRef}
             onClick={handleItemClick}
-            id={item.id}
+            id={item.iso3}
           >
-            {item.label}
+            {item.country}
           </div>
         ))}
       </div>

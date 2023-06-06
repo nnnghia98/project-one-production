@@ -2,15 +2,13 @@ import { ICheckboxProps } from "interfaces/components";
 
 import "./styles.scss";
 
-const Checkbox = ({
-  htmlName,
-  title,
-  onChange,
-  checked = false,
-}: ICheckboxProps) => {
+const Checkbox = (props: ICheckboxProps) => {
+  const { htmlName, title, onChange, checked = false } = props;
+
   return (
     <div className="checkbox flex">
       <input
+        {...props}
         type="checkbox"
         id={`custom-checkbox-${htmlName}`}
         name={htmlName}

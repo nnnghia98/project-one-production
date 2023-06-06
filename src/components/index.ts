@@ -2,7 +2,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import Button from "./Button";
-import ProductItem from "./ProductItem";
 import Checkbox from "./Checkbox";
 import RadioButton from "./RadioButton";
 import Loading from "./Loading";
@@ -20,6 +19,7 @@ import Hobbies from "./Portfolio/Hobbies";
 // Shopping Center
 import ShoppingCenterWelcomeBanner from "./ShoppingCenter/WelcomeBanner";
 import Products from "./ShoppingCenter/Products";
+import ProductItem from "./ProductItem";
 import ProductHighlight from "./ShoppingCenter/ProductHighlight";
 import Popular from "./ShoppingCenter/Popular";
 

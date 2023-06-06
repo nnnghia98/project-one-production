@@ -1,4 +1,8 @@
-export interface IButtonProps extends React.HTMLProps<HTMLButtonElement> {
+export interface IButtonProps
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   name: string;
   outerClassName?: string;
   url?: string;
@@ -12,7 +16,11 @@ export interface ICheckboxProps {
   checked: boolean;
 }
 
-export interface IRadioProps extends React.HTMLProps<HTMLButtonElement> {
+export interface IRadioProps
+  extends React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
   changed: (event: React.ChangeEvent<HTMLInputElement>) => void;
   id: string;
   isSelected: boolean;

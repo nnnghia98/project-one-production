@@ -35265,20 +35265,6 @@
       "cities": []
     },
     {
-      "iso2": "JO",
-      "iso3": "JOR",
-      "country": "Jordan",
-      "cities": [
-        "Amman",
-        "Ar Ramtha",
-        "Farah",
-        "Irbid",
-        "Madaba",
-        "Sahab",
-        "Salt"
-      ]
-    },
-    {
       "iso2": "HN",
       "iso3": "HND",
       "country": "Honduras",
@@ -45847,12 +45833,6 @@
         "Quelimane",
         "Tete"
       ]
-    },
-    {
-      "iso2": "MM",
-      "iso3": "MMR",
-      "country": "Myanmar",
-      "cities": ["Hlaing", "Inya", "Kyauktada", "Mandalay", "Wagan", "Yangon"]
     },
     {
       "iso2": "NA",
