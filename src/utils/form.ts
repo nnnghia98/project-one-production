@@ -16,8 +16,6 @@ export const validateValues = (values: IPaymentDetailFormValues) => {
         }
         break;
       case "phoneNumber":
-        console.log(PHONE_NUMBER_REGEXP.test(value[1]));
-
         if (!PHONE_NUMBER_REGEXP.test(value[1])) {
           errorMessages[value[0]] = "Phone number is not valid!";
         }

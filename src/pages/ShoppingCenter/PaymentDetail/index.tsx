@@ -55,22 +55,19 @@ const PaymentDetail = () => {
     };
 
     setErrorMessage(validateValues(formValues));
-    // console.log(!isEmpty(errorMessages));
 
-    if (!isEmpty(errorMessages)) {
-      return;
+    if (isEmpty(errorMessages)) {
+      if (paymentMethod === "atm") {
+        return navigate("card-detail");
+      }
+
+      return navigate("/shopping-center/checkout/done", {
+        state: {
+          method: "cod",
+          isSucceeded: true,
+        },
+      });
     }
-
-    // if (paymentMethod === "atm") {
-    //   return navigate("card-detail");
-    // }
-
-    // return navigate("/shopping-center/checkout/done", {
-    //   state: {
-    //     method: "cod",
-    //     isSucceeded: true,
-    //   },
-    // });
   };
 
   const radioChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {

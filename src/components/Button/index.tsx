@@ -3,7 +3,7 @@ import { IButtonProps } from "interfaces/components";
 import "./styles.scss";
 
 const Button = (props: IButtonProps) => {
-  const { name, url, outerClassName, onClick = () => {} } = props;
+  const { name, url, outerClassName, onClick = () => {}, ...rest } = props;
 
   const openInNewTab = () => {
     window.open(url, "_blank", "noreferrer");
@@ -11,7 +11,7 @@ const Button = (props: IButtonProps) => {
 
   return (
     <button
-      {...props}
+      {...rest}
       className={`my-button flex ${outerClassName}`}
       onClick={url ? openInNewTab : onClick}
     >
