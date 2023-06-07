@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 export const EMAIL_REGEXP = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-// eslint-disable-next-line
 export const PHONE_NUMBER_REGEXP =
+  // eslint-disable-next-line
   /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
