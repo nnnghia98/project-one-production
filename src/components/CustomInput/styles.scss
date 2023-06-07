@@ -28,6 +28,10 @@
     &:hover {
       border-color: $deepTaupe;
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 
   input.error {
