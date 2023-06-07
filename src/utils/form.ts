@@ -2,10 +2,7 @@ import { IPaymentDetailFormValues, IPaymentDetailFormError } from "interfaces";
 import { PHONE_NUMBER_REGEXP } from "constant";
 
 export const validateValues = (values: IPaymentDetailFormValues) => {
-  console.log(values);
-
   const errorMessages: IPaymentDetailFormError = {};
-  console.log(values);
 
   Object.entries(values).forEach((value) => {
     switch (value[0]) {
@@ -19,7 +16,9 @@ export const validateValues = (values: IPaymentDetailFormValues) => {
         }
         break;
       case "phoneNumber":
-        if (PHONE_NUMBER_REGEXP.test(value[1])) {
+        console.log(PHONE_NUMBER_REGEXP.test(value[1]));
+
+        if (!PHONE_NUMBER_REGEXP.test(value[1])) {
           errorMessages[value[0]] = "Phone number is not valid!";
         }
 

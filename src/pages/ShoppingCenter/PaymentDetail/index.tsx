@@ -55,7 +55,7 @@ const PaymentDetail = () => {
     };
 
     setErrorMessage(validateValues(formValues));
-    console.log(!isEmpty(errorMessages));
+    // console.log(!isEmpty(errorMessages));
 
     if (!isEmpty(errorMessages)) {
       return;
@@ -98,10 +98,9 @@ const PaymentDetail = () => {
   }, []);
 
   return (
-    <div className="payment-detail flex">
-      {isLoading ? (
-        <Loading />
-      ) : (
+    <>
+      {isLoading && <Loading />}
+      <div className="payment-detail flex">
         <form className="content flex" onSubmit={handleSubmit}>
           <div className="shipping-address">
             <div className="title">Shipping address</div>
@@ -207,8 +206,8 @@ const PaymentDetail = () => {
             </div>
           </div>
         </form>
-      )}
-    </div>
+      </div>
+    </>
   );
 };
 

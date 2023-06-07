@@ -35,20 +35,17 @@ const ShoppingCenter = () => {
   }, []);
 
   return (
-    <div className="shopping-center">
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <ShoppingCenterWelcomeBanner />
-          <div className="flex column">
-            <Products products={products} />
-            <ProductHighlight />
-            <Popular products={products} />
-          </div>
-        </>
-      )}
-    </div>
+    <>
+      {isLoading && <Loading />}
+      <div className="shopping-center">
+        <ShoppingCenterWelcomeBanner />
+        <div className="flex column">
+          <Products products={products} />
+          <ProductHighlight />
+          <Popular products={products} />
+        </div>
+      </div>
+    </>
   );
 };
 
