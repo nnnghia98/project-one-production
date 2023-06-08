@@ -1,0 +1,60 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/breakpoint";
+@import "../../assets/styles/typography";
+
+.demonstration {
+  max-width: $fullWidth;
+  color: $roseEbony;
+  height: 100vh;
+
+  @include desktop-child {
+    padding: 96px 0;
+  }
+
+  @include tablet-child {
+    padding: 96px 0;
+  }
+
+  @include mobile-child {
+    padding: 64px 0;
+  }
+
+  .content {
+    width: $fullWidth;
+    margin: 0 auto;
+    gap: 16px;
+
+    @include desktop-child {
+      max-width: 1260px;
+    }
+
+    @include tablet-child {
+      max-width: 745px;
+    }
+
+    @include mobile-child {
+      max-width: 346px;
+    }
+
+    .heading-5,
+    .heading-6 {
+      margin: 0;
+    }
+
+    .heading-5 {
+      @include heading-5;
+    }
+
+    .heading-6 {
+      @include heading-6;
+    }
+
+    .radio-wrapper {
+      gap: 20px;
+    }
+
+    .button-wrapper {
+      max-width: 150px;
+    }
+  }
+}

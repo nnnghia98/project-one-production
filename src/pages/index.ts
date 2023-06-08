@@ -1,3 +1,4 @@
+//Portfolio
 import Portfolio from "./Portfolio";
 
 // Shopping Center
@@ -10,6 +11,8 @@ import PaymentDetail from "./ShoppingCenter/PaymentDetail";
 import CardDetail from "./ShoppingCenter/CardDetail";
 import Done from "./ShoppingCenter/Done";
 
+// common
+import Demonstration from "./Demonstration";
 import Layout from "./Layout";
 import ErrorPage from "./Error";
 
@@ -25,4 +28,5 @@ export {
   PaymentDetail,
   CardDetail,
   Done,
+  Demonstration,
 };

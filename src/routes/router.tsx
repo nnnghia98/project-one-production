@@ -11,6 +11,7 @@ import {
   PaymentDetail,
   CardDetail,
   Done,
+  Demonstration,
 } from "pages";
 
 export const router = createBrowserRouter([
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "shopping-center/product/:id",
         element: <ProductDetail />,
+      },
+      {
+        path: "/demonstration",
+        element: <Demonstration />,
       },
     ],
   },
