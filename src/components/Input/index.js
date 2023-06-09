@@ -7,6 +7,7 @@ template.innerHTML = `
   }
   .invalid-field {
     border: 1px solid #db524e;
+    transition: 0.1s linear;
 
     &::placeholder {
       font-family: "Avenir Next LT Pro";
@@ -43,6 +44,7 @@ template.innerHTML = `
     border: 1px solid #9e7676;
     border-radius: 8px;
     text-indent: 16px;
+    transition: 0.1s linear;
 
     &::placeholder {
       font-family: "Avenir Next LT Pro";
@@ -89,20 +91,26 @@ template.innerHTML = `
   <span class="error-message hidden"></span>
 </div>`;
 
-export class FormField extends HTMLElement {
+export class XInputField extends HTMLElement {
   constructor() {
     super();
 
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.$label = this.shadowRoot.querySelector("label");
     this.$input = this.shadowRoot.querySelector("input");
     this.$error = this.shadowRoot.querySelector(".error-message");
   }
 
   static get observedAttributes() {
-    return ["value", "type", "placeholder", "error-message", "invalid"];
+    return [
+      "value",
+      "type",
+      "placeholder",
+      "onchange",
+      "error-message",
+      "invalid",
+    ];
   }
 
   connectedCallback() {
@@ -121,14 +129,14 @@ export class FormField extends HTMLElement {
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
-      case "label":
-        this.$label.innerText = `${newValue}:`;
-        break;
       case "type":
         this.$input.type = newValue;
         break;
       case "placeholder":
         this.$input.placeholder = newValue;
+        break;
+      case "onchange":
+        // this.$input.addEventListener("change", (newValue));
         break;
       case "error-message":
         this.$error.innerText = newValue;
@@ -172,4 +180,4 @@ export class FormField extends HTMLElement {
   }
 }
 
-window.customElements.define("x-input", FormField);
+window.customElements.define("x-input", XInputField);

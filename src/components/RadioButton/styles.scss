@@ -18,6 +18,7 @@
     margin: 0;
     margin-right: 7px;
     cursor: pointer;
+    transition: 0.1s linear;
 
     &:hover {
       border-color: $roseEbony;

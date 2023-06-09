@@ -58,7 +58,7 @@ const Demonstration = () => {
     <div className="demonstration">
       <div className="content flex column">
         <h5 className="heading-5">All inputs are required</h5>
-        <div className="input-group">
+        <div className="input-wrapper">
           <x-input
             type="text"
             placeholder="Type string"
@@ -68,9 +68,9 @@ const Demonstration = () => {
           ></x-input>
         </div>
         <div className="dropdown-wrapper">
-          <x-dropdown></x-dropdown>
+          <x-dropdown title="Choose an option"></x-dropdown>
         </div>
-        <h6 className="heading-6">Select the way result are shown</h6>
+        <h6 className="heading-6">Select the way result shown</h6>
         <div className="radio-wrapper flex">
           <RadioButton
             changed={handleSelect}

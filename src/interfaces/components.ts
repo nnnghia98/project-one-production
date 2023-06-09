@@ -38,6 +38,7 @@ export interface IXInputFieldProps
   placeholder?: string;
   type?: string;
   required?: boolean;
+  onchange?: string;
 }
 
 export interface ICustomInputProps

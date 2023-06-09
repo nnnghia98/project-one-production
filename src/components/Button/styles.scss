@@ -20,4 +20,13 @@
   justify-content: center;
   flex: 1;
   cursor: pointer;
+  transition: 0.1s linear;
+
+  &:hover {
+    background-color: $deepTaupe;
+  }
+
+  &:active {
+    background-color: $roseEbony;
+  }
 }
