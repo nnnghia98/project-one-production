@@ -30,7 +30,7 @@ template.innerHTML = `
     }
   }
   .input-wrapper {
-    display: table;
+    width: 100%:
   }
   input {
     width: 100%;
@@ -85,7 +85,7 @@ template.innerHTML = `
   }
 </style>
 
-<div class="input-wrapper">
+<div class='input-wrapper'>
   <input />
   <slot></slot>
   <span class="error-message hidden"></span>

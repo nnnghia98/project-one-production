@@ -25,6 +25,31 @@ template.innerHTML = `
       justify-content: space-between;
       align-items: center;
     }
+
+    .dropdown-body {
+      width: 100%;
+      position: absolute;
+      margin-top: 4px;
+      padding: 8px 1px;
+      background: #ffffff;
+      border: 1px solid #9e7676;
+      box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12),
+        0px 20px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      display: none;
+      list-style: none;
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+
+    .dropdown-item {
+      font-family: "Avenir Next LT Pro";
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
   </style>
 
   <div class="dropdown">
@@ -32,7 +57,7 @@ template.innerHTML = `
       class='dropdown-header'
     ></div>
     <ul class='dropdown-body'>
-      <li>Item</li>
+      <li class='dropdown-item'>Item</li>
     </ul>
     <slot></slot>
   </div>
@@ -84,7 +109,7 @@ export class XDropdown extends HTMLElement {
 
   toggle() {
     this.show = !this.show;
-    this.$body.style.display = this.show ? "display" : "none";
+    this.$body.style.display = this.show ? "block" : "none";
   }
 }
 

@@ -58,7 +58,7 @@ const Demonstration = () => {
     <div className="demonstration">
       <div className="content flex column">
         <h5 className="heading-5">All inputs are required</h5>
-        <div className="input-wrapper">
+        <div className="xinput-wrapper">
           <x-input
             type="text"
             placeholder="Type string"
