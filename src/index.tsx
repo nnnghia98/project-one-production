@@ -2,19 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
-import { IDbFormFieldProps } from "./interfaces";
+import { IXInputFieldProps, IXDropdownFieldProps } from "./interfaces";
 
 import reportWebVitals from "./reportWebVitals";
 import { router } from "routes";
 
-import "components/Input/index";
+import "components/Input";
+import "components/XDropdown";
 
 import "./index.scss";
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "x-input": IDbFormFieldProps;
+      "x-input": IXInputFieldProps;
+      "x-dropdown": IXDropdownFieldProps;
     }
   }
 }

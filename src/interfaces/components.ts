@@ -30,14 +30,14 @@ export interface IRadioProps
   value: string;
 }
 
-export interface IDbFormFieldProps
+export interface IXInputFieldProps
   extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLElement>,
-    HTMLElement
+    React.HTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
   > {
-  label: string;
-  type: string;
-  errorMessage?: string;
+  placeholder?: string;
+  type?: string;
+  required?: boolean;
 }
 
 export interface ICustomInputProps
@@ -53,4 +53,12 @@ export interface IDropdownProps {
   errorMessage?: string;
   selectedItem?: ICountry;
   setSelectedItem: React.Dispatch<React.SetStateAction<ICountry | undefined>>;
+}
+
+export interface IXDropdownFieldProps
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
+  title?: string;
 }

@@ -6,23 +6,72 @@ template.innerHTML = `
     display: block;
   }
   .invalid-field {
-    border: 1px solid red;
+    border: 1px solid #db524e;
+
+    &::placeholder {
+      font-family: "Avenir Next LT Pro";
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #db524e;
+    }
+
+    &:focus {
+      outline-color: #db524e;
+
+      &::placeholder {
+        font-family: "Avenir Next LT Pro";
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #adb5bd;
+      }
+    }
   }
-  .invalid-field:focus {
-    outline-color: red;
-  }
-  .form-field {
+  .input-wrapper {
     display: table;
   }
-  label,
   input {
+    width: 100%;
+    height: 56px;
+    font-family: "Avenir Next LT Pro";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
     display: table-cell;
+    color: #594545;
+    border: 1px solid #9e7676;
+    border-radius: 8px;
+    text-indent: 16px;
+
+    &::placeholder {
+      font-family: "Avenir Next LT Pro";
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #adb5bd;
+    }
+
+    &:active {
+      border-color: #594545;
+    }
+
+    &:hover {
+      border-color: #815b5b;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
-  label {
-    padding-right: 10px;
-  }
-  .error {
+  .error-message {
     display: block;
+    font-family: "Avenir Next LT Pro";
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 2px 0 0 20px;
+    color: #db524e;
   }
   .hidden {
     display: none;
@@ -34,11 +83,10 @@ template.innerHTML = `
   }
 </style>
 
-<div class="form-field">
-  <label>AAAAA</label>
+<div class="input-wrapper">
   <input />
   <slot></slot>
-  <span class="error hidden"></span>
+  <span class="error-message hidden"></span>
 </div>`;
 
 export class FormField extends HTMLElement {
@@ -50,11 +98,11 @@ export class FormField extends HTMLElement {
 
     this.$label = this.shadowRoot.querySelector("label");
     this.$input = this.shadowRoot.querySelector("input");
-    this.$error = this.shadowRoot.querySelector(".error");
+    this.$error = this.shadowRoot.querySelector(".error-message");
   }
 
   static get observedAttributes() {
-    return ["value", "label", "type", "error-message", "invalid"];
+    return ["value", "type", "placeholder", "error-message", "invalid"];
   }
 
   connectedCallback() {
@@ -62,7 +110,7 @@ export class FormField extends HTMLElement {
       this.$input.addEventListener("blur", (event) => {
         if (!event.target.value && this.hasAttribute("required")) {
           this.invalid = true;
-          this.$error.innerText = "This field is required.";
+          this.$error.innerText = "This field is required!";
         } else {
           this.invalid = false;
           this.value = event.target.value;
@@ -78,6 +126,9 @@ export class FormField extends HTMLElement {
         break;
       case "type":
         this.$input.type = newValue;
+        break;
+      case "placeholder":
+        this.$input.placeholder = newValue;
         break;
       case "error-message":
         this.$error.innerText = newValue;
@@ -120,7 +171,5 @@ export class FormField extends HTMLElement {
     }
   }
 }
-
-// export default FormField;
 
 window.customElements.define("x-input", FormField);
