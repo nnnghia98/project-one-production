@@ -98,8 +98,8 @@ export class XInputField extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.$input = this.shadowRoot.querySelector("input");
-    this.$error = this.shadowRoot.querySelector(".error-message");
+    this._input = this.shadowRoot.querySelector("input");
+    this._error = this.shadowRoot.querySelector(".error-message");
   }
 
   static get observedAttributes() {
@@ -108,17 +108,17 @@ export class XInputField extends HTMLElement {
       "type",
       "placeholder",
       "onchange",
-      "error-message",
+      "errormessage",
       "invalid",
     ];
   }
 
   connectedCallback() {
-    if (this.$input.isConnected) {
-      this.$input.addEventListener("blur", (event) => {
+    if (this._input.isConnected) {
+      this._input.addEventListener("blur", (event) => {
         if (!event.target.value && this.hasAttribute("required")) {
           this.invalid = true;
-          this.$error.innerText = "This field is required!";
+          this._error.innerText = "This field is required!";
         } else {
           this.invalid = false;
           this.value = event.target.value;
@@ -130,19 +130,20 @@ export class XInputField extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case "type":
-        this.$input.type = newValue;
+        this._input.type = newValue;
         break;
       case "placeholder":
-        this.$input.placeholder = newValue;
+        this._input.placeholder = newValue;
         break;
       case "onchange":
-        // this.$input.addEventListener("change", (newValue));
+        // this._input.addEventListener("change", (newValue));
         break;
-      case "error-message":
-        this.$error.innerText = newValue;
+      case "errormessage":
+        this._error.innerText = newValue;
         break;
       case "invalid":
         this._handleInvalidState(newValue);
+        this._error.innerText = newValue;
         break;
       default:
         break;
@@ -155,7 +156,7 @@ export class XInputField extends HTMLElement {
 
   set invalid(value) {
     if (!!value) {
-      this.setAttribute("invalid", "");
+      this.setAttribute("invalid", value);
     } else {
       this.removeAttribute("invalid");
     }
@@ -171,11 +172,11 @@ export class XInputField extends HTMLElement {
 
   _handleInvalidState(value) {
     if (value !== null) {
-      this.$error.classList.remove("hidden");
-      this.$input.classList.add("invalid-field");
+      this._error.classList.remove("hidden");
+      this._input.classList.add("invalid-field");
     } else {
-      this.$error.classList.add("hidden");
-      this.$input.classList.remove("invalid-field");
+      this._error.classList.add("hidden");
+      this._input.classList.remove("invalid-field");
     }
   }
 }

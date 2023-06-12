@@ -39,6 +39,8 @@ export interface IXInputFieldProps
   type?: string;
   required?: boolean;
   onchange?: string;
+  invalid?: string;
+  errormessage?: string;
 }
 
 export interface ICustomInputProps
@@ -62,4 +64,11 @@ export interface IXDropdownFieldProps
     HTMLDivElement
   > {
   title?: string;
+  data?: string;
+}
+
+export interface IRangeSliderProps {
+  step: number;
+  min?: number;
+  max?: number;
 }

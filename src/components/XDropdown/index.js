@@ -57,7 +57,6 @@ template.innerHTML = `
       class='dropdown-header'
     ></div>
     <ul class='dropdown-body'>
-      <li class='dropdown-item'>Item</li>
     </ul>
     <slot></slot>
   </div>
@@ -68,30 +67,50 @@ export class XDropdown extends HTMLElement {
     super();
 
     this._title = "Dropdown";
+    this._selected = {};
     this.show = false;
 
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this.$header = this.shadowRoot.querySelector(".dropdown-header");
+    this._header = this.shadowRoot.querySelector(".dropdown-header");
+    this._header.innerText = this.title;
 
-    this.$body = this.shadowRoot.querySelector("ul.dropdown-body");
-    this.$body.style.display = "none";
+    this._body = this.shadowRoot.querySelector("ul.dropdown-body");
+    this._body.style.display = "none";
   }
 
   static get observedAttributes() {
-    return ["title"];
+    return ["title", "dataset", "data", "selected"];
   }
 
   connectedCallback() {
-    if (this.$header.isConnected) {
-      this.$header = this.addEventListener("click", () => this.toggle());
+    if (this._header.isConnected) {
+      if (this.data) {
+        const dropdownData = JSON.parse(this.data);
+
+        dropdownData.forEach((item) => {
+          const li = document.createElement("li");
+
+          li.className = "dropdown-item";
+          li.innerText = item.name;
+          li.addEventListener("click", () => this._select(item));
+
+          this._body.appendChild(li);
+        });
+      }
+
+      console.log(this._selected);
+      this._header = this.addEventListener("click", () => this.toggle());
     }
   }
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case "title":
-        this.$header.innerText = newValue;
+        this._header.innerText = newValue;
+        break;
+      case "data":
+        this._header.dataset.dropdown = newValue;
         break;
       default:
         break;
@@ -99,17 +118,32 @@ export class XDropdown extends HTMLElement {
   }
 
   get title() {
-    return this.$header;
+    return this._header;
   }
 
   set title(newValue) {
-    this.$header = newValue;
-    this.$header.innerHTML = this.$header;
+    this._header = newValue;
+    this._header.innerText = this._header;
+  }
+
+  get data() {
+    return this._header.dataset.dropdown;
+  }
+
+  set data(newValue) {
+    this.data = newValue;
+    this._header.dataset.dropdown = this.data;
   }
 
   toggle() {
     this.show = !this.show;
-    this.$body.style.display = this.show ? "block" : "none";
+    this._body.style.display = this.show ? "block" : "none";
+    this.dispatchEvent(new CustomEvent("showChange", { detail: this.show }));
+  }
+
+  _select(item) {
+    this._selected = item;
+    // this._header.innerText = this._selected.name;
   }
 }
 
