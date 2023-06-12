@@ -45,14 +45,23 @@
 
       @include tablet-child {
         gap: 36px;
+        align-items: center;
       }
 
-      @include tablet-child {
+      @include mobile-child {
         align-items: center;
       }
 
       .title {
         @include heading-4;
+
+        @include tablet-child {
+          text-align: center;
+        }
+
+        @include mobile-child {
+          text-align: center;
+        }
       }
 
       .quote,

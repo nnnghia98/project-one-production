@@ -1,6 +1,3 @@
-// $mobile-breakpoint: 480px;
-// $tablet-breakpoint: 980px;
-
 $mobile-breakpoint: 630px;
 $tablet-breakpoint: 1050px;
 
@@ -13,6 +10,7 @@ $mobileMaxWidth: 360px;
   @media (min-width: #{$tablet-breakpoint + 1px}) {
     max-width: $desktopMaxWidth;
     width: $fullWidth;
+
     @content;
   }
 }
@@ -21,6 +19,7 @@ $mobileMaxWidth: 360px;
   @media ((min-width: #{$mobile-breakpoint + 1px}) and (max-width: #{$tablet-breakpoint})) {
     max-width: $tabletMaxWidth;
     width: $fullWidth;
+
     @content;
   }
 }
@@ -29,6 +28,7 @@ $mobileMaxWidth: 360px;
   @media ((max-width: #{$mobile-breakpoint})) {
     max-width: $mobileMaxWidth;
     width: $fullWidth;
+
     @content;
   }
 }

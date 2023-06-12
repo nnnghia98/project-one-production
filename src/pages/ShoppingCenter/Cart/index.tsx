@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "components";
-import { ICartItemProps, IProductItemProps } from "interfaces";
+import { ICartItemProps } from "interfaces";
 import { getStorageItem, setStorageItem, useWindowDimensions } from "utils";
 import { AppContext } from "context";
 

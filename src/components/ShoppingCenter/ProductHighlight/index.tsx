@@ -10,7 +10,7 @@ import productHighlight from "assets/img/product-highlight.png";
 import "./styles.scss";
 
 const ProductHighlight = () => {
-  const { isMobile } = useWindowDimensions();
+  const { isTablet } = useWindowDimensions();
 
   return (
     <div className="product-highlight">
@@ -18,7 +18,7 @@ const ProductHighlight = () => {
         <div className="left flex column">
           <div className="title">Clean and fragrant soy wax</div>
           <div className="quote">Made for your home and for your wellness</div>
-          {isMobile && (
+          {isTablet && (
             <div className="img-wrapper">
               <img src={productHighlight} alt="productHighlight" />
             </div>
@@ -33,7 +33,7 @@ const ProductHighlight = () => {
             <Button name="View product" onClick={() => {}} />
           </div>
         </div>
-        {!isMobile && (
+        {!isTablet && (
           <div className="right flex">
             <img src={productHighlight} alt="productHighlight" />
           </div>

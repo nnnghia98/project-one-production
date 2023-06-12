@@ -4,15 +4,18 @@ interface IWindowDimensions {
   width?: number;
   height?: number;
   isMobile: boolean;
+  isTablet: boolean;
 }
 
-const WIDTH_BREAKPOINT = 630;
+const MOBILE_BREAKPOINT = 630;
+const TABLET_BREAKPOINT = 1050;
 
 export const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState<IWindowDimensions>({
     width: undefined,
     height: undefined,
     isMobile: false,
+    isTablet: false,
   });
 
   useEffect(() => {
@@ -20,7 +23,8 @@ export const useWindowDimensions = () => {
       setWindowDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
-        isMobile: window.innerWidth < WIDTH_BREAKPOINT,
+        isMobile: window.innerWidth < MOBILE_BREAKPOINT,
+        isTablet: window.innerWidth < TABLET_BREAKPOINT,
       });
     };
 
