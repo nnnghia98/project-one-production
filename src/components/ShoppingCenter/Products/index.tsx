@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Button, ProductItem } from "components";
 import { IProductsProps, IProductItemProps } from "interfaces";
 
-import productThumbnail from "assets/img/product-thumbnail.png";
-
 import "./styles.scss";
 
 const Products = ({ products }: IProductsProps) => {
@@ -25,7 +23,6 @@ const Products = ({ products }: IProductsProps) => {
               <div key={product.id} className="item">
                 <ProductItem
                   id={product.id}
-                  thumbnail={productThumbnail}
                   name={product.name}
                   cost={product.cost}
                   isPopular={product.isPopular}

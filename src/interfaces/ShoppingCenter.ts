@@ -2,7 +2,6 @@ import { ICountry } from "./api";
 
 export interface IProductItemProps {
   id: string;
-  thumbnail?: string;
   name: string;
   cost: string;
   quantity?: number;
@@ -18,11 +17,11 @@ export interface IBenefitItemProps {
 }
 
 export interface ICartItemProps {
-  id: number;
-  imgSrc: string;
+  id: string;
   name: string;
   cost: number;
-  quantity: number;
+  quantity?: number;
+  isPopular?: boolean;
 }
 
 export interface IPaymentDetailFormValues {

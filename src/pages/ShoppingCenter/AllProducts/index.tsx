@@ -48,7 +48,6 @@ const AllProducts = () => {
               <div key={product.id} className="item">
                 <ProductItem
                   id={product.id}
-                  thumbnail={productThumbnail}
                   name={product.name}
                   cost={product.cost}
                   isPopular={product.isPopular}

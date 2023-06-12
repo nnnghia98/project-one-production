@@ -1,23 +1,31 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "components";
 import { ICartItemProps, IProductItemProps } from "interfaces";
 import { getStorageItem, setStorageItem, useWindowDimensions } from "utils";
+import { AppContext } from "context";
 
 import productThumbnail from "assets/img/product-thumbnail.png";
 
 import "./styles.scss";
 
 const getSubTotal = (cart: Array<ICartItemProps>) =>
-  cart.reduce((total, item) => Number(item.cost) * item.quantity + total, 0);
+  cart.reduce(
+    (total, item) => Number(item.cost) * (item.quantity || 1) + total,
+    0
+  );
 
 const Cart = () => {
-  const [cart, setCart] = useState(getStorageItem("cart") || []);
   const { isMobile } = useWindowDimensions();
   const navigate = useNavigate();
+  const { globalState, setGlobalState } = useContext(AppContext);
 
   const handleNavigate = () => {
+    if (!globalState.inCart.length) {
+      return alert("No item in cart!");
+    }
+
     if (getStorageItem("isSignedIn")) {
       return navigate("/shopping-center/checkout");
     }
@@ -26,10 +34,12 @@ const Cart = () => {
   };
 
   const handleRemoveItem = (id: string) => {
-    const newCart = cart.filter((itm: IProductItemProps) => itm.id !== id);
+    const newCart = globalState.inCart
+      ? globalState.inCart.filter((itm: ICartItemProps) => itm.id !== id)
+      : [];
 
     setStorageItem("cart", newCart);
-    setCart(newCart);
+    if (setGlobalState) setGlobalState({ ...globalState, inCart: newCart });
   };
 
   return (
@@ -50,7 +60,7 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            {cart.map((item: ICartItemProps) => (
+            {globalState.inCart.map((item: ICartItemProps) => (
               <tr className="table-item" key={item.id}>
                 <td className="product flex">
                   <div className="img-wrapper">
@@ -73,7 +83,7 @@ const Cart = () => {
                   </>
                 )}
                 <td className="total">
-                  ${Number(item.cost) * item.quantity}
+                  ${Number(item.cost) * (item.quantity || 1)}
                   {isMobile && <td className="quantity">{item.quantity}</td>}
                 </td>
               </tr>
@@ -84,11 +94,11 @@ const Cart = () => {
           <div className="text-wrapper flex column">
             <div className="subtotal flex">
               <div>Sub-total</div>
-              <div>${getSubTotal(cart)}</div>
+              <div>${getSubTotal(globalState.inCart)}</div>
             </div>
             <div className="shipping-fee flex">
               <div>Shipping fee</div>
-              <div>${getSubTotal(cart) === 0 ? `0` : `2.99`}</div>
+              <div>${getSubTotal(globalState.inCart) === 0 ? `0` : `2.99`}</div>
             </div>
           </div>
           <div className="button-wrapper">

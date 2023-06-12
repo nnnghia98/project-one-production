@@ -1,9 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { Button, CustomInput } from "components";
 import { useWindowDimensions, getStorageItem, setStorageItem } from "utils";
-import { IProductItemProps } from "interfaces/ShoppingCenter";
+import { IProductItemProps, ICartItemProps } from "interfaces";
+import { AppContext } from "context";
 
 import productBanner from "assets/img/product-banner.png";
 
@@ -118,12 +119,13 @@ const renderWideView = (
   </div>
 );
 
-const isExistentInCart = (cart: Array<IProductItemProps>, id: string) =>
-  cart.some((item: IProductItemProps) => item.id === id);
+const isExistentInCart = (cart: Array<ICartItemProps>, id: string) =>
+  cart.some((item: ICartItemProps) => item.id === id);
 
 const ProductDetail = () => {
   const { id } = useParams();
   const { isMobile } = useWindowDimensions();
+  const { globalState, setGlobalState } = useContext(AppContext);
 
   const quantityInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -147,12 +149,13 @@ const ProductDetail = () => {
       id: product.id,
       name: product.name,
       cost: product.cost,
+      quantity: product.quantity,
     };
 
-    const cart = getStorageItem("cart") || [];
+    const cart: Array<ICartItemProps> = getStorageItem("cart") || [];
 
     if (isExistentInCart(cart, item.id)) {
-      const newCart = cart.map((itm: IProductItemProps) => {
+      const newCart = cart.map((itm: ICartItemProps) => {
         if (itm.id === id) {
           return {
             ...itm,
@@ -164,13 +167,16 @@ const ProductDetail = () => {
       });
 
       setStorageItem("cart", newCart);
+      if (setGlobalState) setGlobalState({ ...globalState, inCart: newCart });
     } else {
       cart.push({
         ...item,
+        cost: Number(item.cost),
         quantity: quantityInputValue,
       });
 
       setStorageItem("cart", cart);
+      if (setGlobalState) setGlobalState({ ...globalState, inCart: cart });
     }
 
     const newProducts = products.map((product: IProductItemProps) => {

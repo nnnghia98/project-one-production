@@ -115,6 +115,8 @@ export class XInputField extends HTMLElement {
 
   connectedCallback() {
     if (this._input.isConnected) {
+      // this._input.addEventListener('change',())
+
       this._input.addEventListener("blur", (event) => {
         if (!event.target.value && this.hasAttribute("required")) {
           this.invalid = true;

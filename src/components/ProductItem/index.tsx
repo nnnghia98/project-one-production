@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 import { IProductItemProps } from "interfaces/ShoppingCenter";
 
+import productThumbnail from "assets/img/product-thumbnail.png";
+
 import "./styles.scss";
 
-const Item = ({ id, thumbnail, name, cost }: IProductItemProps) => {
+const Item = ({ id, name, cost }: IProductItemProps) => {
   const navigate = useNavigate();
 
   const navigateProductDetail = () =>
@@ -13,7 +15,7 @@ const Item = ({ id, thumbnail, name, cost }: IProductItemProps) => {
   return (
     <div className="product-item" onClick={navigateProductDetail}>
       <div className="img-wrapper">
-        <img src={thumbnail} alt="thumbnail" />
+        <img src={productThumbnail} alt="thumbnail" />
       </div>
       <div className="detail">
         <div className="name">{name}</div>

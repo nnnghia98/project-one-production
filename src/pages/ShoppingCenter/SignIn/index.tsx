@@ -1,15 +1,17 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import isEqual from "lodash/isEqual";
 
 import { Button, CustomInput } from "components";
 import { EMAIL_REGEXP } from "constant";
 import { setStorageItem } from "utils";
+import { AppContext } from "context";
 
 import "./styles.scss";
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const { globalState, setGlobalState } = useContext(AppContext);
 
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
@@ -26,6 +28,8 @@ const SignIn = () => {
     setStorageItem("email", emailInputRef.current?.value);
     setStorageItem("password", passwordInputRef.current?.value);
     setStorageItem("isSignedIn", true);
+
+    if (setGlobalState) setGlobalState({ ...globalState, isSignedIn: true });
 
     alert("Signed in!");
     navigate(-1);

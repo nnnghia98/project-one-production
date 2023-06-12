@@ -1,8 +1,6 @@
 import { ProductItem } from "components";
 import { IProductsProps, IProductItemProps } from "interfaces";
 
-import productThumbnail from "assets/img/product-thumbnail.png";
-
 import "./styles.scss";
 
 const Popular = ({ products }: IProductsProps) => {
@@ -23,7 +21,6 @@ const Popular = ({ products }: IProductsProps) => {
               <div key={product.id} className="item">
                 <ProductItem
                   id={product.id}
-                  thumbnail={productThumbnail}
                   name={product.name}
                   cost={product.cost}
                   isPopular={product.isPopular}
