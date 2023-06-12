@@ -147,6 +147,7 @@ const Demonstration = () => {
   const [sliderValue, setSliderValue] = useState({ min: 0, max: 100 });
 
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const dropdownItemRef = useRef<HTMLDivElement | null>();
 
   const handleCheck = () => {
     setIsChecked(!isChecked);
@@ -214,6 +215,7 @@ const Demonstration = () => {
           <x-dropdown
             title="Choose a cat"
             data={JSON.stringify(DROPDOWN_DATA)}
+            // ref={dropdownItemRef}
             onchange={String(() => {})}
           ></x-dropdown>
         </div>

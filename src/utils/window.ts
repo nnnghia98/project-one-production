@@ -6,7 +6,7 @@ interface IWindowDimensions {
   isMobile: boolean;
 }
 
-const WIDTH_BREAKPOINT = 480;
+const WIDTH_BREAKPOINT = 630;
 
 export const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState<IWindowDimensions>({

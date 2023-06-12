@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 import { Button, CustomInput } from "components";
@@ -12,6 +12,7 @@ import "./styles.scss";
 const renderMobileView = (
   ref: React.MutableRefObject<HTMLInputElement | null>,
   item: IProductItemProps,
+  inStock: number,
   handleAddToCart: () => void
 ) => (
   <div className="mobile">
@@ -20,10 +21,10 @@ const renderMobileView = (
       <img src={productBanner} alt="productBanner" />
     </div>
     <div className="button-group flex">
-      <input ref={ref} type="number" placeholder="Quantity" min={0} />
+      <CustomInput ref={ref} type="number" placeholder="Quantity" min={0} />
       <div className="cost">${item.cost}</div>
     </div>
-    <div className="in-stock">In stock: {item.quantity}</div>
+    <div className="in-stock">In stock: {inStock}</div>
     <Button
       name="Add to cart"
       onClick={handleAddToCart}
@@ -63,6 +64,7 @@ const renderMobileView = (
 const renderWideView = (
   ref: React.MutableRefObject<HTMLInputElement | null>,
   item: IProductItemProps,
+  inStock: number,
   handleAddToCart: () => void
 ) => (
   <div className="wide flex">
@@ -111,7 +113,7 @@ const renderWideView = (
           outerClassName="add-to-cart"
         />
       </div>
-      <div className="in-stock">In stock: {item.quantity}</div>
+      <div className="in-stock">In stock: {inStock}</div>
     </div>
   </div>
 );
@@ -122,30 +124,29 @@ const isExistentInCart = (cart: Array<IProductItemProps>, id: string) =>
 const ProductDetail = () => {
   const { id } = useParams();
   const { isMobile } = useWindowDimensions();
+
   const quantityInputRef = useRef<HTMLInputElement | null>(null);
 
   const products = getStorageItem("products");
-  const product = products.filter(
+  const product = products.find(
     (product: IProductItemProps) => product.id === id
   );
+
+  const [inStock, setInStock] = useState<number>(product.quantity);
 
   const handleAddToCart = () => {
     const quantityInputValue = Number(quantityInputRef.current?.value);
 
-    if (!quantityInputValue) {
+    if (quantityInputValue <= 0 || quantityInputValue > product.quantity) {
       return alert(
-        "Please input valid quantity (must be a non-float positive number)!"
+        "Please input valid number (quantity more than 0 or less than in stock!)"
       );
     }
 
-    if (quantityInputValue > product[0].quantity) {
-      return alert("Please input quantity less than in stock!");
-    }
-
     const item: IProductItemProps = {
-      id: product[0].id,
-      name: product[0].name,
-      cost: product[0].cost,
+      id: product.id,
+      name: product.name,
+      cost: product.cost,
     };
 
     const cart = getStorageItem("cart") || [];
@@ -174,6 +175,8 @@ const ProductDetail = () => {
 
     const newProducts = products.map((product: IProductItemProps) => {
       if (product.id === id) {
+        setInStock(inStock - quantityInputValue);
+
         return {
           ...product,
           quantity: product.quantity
@@ -194,8 +197,13 @@ const ProductDetail = () => {
     <div className="product-detail">
       <div className="content">
         {isMobile
-          ? renderMobileView(quantityInputRef, product[0], handleAddToCart)
-          : renderWideView(quantityInputRef, product[0], handleAddToCart)}
+          ? renderMobileView(
+              quantityInputRef,
+              product,
+              inStock,
+              handleAddToCart
+            )
+          : renderWideView(quantityInputRef, product, inStock, handleAddToCart)}
       </div>
     </div>
   );

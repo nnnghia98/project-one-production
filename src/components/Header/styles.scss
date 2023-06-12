@@ -33,6 +33,12 @@
       margin-top: 13px;
       cursor: pointer;
 
+      @include tablet-child {
+        font-size: 35px;
+        // line-height: 36px;
+        // margin-top: 8px;
+      }
+
       @include mobile-child {
         font-size: 30px;
         line-height: 36px;
