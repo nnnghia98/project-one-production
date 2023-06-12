@@ -243,7 +243,7 @@ const Demonstration = () => {
             changed={handleSelect}
             id="2"
             isSelected={showMethod === "alert"}
-            label="Yes"
+            label="Another yes"
             value="alert"
           />
         </div>

@@ -5,7 +5,7 @@
 .demonstration {
   max-width: $fullWidth;
   color: $roseEbony;
-  height: 100vh;
+  min-height: 100%;
 
   @include desktop-child {
     padding: 96px 0;

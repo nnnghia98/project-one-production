@@ -24,6 +24,13 @@ template.innerHTML = `
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+
+    }
+
+    .selected {
+      font-weight: 600;
+      color: #594545;
     }
 
     .dropdown-body {
@@ -87,16 +94,22 @@ export class XDropdown extends HTMLElement {
   connectedCallback() {
     if (this._header.isConnected) {
       if (this.data) {
-        console.log(this._header.onchange);
-
         const dropdownData = JSON.parse(this.data);
+        const header = this._header;
 
         dropdownData.forEach((item) => {
           const li = document.createElement("li");
 
+          const selectItem = (item) => {
+            return () => {
+              header.innerText = item.name;
+              header.classList.add("selected");
+            };
+          };
+
           li.className = "dropdown-item";
           li.innerText = item.name;
-          li.addEventListener("click", () => this._select(item));
+          li.addEventListener("click", selectItem(item));
 
           this._body.appendChild(li);
         });
@@ -107,7 +120,6 @@ export class XDropdown extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    // console.log(name);
     switch (name) {
       case "title":
         this._header.innerText = newValue;
@@ -128,8 +140,8 @@ export class XDropdown extends HTMLElement {
   }
 
   set title(newValue) {
-    this._header = newValue;
-    this._header.innerText = this._header;
+    this._title = newValue;
+    this._header.innerText = this._title;
   }
 
   get data() {
