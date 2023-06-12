@@ -76,17 +76,19 @@ export class XDropdown extends HTMLElement {
     this._header = this.shadowRoot.querySelector(".dropdown-header");
     this._header.innerText = this.title;
 
-    this._body = this.shadowRoot.querySelector("ul.dropdown-body");
+    this._body = this.shadowRoot.querySelector(".dropdown-body");
     this._body.style.display = "none";
   }
 
   static get observedAttributes() {
-    return ["title", "dataset", "data", "selected"];
+    return ["title", "dataset", "data", "selected", "onchange"];
   }
 
   connectedCallback() {
     if (this._header.isConnected) {
       if (this.data) {
+        console.log(this._header.onchange);
+
         const dropdownData = JSON.parse(this.data);
 
         dropdownData.forEach((item) => {
@@ -100,17 +102,21 @@ export class XDropdown extends HTMLElement {
         });
       }
 
-      console.log(this._selected);
       this._header = this.addEventListener("click", () => this.toggle());
     }
   }
+
   attributeChangedCallback(name, oldValue, newValue) {
+    // console.log(name);
     switch (name) {
       case "title":
         this._header.innerText = newValue;
         break;
       case "data":
         this._header.dataset.dropdown = newValue;
+        break;
+      case "onchange":
+        this._header.onchange = newValue;
         break;
       default:
         break;
@@ -135,10 +141,19 @@ export class XDropdown extends HTMLElement {
     this._header.dataset.dropdown = this.data;
   }
 
+  get onchange() {
+    return this._header.onchange;
+  }
+
+  set onchange(newValue) {
+    this.onchange = newValue;
+    this._header.onchange = this.onchange;
+  }
+
   toggle() {
     this.show = !this.show;
     this._body.style.display = this.show ? "block" : "none";
-    this.dispatchEvent(new CustomEvent("showChange", { detail: this.show }));
+    // this.dispatchEvent(new CustomEvent("showChange", { detail: this.show }));
   }
 
   _select(item) {

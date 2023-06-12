@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-import { Button, Checkbox, RadioButton } from "components";
+import { Button, Checkbox, RadioButton, RangeSlider } from "components";
 import { setStorageItem, getStorageItem } from "utils";
 
 import "./styles.scss";
@@ -143,6 +143,8 @@ const Demonstration = () => {
   const [errorMessages, setErrorMessages] = useState<IDemostrationFormValues>(
     {}
   );
+  // const [dropdownSelect, setDropdownSelect] = useState();
+  const [sliderValue, setSliderValue] = useState({ min: 0, max: 100 });
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -160,12 +162,12 @@ const Demonstration = () => {
     inputValues.saveInformation = isChecked;
     inputValues.showMethod = showMethod;
 
-    // if (!inputRef.current?.value) {
-    //   return setErrorMessages({
-    //     ...errorMessages,
-    //     name: "Your name must be provided!",
-    //   });
-    // }
+    if (!inputRef.current?.value) {
+      return setErrorMessages({
+        ...errorMessages,
+        name: "Your name must be provided!",
+      });
+    }
 
     inputValues.name = inputRef.current?.value;
 
@@ -212,8 +214,22 @@ const Demonstration = () => {
           <x-dropdown
             title="Choose a cat"
             data={JSON.stringify(DROPDOWN_DATA)}
+            onchange={String(() => {})}
           ></x-dropdown>
         </div>
+        <RangeSlider
+          min={0}
+          max={100}
+          step={5}
+          value={sliderValue}
+          onChange={setSliderValue}
+        />
+        <p>
+          The min value is: <span>{sliderValue.min}</span>
+        </p>
+        <p>
+          The max value is: <span>{sliderValue.max}</span>
+        </p>
         <h6 className="heading-6">Would you adopt this cat?</h6>
         <div className="radio-wrapper flex">
           <RadioButton

@@ -8,6 +8,7 @@ import Loading from "./Loading";
 import Pagination from "./Pagination";
 import CustomInput from "./CustomInput";
 import Dropdown from "./Dropdown";
+import RangeSlider from "./RangeSlider";
 
 // Portfolio
 import PortfolioWelcomeBanner from "./Portfolio/WelcomeBanner";
@@ -34,6 +35,7 @@ export {
   Pagination,
   CustomInput,
   Dropdown,
+  RangeSlider,
   PortfolioWelcomeBanner,
   AboutMe,
   Experiences,

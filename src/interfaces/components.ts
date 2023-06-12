@@ -65,10 +65,16 @@ export interface IXDropdownFieldProps
   > {
   title?: string;
   data?: string;
+  onchange?: string;
 }
 
 export interface IRangeSliderProps {
   step: number;
   min?: number;
   max?: number;
+  value?: {
+    min: number;
+    max: number;
+  };
+  onChange: React.Dispatch<React.SetStateAction<{ min: number; max: number }>>;
 }
