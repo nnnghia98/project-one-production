@@ -110,7 +110,19 @@ const Cart = () => {
                 )}
                 <td className="total">
                   ${Number(item.cost) * (item.quantity || 1)}
-                  {isMobile && <td className="quantity">{item.quantity}</td>}
+                  {isMobile && (
+                    <td className="quantity">
+                      <CustomInput
+                        ref={quantityInputRef}
+                        type="number"
+                        placeholder="Quantity"
+                        min={0}
+                        max={item.quantity}
+                        defaultValue={item.quantity}
+                        // onChange={(item) => {handle}}
+                      />
+                    </td>
+                  )}
                 </td>
               </tr>
             ))}

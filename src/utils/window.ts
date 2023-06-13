@@ -7,7 +7,7 @@ interface IWindowDimensions {
   isTablet: boolean;
 }
 
-const MOBILE_BREAKPOINT = 630;
+const MOBILE_BREAKPOINT = 746;
 const TABLET_BREAKPOINT = 1050;
 
 export const useWindowDimensions = () => {
