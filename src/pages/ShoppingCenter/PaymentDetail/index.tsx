@@ -30,11 +30,14 @@ import "./styles.scss";
 const PaymentDetail = () => {
   const [isLoading, setIsLoading] = useState(false);
   // const [formValues, setFormValues] = useState<IPaymentDetailFormValues>();
+  const [errorMessages, setErrorMessage] = useState<IPaymentDetailFormError>(
+    {}
+  );
 
   const { globalState, setGlobalState } = useContext(AppContext);
 
   const navigate = useNavigate();
-  const [errorMessages, setErrorMessage] = useState<IPaymentDetailFormError>();
+
   const total = getStorageItem("total");
 
   // Form inputs
@@ -65,7 +68,6 @@ const PaymentDetail = () => {
     };
 
     setErrorMessage(validateValues(formValues));
-    console.log(!isEmpty(errorMessages));
 
     if (!isEmpty(errorMessages)) {
       return;
@@ -74,16 +76,16 @@ const PaymentDetail = () => {
     if (setGlobalState) setGlobalState({ ...globalState, inCart: [] });
     removeStorageItem("cart");
 
-    // if (paymentMethod === "atm") {
-    //   return navigate("card-detail");
-    // }
+    if (paymentMethod === "atm") {
+      return navigate("card-detail");
+    }
 
-    // return navigate("/shopping-center/checkout/done", {
-    //   state: {
-    //     method: "cod",
-    //     isSucceeded: true,
-    //   },
-    // });
+    return navigate("/shopping-center/checkout/done", {
+      state: {
+        method: "cod",
+        isSucceeded: true,
+      },
+    });
   };
 
   const radioChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
