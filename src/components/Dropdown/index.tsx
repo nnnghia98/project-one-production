@@ -58,16 +58,17 @@ const Dropdown = ({
       </div>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
       <ul className={`dropdown-body ${isOpen && "open"}`}>
-        {dropdownData.map((item: ICountry) => (
-          <li
-            key={item.iso3}
-            className="dropdown-item"
-            onClick={handleItemClick}
-            id={item.iso3}
-          >
-            {item.country}
-          </li>
-        ))}
+        {dropdownData &&
+          dropdownData.map((item: ICountry) => (
+            <li
+              key={item.iso3}
+              className="dropdown-item"
+              onClick={handleItemClick}
+              id={item.iso3}
+            >
+              {item.country}
+            </li>
+          ))}
       </ul>
     </div>
   );

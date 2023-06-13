@@ -10,7 +10,12 @@ import {
   Dropdown,
   Loading,
 } from "components";
-import { setStorageItem, getStorageItem, validateValues } from "utils";
+import {
+  setStorageItem,
+  getStorageItem,
+  validateValues,
+  removeStorageItem,
+} from "utils";
 import {
   ICountriesResponse,
   ICountry,
@@ -60,21 +65,25 @@ const PaymentDetail = () => {
     };
 
     setErrorMessage(validateValues(formValues));
-    console.log(isEmpty(errorMessages));
-    if (isEmpty(errorMessages)) {
-      if (setGlobalState) setGlobalState({ ...globalState, inCart: [] });
+    console.log(!isEmpty(errorMessages));
 
-      if (paymentMethod === "atm") {
-        return navigate("card-detail");
-      }
-
-      return navigate("/shopping-center/checkout/done", {
-        state: {
-          method: "cod",
-          isSucceeded: true,
-        },
-      });
+    if (!isEmpty(errorMessages)) {
+      return;
     }
+
+    if (setGlobalState) setGlobalState({ ...globalState, inCart: [] });
+    removeStorageItem("cart");
+
+    // if (paymentMethod === "atm") {
+    //   return navigate("card-detail");
+    // }
+
+    // return navigate("/shopping-center/checkout/done", {
+    //   state: {
+    //     method: "cod",
+    //     isSucceeded: true,
+    //   },
+    // });
   };
 
   const radioChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
