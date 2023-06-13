@@ -109,7 +109,7 @@ const Cart = () => {
                   </>
                 )}
                 <td className="total">
-                  ${Number(item.cost) * (item.quantity || 1)}
+                  ${formatCurrency(Number(item.cost) * (item.quantity || 1))}
                   {isMobile && (
                     <td className="quantity">
                       <CustomInput
