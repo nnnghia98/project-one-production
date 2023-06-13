@@ -39,7 +39,7 @@ const RangeSlider = ({
   const maxPos = ((maxValue - min) / (max - min)) * 100;
 
   return (
-    <div className="wrapper">
+    <div className="range-slider">
       <div className="input-wrapper">
         <input
           className="input"

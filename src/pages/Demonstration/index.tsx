@@ -132,18 +132,20 @@ interface IDemostrationFormValues {
   saveInformation?: boolean;
   showMethod?: string;
   name?: string;
+  min?: number;
+  max?: number;
 }
 
 const Demonstration = () => {
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [showMethod, setShowMethod] = useState<string>("render");
-  const [formValues, setFormValues] = useState<IDemostrationFormValues>(
-    getStorageItem("demonstrationForm")
-  );
+  const [formValues, setFormValues] = useState<IDemostrationFormValues>({});
+
   const [errorMessages, setErrorMessages] = useState<IDemostrationFormValues>(
     {}
   );
-  // const [dropdownSelect, setDropdownSelect] = useState();
+
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [showMethod, setShowMethod] = useState<string>("yes");
+
   const [sliderValue, setSliderValue] = useState({ min: 0, max: 100 });
 
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -162,21 +164,23 @@ const Demonstration = () => {
 
     inputValues.saveInformation = isChecked;
     inputValues.showMethod = showMethod;
+    inputValues.min = sliderValue.min;
+    inputValues.max = sliderValue.max;
+    inputValues.name = inputRef.current?.value;
 
-    if (!inputRef.current?.value) {
+    if (!inputValues.name) {
       return setErrorMessages({
         ...errorMessages,
         name: "Your name must be provided!",
       });
     }
 
-    inputValues.name = inputRef.current?.value;
-
     setFormValues(inputValues);
 
-    if (showMethod === "alert") {
-      alert(`Thank you ${formValues.name} for giving him/her a home :)`);
-    }
+    alert(`Your name: ${inputValues.name}
+Your range: ${inputValues.min} ~ ${inputValues.max}
+You selected ${inputValues.showMethod === "yes" ? "Yes" : "Another yes"}
+${inputValues.saveInformation ? "Your data is kept" : ""}`);
 
     if (isChecked) {
       setStorageItem("demonstrationForm", formValues);
@@ -185,22 +189,10 @@ const Demonstration = () => {
     return;
   };
 
-  const renderResult = () => {
-    // if (showMethod === "alert") {
-    //   alert(`Thank you ${formValues.name} for giving him/her a home :)`);
-    // }
-
-    return (
-      <div>
-        {/* Thank you {formValues.name} for giving him/her a home {":)"} */}
-      </div>
-    );
-  };
-
   return (
     <div className="demonstration">
       <div className="content flex column">
-        <h5 className="heading-5">Adopt a cat</h5>
+        <h5 className="heading-5">Demonstration</h5>
         <div className="xinput-wrapper">
           <x-input
             type="text"
@@ -213,7 +205,7 @@ const Demonstration = () => {
         </div>
         <div className="dropdown-wrapper">
           <x-dropdown
-            title="Choose a cat"
+            title="Choose an option"
             data={JSON.stringify(DROPDOWN_DATA)}
             // ref={dropdownItemRef}
             onchange={String(() => {})}
@@ -226,27 +218,27 @@ const Demonstration = () => {
           value={sliderValue}
           onChange={setSliderValue}
         />
-        <p>
-          The min value is: <span>{sliderValue.min}</span>
-        </p>
-        <p>
-          The max value is: <span>{sliderValue.max}</span>
-        </p>
-        <h6 className="heading-6">Would you adopt this cat?</h6>
+        <div>
+          The min value is: <>{sliderValue.min}</>
+        </div>
+        <div>
+          The max value is: <>{sliderValue.max}</>
+        </div>
+        <h6 className="heading-6">Select an option</h6>
         <div className="radio-wrapper flex">
           <RadioButton
             changed={handleSelect}
             id="1"
-            isSelected={showMethod === "render"}
+            isSelected={showMethod === "yes"}
             label="Yes"
-            value="render"
+            value="yes"
           />
           <RadioButton
             changed={handleSelect}
             id="2"
-            isSelected={showMethod === "alert"}
+            isSelected={showMethod === "anotherYes"}
             label="Another yes"
-            value="alert"
+            value="anotherYes"
           />
         </div>
         <div className="checkbox-wrapper">
@@ -260,7 +252,6 @@ const Demonstration = () => {
         <div className="button-wrapper">
           <Button name="Gotcha" onClick={handleSubmit} />
         </div>
-        {renderResult()}
       </div>
     </div>
   );

@@ -47,6 +47,7 @@ template.innerHTML = `
       list-style: none;
       max-height: 300px;
       overflow-y: scroll;
+      z-index: 9999;
     }
 
     .dropdown-item {
