@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 
 import { Button, Checkbox, RadioButton, RangeSlider } from "components";
-import { setStorageItem, getStorageItem } from "utils";
+import { setStorageItem } from "utils";
 
 import "./styles.scss";
 
