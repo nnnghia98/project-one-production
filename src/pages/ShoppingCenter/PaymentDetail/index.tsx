@@ -79,9 +79,11 @@ const PaymentDetail = () => {
       return;
     }
 
-    setErrorMessage(validateValues(formValues));
+    const errors = validateValues(formValues);
 
-    if (!isEmpty(errorMessages)) {
+    if (!isEmpty(errors)) {
+      setErrorMessage(errors);
+
       return;
     }
 
