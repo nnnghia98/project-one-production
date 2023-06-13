@@ -33,7 +33,7 @@ export const validateValues = (values: IPaymentDetailFormValues) => {
         break;
     }
   });
-  console.log(errorMessages);
+
   return errorMessages;
 };
 
