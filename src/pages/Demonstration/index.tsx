@@ -149,7 +149,7 @@ const Demonstration = () => {
   const [sliderValue, setSliderValue] = useState({ min: 0, max: 100 });
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-  // const dropdownItemRef = useRef<HTMLDivElement | null>();
+  const dropdownItemRef = useRef<HTMLDivElement | null>();
 
   const handleCheck = () => {
     setIsChecked(!isChecked);
