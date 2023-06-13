@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import isEmpty from "lodash/isEmpty";
 
@@ -10,7 +10,7 @@ import {
   Dropdown,
   Loading,
 } from "components";
-import { setStorageItem, validateValues } from "utils";
+import { setStorageItem, getStorageItem, validateValues } from "utils";
 import {
   ICountriesResponse,
   ICountry,
@@ -18,14 +18,19 @@ import {
   IPaymentDetailFormError,
 } from "interfaces";
 import { fetchCountries } from "api";
+import { AppContext } from "context";
 
 import "./styles.scss";
 
 const PaymentDetail = () => {
   const [isLoading, setIsLoading] = useState(false);
   // const [formValues, setFormValues] = useState<IPaymentDetailFormValues>();
+
+  const { globalState, setGlobalState } = useContext(AppContext);
+
   const navigate = useNavigate();
   const [errorMessages, setErrorMessage] = useState<IPaymentDetailFormError>();
+  const total = getStorageItem("total");
 
   // Form inputs
   const [selectedCountry, setSelectedCountry] = useState<ICountry>();
@@ -55,8 +60,10 @@ const PaymentDetail = () => {
     };
 
     setErrorMessage(validateValues(formValues));
-
+    console.log(isEmpty(errorMessages));
     if (isEmpty(errorMessages)) {
+      if (setGlobalState) setGlobalState({ ...globalState, inCart: [] });
+
       if (paymentMethod === "atm") {
         return navigate("card-detail");
       }
@@ -194,7 +201,7 @@ const PaymentDetail = () => {
                 value="atm"
               />
             </div>
-            <div className="total">Total: $30.95</div>
+            <div className="total">Total: ${total ? total : 0}</div>
             <div className="button-wrapper">
               <Button
                 name={paymentMethod === "cod" ? "Place order" : "Next"}

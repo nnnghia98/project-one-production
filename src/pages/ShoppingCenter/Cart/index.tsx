@@ -1,25 +1,38 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "components";
+import { Button, CustomInput } from "components";
 import { ICartItemProps } from "interfaces";
-import { getStorageItem, setStorageItem, useWindowDimensions } from "utils";
+import {
+  getStorageItem,
+  setStorageItem,
+  useWindowDimensions,
+  useDebounce,
+  formatCurrency,
+} from "utils";
 import { AppContext } from "context";
 
 import productThumbnail from "assets/img/product-thumbnail.png";
 
 import "./styles.scss";
 
-const getSubTotal = (cart: Array<ICartItemProps>) =>
-  cart.reduce(
+const getSubTotal = (cart: Array<ICartItemProps>) => {
+  const total = cart.reduce(
     (total, item) => Number(item.cost) * (item.quantity || 1) + total,
     0
   );
+
+  return formatCurrency(total);
+};
 
 const Cart = () => {
   const { isMobile } = useWindowDimensions();
   const navigate = useNavigate();
   const { globalState, setGlobalState } = useContext(AppContext);
+
+  const quantityInputRef = useRef<HTMLInputElement | null>(null);
+
+  // const debouncedValue = useDebounce<number>(Item, 2000);
 
   const handleNavigate = () => {
     if (!globalState.inCart.length) {
@@ -27,6 +40,8 @@ const Cart = () => {
     }
 
     if (getStorageItem("isSignedIn")) {
+      setStorageItem("total", getSubTotal(globalState.inCart));
+
       return navigate("/shopping-center/checkout");
     }
 
@@ -39,6 +54,7 @@ const Cart = () => {
       : [];
 
     setStorageItem("cart", newCart);
+    setStorageItem("total", getSubTotal(globalState.inCart));
     if (setGlobalState) setGlobalState({ ...globalState, inCart: newCart });
   };
 
@@ -79,7 +95,17 @@ const Cart = () => {
                 {!isMobile && (
                   <>
                     <td className="price">${Number(item.cost)}</td>
-                    <td className="quantity">{item.quantity}</td>
+                    <td className="quantity">
+                      <CustomInput
+                        ref={quantityInputRef}
+                        type="number"
+                        placeholder="Quantity"
+                        min={0}
+                        max={item.quantity}
+                        defaultValue={item.quantity}
+                        // onChange={(item) => {handle}}
+                      />
+                    </td>
                   </>
                 )}
                 <td className="total">
@@ -98,7 +124,7 @@ const Cart = () => {
             </div>
             <div className="shipping-fee flex">
               <div>Shipping fee</div>
-              <div>${getSubTotal(globalState.inCart) === 0 ? `0` : `2.99`}</div>
+              <div>${getSubTotal(globalState.inCart) === "0" ? 0 : 2.99}</div>
             </div>
           </div>
           <div className="button-wrapper">
