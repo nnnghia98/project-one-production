@@ -30,3 +30,17 @@
     background-color: $roseEbony;
   }
 }
+
+.disabled-button {
+  background-color: $darkGrayish;
+  color: $white;
+  cursor: unset;
+
+  &:hover {
+    background-color: $darkGrayish;
+  }
+
+  &:active {
+    background-color: $darkGrayish;
+  }
+}

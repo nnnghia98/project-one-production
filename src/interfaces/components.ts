@@ -5,10 +5,8 @@ export interface IButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  name: string;
   outerClassName?: string;
   url?: string;
-  onClick?: (event: React.SyntheticEvent) => void;
 }
 
 export interface ICheckboxProps {

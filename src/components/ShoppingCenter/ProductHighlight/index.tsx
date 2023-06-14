@@ -30,7 +30,7 @@ const ProductHighlight = () => {
             <Item benefit="Long burning: No more waste. Created for last long" />
           </div>
           <div className="button-wrapper">
-            <Button name="View product" onClick={() => {}} />
+            <Button name="View product" onClick={() => {}} disabled />
           </div>
         </div>
         {!isTablet && (
