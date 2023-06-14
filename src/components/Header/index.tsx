@@ -33,11 +33,7 @@ const Header = () => {
   const renderNumberInCart = () => {
     const cart = globalState?.inCart;
 
-    if (!cart) {
-      return;
-    }
-
-    if (!cart.length) {
+    if (!cart || !cart.length) {
       return;
     }
 
