@@ -90,15 +90,12 @@
       justify-content: center;
 
       .pagination-bar {
-        // width: 100%;
         display: flex;
         justify-content: center;
-        // margin-top: 28px;
-        // margin-bottom: 0;
       }
 
       .input-wrapper {
-        max-width: 123px;
+        width: 123px;
       }
     }
   }

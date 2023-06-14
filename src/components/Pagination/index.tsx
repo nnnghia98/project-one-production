@@ -26,11 +26,15 @@ const Pagination = (props: any) => {
   }
 
   const onNext = () => {
-    onPageChange(currentPage + 1);
+    if (currentPage <= Math.ceil(totalCount / pageSize) - 1) {
+      onPageChange(currentPage + 1);
+    }
   };
 
   const onPrevious = () => {
-    onPageChange(currentPage - 1);
+    if (currentPage >= 2) {
+      onPageChange(currentPage - 1);
+    }
   };
 
   let lastPage = paginationRange[paginationRange.length - 1];

@@ -3,26 +3,31 @@ import { useState, useMemo, useEffect } from "react";
 import { ProductItem, Pagination, CustomInput } from "components";
 import { getStorageItem, useDebounce, useWindowDimensions } from "utils";
 import { IProductItemProps } from "interfaces";
+import { PAGE_SIZE, MIN_PAGE } from "constant";
 
 import "./styles.scss";
-
-const PAGE_SIZE = 12;
 
 const AllProducts = () => {
   const products = getStorageItem("products");
   const { isMobile } = useWindowDimensions();
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(MIN_PAGE);
   const [value, setValue] = useState<number>(currentPage);
 
   const debouncedValue = useDebounce<number>(value, 2000);
 
-  const handlePageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!Number(event.target.value)) {
+  const handlePageChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    max: number
+  ) => {
+    const page = Number(event.target.value);
+    if (!page) {
       return;
     }
 
-    setValue(Number(event.target.value));
+    if (page >= MIN_PAGE && page <= max) {
+      setValue(page);
+    }
   };
 
   const currentTableData = useMemo(() => {
@@ -30,7 +35,7 @@ const AllProducts = () => {
       return products;
     }
 
-    const firstPageIndex = (currentPage - 1) * PAGE_SIZE;
+    const firstPageIndex = (currentPage - MIN_PAGE) * PAGE_SIZE;
     const lastPageIndex = firstPageIndex + PAGE_SIZE;
 
     return products.slice(firstPageIndex, lastPageIndex);
@@ -71,8 +76,15 @@ const AllProducts = () => {
             <div className="input-wrapper">
               <CustomInput
                 placeholder="Go to page"
-                onChange={handlePageChange}
-                min={1}
+                onChange={(event) =>
+                  handlePageChange(
+                    event,
+                    Math.ceil(products.length / PAGE_SIZE)
+                  )
+                }
+                type="number"
+                min={MIN_PAGE}
+                max={Math.ceil(products.length / PAGE_SIZE)}
               />
             </div>
           </div>
