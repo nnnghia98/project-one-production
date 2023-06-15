@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Button, CustomInput } from "components";
 import { useWindowDimensions, getStorageItem, setStorageItem } from "utils";
 import { IProductItemProps, ICartItemProps } from "interfaces";
-import { AppContext } from "context";
+import { AppContext, setCart, setProducts, toggleLoading } from "context";
 
 import productBanner from "assets/img/product-banner.png";
 
@@ -125,7 +125,8 @@ const isExistentInCart = (cart: Array<ICartItemProps>, id: string) =>
 const ProductDetail = () => {
   const { id } = useParams();
   const { isMobile } = useWindowDimensions();
-  const { globalState, setGlobalState } = useContext(AppContext);
+
+  const { state, dispatch } = useContext(AppContext);
 
   const quantityInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -144,6 +145,8 @@ const ProductDetail = () => {
         "Please input valid number (quantity more than 0 or less than in stock!)"
       );
     }
+
+    dispatch(toggleLoading(true));
 
     const item: IProductItemProps = {
       id: product.id,
@@ -167,7 +170,7 @@ const ProductDetail = () => {
       });
 
       setStorageItem("cart", newCart);
-      if (setGlobalState) setGlobalState({ ...globalState, inCart: newCart });
+      dispatch(setCart(newCart));
     } else {
       cart.push({
         ...item,
@@ -176,7 +179,7 @@ const ProductDetail = () => {
       });
 
       setStorageItem("cart", cart);
-      if (setGlobalState) setGlobalState({ ...globalState, inCart: cart });
+      dispatch(setCart(cart));
     }
 
     const newProducts = products.map((product: IProductItemProps) => {
@@ -195,6 +198,8 @@ const ProductDetail = () => {
     });
 
     setStorageItem("products", newProducts);
+    dispatch(setProducts(newProducts));
+    dispatch(toggleLoading(false));
 
     return alert("Item has been added to cart!");
   };

@@ -24,6 +24,10 @@ export interface ICartItemProps {
   isPopular?: boolean;
 }
 
+export interface ICartProps {
+  cart: ICartItemProps[];
+}
+
 export interface IPaymentDetailFormValues {
   firstName?: string;
   lastName?: string;

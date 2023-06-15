@@ -6,11 +6,12 @@ import { removeStorageItem } from "utils";
 import { AppContext } from "context";
 
 import hamburgerSvg from "assets/svg/hamburger.svg";
+import { toggleLoading, setSignedIn } from "context";
 
 import "./styles.scss";
 
 const Header = () => {
-  const { globalState, setGlobalState } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -23,15 +24,19 @@ const Header = () => {
     );
 
   const handleSignOut = () => {
+    dispatch(toggleLoading(true));
+
     removeStorageItem("email");
     removeStorageItem("password");
     removeStorageItem("isSignedIn");
 
-    if (setGlobalState) setGlobalState({ ...globalState, isSignedIn: false });
+    dispatch(setSignedIn(false));
+
+    dispatch(toggleLoading(false));
   };
 
   const renderNumberInCart = () => {
-    const cart = globalState?.inCart;
+    const cart = state.cart;
 
     if (!cart || !cart.length) {
       return;
@@ -72,7 +77,7 @@ const Header = () => {
               <Link to="/shopping-center/cart">
                 Cart {renderNumberInCart()}
               </Link>
-              {globalState?.isSignedIn ? (
+              {state.isSignedIn ? (
                 <div className="sign-out" onClick={handleSignOut}>
                   nnnghia98 / Sign Out
                 </div>

@@ -8,7 +8,6 @@ import {
   RadioButton,
   CustomInput,
   Dropdown,
-  Loading,
 } from "components";
 import {
   setStorageItem,
@@ -23,16 +22,14 @@ import {
   IPaymentDetailFormError,
 } from "interfaces";
 import { fetchCountries } from "api";
-import { AppContext } from "context";
+import { AppContext, toggleLoading, setCart } from "context";
 
 import "./styles.scss";
 
 const PaymentDetail = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  // const [formValues, setFormValues] = useState<IPaymentDetailFormValues>();
   const [errorMessages, setErrorMessage] = useState<IPaymentDetailFormError>();
 
-  const { globalState, setGlobalState } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -87,7 +84,7 @@ const PaymentDetail = () => {
       return;
     }
 
-    if (setGlobalState) setGlobalState({ ...globalState, inCart: [] });
+    dispatch(setCart([]));
     removeStorageItem("cart");
 
     if (paymentMethod === "atm") {
@@ -116,19 +113,18 @@ const PaymentDetail = () => {
     fetchCountries()
       .then((res: ICountriesResponse) => {
         setStorageItem("countries", res.data);
-        setIsLoading(false);
+        dispatch(toggleLoading(false));
       })
       .catch((error) => console.error(error));
   };
 
   useEffect(() => {
-    setIsLoading(true);
+    dispatch(toggleLoading(true));
     getAllCountries();
   }, []);
 
   return (
     <>
-      {isLoading && <Loading />}
       <div className="payment-detail flex">
         <form className="content flex" onSubmit={handleSubmit}>
           <div className="shipping-address">

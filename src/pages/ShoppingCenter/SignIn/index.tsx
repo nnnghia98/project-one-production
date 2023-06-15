@@ -5,13 +5,13 @@ import isEqual from "lodash/isEqual";
 import { Button, CustomInput } from "components";
 import { EMAIL_REGEXP } from "constant";
 import { setStorageItem } from "utils";
-import { AppContext } from "context";
+import { AppContext, setSignedIn, toggleLoading } from "context";
 
 import "./styles.scss";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { globalState, setGlobalState } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
 
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
@@ -25,11 +25,14 @@ const SignIn = () => {
       return alert("Invalid password!");
     }
 
+    dispatch(toggleLoading(true));
+
     setStorageItem("email", emailInputRef.current?.value);
     setStorageItem("password", passwordInputRef.current?.value);
     setStorageItem("isSignedIn", true);
 
-    if (setGlobalState) setGlobalState({ ...globalState, isSignedIn: true });
+    dispatch(setSignedIn(true));
+    dispatch(toggleLoading(true));
 
     alert("Signed in!");
     navigate(-1);
