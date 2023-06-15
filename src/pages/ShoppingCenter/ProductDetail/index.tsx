@@ -126,7 +126,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const { isMobile } = useWindowDimensions();
 
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const quantityInputRef = useRef<HTMLInputElement | null>(null);
 

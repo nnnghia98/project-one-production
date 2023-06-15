@@ -16,24 +16,25 @@ import "./styles.scss";
 const ShoppingCenter = () => {
   const [products, setProducts] = useState<Array<IProductItemProps>>([]);
 
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   getStorageItem("cart") ?? setStorageItem("cart", []);
 
-  const getAllProducts = () => {
-    fetchProducts()
-      .then((data: Array<IProductItemProps>) => {
-        setStorageItem("products", data);
-        setProducts(data);
-        dispatch(toggleLoading(false));
-      })
-      .catch((error) => console.error(error));
-  };
-
   useEffect(() => {
     dispatch(toggleLoading(true));
+
+    const getAllProducts = () => {
+      fetchProducts()
+        .then((data: Array<IProductItemProps>) => {
+          setStorageItem("products", data);
+          setProducts(data);
+          dispatch(toggleLoading(false));
+        })
+        .catch((error) => console.error(error));
+    };
+
     getAllProducts();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

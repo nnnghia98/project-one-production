@@ -11,7 +11,7 @@ import "./styles.scss";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);

@@ -29,7 +29,7 @@ import "./styles.scss";
 const PaymentDetail = () => {
   const [errorMessages, setErrorMessage] = useState<IPaymentDetailFormError>();
 
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -109,19 +109,20 @@ const PaymentDetail = () => {
     setIsSaveShippingDetail(event.target.checked);
   };
 
-  const getAllCountries = () => {
-    fetchCountries()
-      .then((res: ICountriesResponse) => {
-        setStorageItem("countries", res.data);
-        dispatch(toggleLoading(false));
-      })
-      .catch((error) => console.error(error));
-  };
-
   useEffect(() => {
     dispatch(toggleLoading(true));
+
+    const getAllCountries = () => {
+      fetchCountries()
+        .then((res: ICountriesResponse) => {
+          setStorageItem("countries", res.data);
+          dispatch(toggleLoading(false));
+        })
+        .catch((error) => console.error(error));
+    };
+
     getAllCountries();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
