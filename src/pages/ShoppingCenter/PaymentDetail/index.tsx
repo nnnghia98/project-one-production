@@ -28,7 +28,7 @@ import "./styles.scss";
 
 const PaymentDetail = () => {
   const [errorMessages, setErrorMessage] = useState<IPaymentDetailFormError>();
-
+  const [formValues, setFormValues] = useState<IPaymentDetailFormValues>({});
   const { dispatch } = useContext(AppContext);
 
   const navigate = useNavigate();
@@ -62,25 +62,11 @@ const PaymentDetail = () => {
       isSaveShippingDetail: isSaveShippingDetail,
     };
 
-    if (!errorMessages) {
-      setErrorMessage({
-        address: "This field is required!",
-        city: "This field is required!",
-        country: "This field is required!",
-        firstName: "This field is required!",
-        lastName: "This field is required!",
-        phoneNumber: "This field is required!",
-        postalCode: "This field is required!",
-      });
-
-      return;
-    }
-
     const errors = validateValues(formValues);
 
-    if (!isEmpty(errors)) {
-      setErrorMessage(errors);
+    setErrorMessage(errors);
 
+    if (!isEmpty(errors)) {
       return;
     }
 
