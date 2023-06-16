@@ -86,6 +86,9 @@ const PaymentDetail = () => {
 
     dispatch(setCart([]));
     removeStorageItem("cart");
+    if (isSaveShippingDetail) {
+      setStorageItem("payment_detail", formValues);
+    }
 
     if (paymentMethod === "atm") {
       return navigate("card-detail");

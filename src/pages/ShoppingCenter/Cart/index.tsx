@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, CustomInput } from "components";
@@ -60,6 +60,10 @@ const Cart = () => {
     dispatch(setCart(newCart));
     dispatch(toggleLoading(false));
   };
+
+  useEffect(() => {
+    dispatch(toggleLoading(false));
+  }, [dispatch]);
 
   return (
     <div className="cart">

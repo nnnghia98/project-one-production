@@ -71,16 +71,17 @@ template.innerHTML = `
 
   </style>
 
-  <div class="dropdown">
-    <div
-      class='dropdown-header'
-    >
-    </div>
-    <ul class='dropdown-body'>
-    </ul>
-    <slot></slot>
-  </div>
+  <slot name='dropdown'></slot>
 `;
+
+/*
+<div
+class='dropdown-header'
+>
+</div>
+<ul class='dropdown-body'>
+</ul>
+*/
 
 export class XDropdown extends HTMLElement {
   constructor() {
@@ -93,11 +94,13 @@ export class XDropdown extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this._header = this.shadowRoot.querySelector(".dropdown-header");
-    this._header.innerText = this.title;
+    this._dropdown = this.shadowRoot.querySelector('slot[name="dropdown"]');
 
-    this._body = this.shadowRoot.querySelector(".dropdown-body");
-    this._body.style.display = "none";
+    // this._header = this.shadowRoot.querySelector(".dropdown-header");
+    // this._header.innerText = this.title;
+
+    // this._body = this.shadowRoot.querySelector(".dropdown-body");
+    // this._body.style.display = "none";
   }
 
   static get observedAttributes() {
@@ -105,40 +108,33 @@ export class XDropdown extends HTMLElement {
   }
 
   connectedCallback() {
-    if (this._header.isConnected) {
-      if (this.data) {
-        const dropdownData = JSON.parse(this.data);
-        const header = this._header;
-
-        dropdownData.forEach((item) => {
-          const li = document.createElement("li");
-
-          const selectItem = (item) => {
-            return () => {
-              header.innerText = item.name;
-              header.classList.add("selected");
-            };
-          };
-
-          li.className = "dropdown-item";
-          li.innerText = item.name;
-          li.addEventListener("click", selectItem(item));
-
-          this._body.appendChild(li);
-        });
-      }
-
-      const svgWrapper = document.createElement("div");
-
-      svgWrapper.className = "svg-wrapper";
-      svgWrapper.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12.72 15.7799C12.5795 15.9206 12.3888 15.9997 12.19 15.9999H11.81C11.6116 15.9976 11.4217 15.9188 11.28 15.7799L6.14997 10.6399C6.05532 10.546 6.00208 10.4182 6.00208 10.2849C6.00208 10.1516 6.05532 10.0238 6.14997 9.92992L6.85997 9.21992C6.95214 9.12586 7.07828 9.07285 7.20997 9.07285C7.34166 9.07285 7.46781 9.12586 7.55997 9.21992L12 13.6699L16.44 9.21992C16.5339 9.12526 16.6617 9.07202 16.795 9.07202C16.9283 9.07202 17.0561 9.12526 17.15 9.21992L17.85 9.92992C17.9446 10.0238 17.9979 10.1516 17.9979 10.2849C17.9979 10.4182 17.9446 10.546 17.85 10.6399L12.72 15.7799Z" fill="#ADB5BD"/>
-      </svg>
-      `;
-
-      this._header.appendChild(svgWrapper);
-      this._header = this.addEventListener("click", () => this.toggle());
-    }
+    // if (this._header.isConnected) {
+    //   if (this.data) {
+    //     const dropdownData = JSON.parse(this.data);
+    //     const header = this._header;
+    //     dropdownData.forEach((item) => {
+    //       const li = document.createElement("li");
+    //       const selectItem = (item) => {
+    //         return () => {
+    //           header.innerText = item.name;
+    //           header.classList.add("selected");
+    //         };
+    //       };
+    //       li.className = "dropdown-item";
+    //       li.innerText = item.name;
+    //       li.addEventListener("click", selectItem(item));
+    //       this._body.appendChild(li);
+    //     });
+    //   }
+    //   const svgWrapper = document.createElement("div");
+    //   svgWrapper.className = "svg-wrapper";
+    //   svgWrapper.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    //   <path d="M12.72 15.7799C12.5795 15.9206 12.3888 15.9997 12.19 15.9999H11.81C11.6116 15.9976 11.4217 15.9188 11.28 15.7799L6.14997 10.6399C6.05532 10.546 6.00208 10.4182 6.00208 10.2849C6.00208 10.1516 6.05532 10.0238 6.14997 9.92992L6.85997 9.21992C6.95214 9.12586 7.07828 9.07285 7.20997 9.07285C7.34166 9.07285 7.46781 9.12586 7.55997 9.21992L12 13.6699L16.44 9.21992C16.5339 9.12526 16.6617 9.07202 16.795 9.07202C16.9283 9.07202 17.0561 9.12526 17.15 9.21992L17.85 9.92992C17.9446 10.0238 17.9979 10.1516 17.9979 10.2849C17.9979 10.4182 17.9446 10.546 17.85 10.6399L12.72 15.7799Z" fill="#ADB5BD"/>
+    //   </svg>
+    //   `;
+    //   this._header.appendChild(svgWrapper);
+    //   this._header = this.addEventListener("click", () => this.toggle());
+    // }
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
