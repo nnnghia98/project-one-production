@@ -14,13 +14,13 @@
 
   @include desktop {
     max-width: 1046px;
-    padding: 95px;
+    padding: 64px;
     gap: 18px;
   }
 
   @include tablet {
     max-width: 616px;
-    padding: 70px;
+    padding: 48px;
     gap: 12px;
   }
 

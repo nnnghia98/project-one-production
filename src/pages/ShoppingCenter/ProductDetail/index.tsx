@@ -10,6 +10,8 @@ import productBanner from "assets/img/product-banner.png";
 
 import "./styles.scss";
 
+const exceptThisSymbols = ["e", "E", "+", "-", ".", ","];
+
 const renderMobileView = (
   ref: React.MutableRefObject<HTMLInputElement | null>,
   item: IProductItemProps,
@@ -22,7 +24,16 @@ const renderMobileView = (
       <img src={productBanner} alt="productBanner" />
     </div>
     <div className="button-group flex">
-      <CustomInput ref={ref} type="number" placeholder="Quantity" min={0} />
+      <CustomInput
+        ref={ref}
+        type="number"
+        placeholder="Quantity"
+        min={0}
+        step={1}
+        onKeyDown={(e) =>
+          exceptThisSymbols.includes(e.key) && e.preventDefault()
+        }
+      />
       <div className="cost">${item.cost}</div>
     </div>
     <div className="in-stock">In stock: {inStock}</div>
@@ -106,7 +117,15 @@ const renderWideView = (
         </div>
       </div>
       <div className="button-group flex">
-        <CustomInput ref={ref} type="number" placeholder="Quantity" min={0} />
+        <CustomInput
+          ref={ref}
+          type="number"
+          placeholder="Quantity"
+          min={0}
+          onKeyDown={(e) =>
+            exceptThisSymbols.includes(e.key) && e.preventDefault()
+          }
+        />
 
         <Button
           name="Add to cart"

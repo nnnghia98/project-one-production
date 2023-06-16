@@ -1,5 +1,6 @@
-$mobile-breakpoint: 746px;
-$tablet-breakpoint: 1050px;
+$mobile-breakpoint: 480px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1920px;
 
 $fullWidth: 100%;
 $desktopMaxWidth: 1260px;
@@ -8,8 +9,9 @@ $mobileMaxWidth: 360px;
 
 @mixin desktop {
   @media (min-width: #{$tablet-breakpoint + 1px}) {
-    max-width: $desktopMaxWidth;
+    // max-width: $desktopMaxWidth;
     width: $fullWidth;
+    padding: 0 64px;
 
     @content;
   }
@@ -17,8 +19,9 @@ $mobileMaxWidth: 360px;
 
 @mixin tablet {
   @media ((min-width: #{$mobile-breakpoint + 1px}) and (max-width: #{$tablet-breakpoint})) {
-    max-width: $tabletMaxWidth;
+    // max-width: $tabletMaxWidth;
     width: $fullWidth;
+    padding: 0 48px;
 
     @content;
   }
@@ -26,8 +29,9 @@ $mobileMaxWidth: 360px;
 
 @mixin mobile {
   @media ((max-width: #{$mobile-breakpoint})) {
-    max-width: $mobileMaxWidth;
+    // max-width: $mobileMaxWidth;
     width: $fullWidth;
+    padding: 0 36px;
 
     @content;
   }
