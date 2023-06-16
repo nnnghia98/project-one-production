@@ -28,7 +28,7 @@ import "./styles.scss";
 
 const PaymentDetail = () => {
   const [errorMessages, setErrorMessage] = useState<IPaymentDetailFormError>();
-  const [formValues, setFormValues] = useState<IPaymentDetailFormValues>({});
+
   const { dispatch } = useContext(AppContext);
 
   const navigate = useNavigate();
